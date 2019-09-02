@@ -266,6 +266,18 @@
 		插件作者：KELEN
 		插件来源: https://github.com/KELEN/katelog
 -->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
 	 
 
 <div class="layout-post">
@@ -332,9 +344,11 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>#面向对象&amp;面向过程<br>面向过程总结:<br>面向过程是一种自上向下的编程。<br>面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重要的因素。<br>缺点：没有面向对象易维护、易复用、易扩展<br>面向对象总结:<br>面向对象是将事物高度抽象化。面向对象必须先建立抽象模型，之后直接使用模型就行了。<br>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护<br>缺点：性能比面向过程低</p>
-<p>#对象的创建－字面量，原型，构造函数等各自特点</p>
-<ol>
+		<h1 id="面向对象-amp-面向过程"><a href="#面向对象-amp-面向过程" class="headerlink" title="面向对象&amp;面向过程"></a>面向对象&amp;面向过程</h1><ul>
+<li>面向过程总结:<br>面向过程是一种自上向下的编程。<br>面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重要的因素。<br>缺点：没有面向对象易维护、易复用、易扩展</li>
+<li>面向对象总结:<br>面向对象是将事物高度抽象化。面向对象必须先建立抽象模型，之后直接使用模型就行了。<br>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护<br>缺点：性能比面向过程低</li>
+</ul>
+<h1 id="对象的创建－字面量，原型，构造函数等各自特点"><a href="#对象的创建－字面量，原型，构造函数等各自特点" class="headerlink" title="对象的创建－字面量，原型，构造函数等各自特点"></a>对象的创建－字面量，原型，构造函数等各自特点</h1><ol>
 <li>工厂模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name=name;</span><br><span class="line">  o.age=age;</span><br><span class="line">  o.job=job;</span><br><span class="line">  o.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> o;   <span class="comment">//将创建的对象返回</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=createPerson(<span class="string">"Jim"</span>,<span class="number">22</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -358,8 +372,7 @@
 <p>缺点：“共享”性，即当没有对Person的friends赋值时，直接调用原型属性并修改，就会直接导致原型修改。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">  friends:[<span class="string">"Amy"</span>,<span class="string">"Sam"</span>],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person1=<span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2=<span class="keyword">new</span> Person();</span><br><span class="line">person1.friends.push(<span class="string">"Van"</span>);</span><br><span class="line">alert(person1.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br><span class="line">alert(person2.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br></pre></td></tr></table></figure>
 
-<p>总结：<br>（1）工厂模式：在函数里面创建对象，并添加属性和方法。但没有解决对象识别问题，最后被构造函数模式所取代。<br>（2）构造函数模式：可以像创建内置对象实例一样使用new操作符。但没函数不局限于任何对象，因此没有了封装性。<br>（3）原型模式：使用构造函数的prototype属性指定应该共享的属性和方法。但单独使用原型模式的话，就会使不需要共享的属性和方法被共享</p>
-<p>###构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</p>
+<p>总结：<br>（1）工厂模式：在函数里面创建对象，并添加属性和方法。但没有解决对象识别问题，最后被构造函数模式所取代。<br>（2）构造函数模式：可以像创建内置对象实例一样使用new操作符。但没函数不局限于任何对象，因此没有了封装性。<br>（3）原型模式：使用构造函数的prototype属性指定应该共享的属性和方法。但单独使用原型模式的话，就会使不需要共享的属性和方法被共享<br><code>构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</code></p>
 	
 	</div>
 	
