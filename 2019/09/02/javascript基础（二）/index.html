@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Forever | Pononpa
+      javascript基础（二） | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Forever》
+			当前文章&nbsp;:&nbsp;《javascript基础（二）》
 		
 	</p>
 
@@ -273,8 +273,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/31/forever/" itemprop="url">
-		Forever
+	<a href="/2019/09/02/javascript基础（二）/" itemprop="url">
+		javascript基础（二）
 	</a>
 
 	</div>
@@ -287,9 +287,9 @@
 
 	发布于
 
-	<a href="/2019/08/31/forever/" itemprop="url">
-		<time datetime="2019-08-31T06:03:27.287Z" itemprop="datePublished">
-	  		2019-08-31
+	<a href="/2019/09/02/javascript基础（二）/" itemprop="url">
+		<time datetime="2019-09-02T02:42:38.247Z" itemprop="datePublished">
+	  		2019-09-02
 	  </time>
 	</a>
 	&nbsp;
@@ -305,8 +305,8 @@
 
 	更新于
 
-	<a href="/2019/08/31/forever/" itemprop="url">
-		<time datetime="2019-08-31T06:03:27.287Z" itemprop="dateUpdated">
+	<a href="/2019/09/02/javascript基础（二）/" itemprop="url">
+		<time datetime="2019-09-02T02:42:38.247Z" itemprop="dateUpdated">
 	  		2019-09-02
 	  </time>
 	</a> 
@@ -318,8 +318,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/love/" class=" ">
-			love
+		<a href="/tags/JS/" class=" ">
+			JS
 		</a>
 	
 		
@@ -332,25 +332,29 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>I love three things:</p>
-<p>the sun ,the moon and you.</p>
-<p>the sun is for the day ,the moon is for the night</p>
-<p>and you forever.</p>
-<p>//</p>
-<p>I saw you                                      </p>
-<p>You smiled warmly                             </p>
-<p>The world began waking up.                     </p>
-<p>初见你</p>
-<p>温婉一笑</p>
-<p>似万物复苏</p>
-<p>//</p>
-<p>I love you</p>
-<p>but I missed you</p>
-<p>then I miss you forever.</p>
+		<p>#继承 － 原型，原型连，es6继承 ，call，apply<br>(1) 属性拷贝<br>就是将对象的成员复制一份给需要继承的对象<br>// 创建父对象<br>var superObj = {<br>  name: ‘Li’,<br>  age: 25,<br>  friends: [‘小明’, ‘小李’, ‘小赵’],<br>  showName: function(){<br>    alert(this.name);<br>  }<br>}</p>
+<p>// 创建需要继承的子对象<br>var subObj = {};</p>
+<p>// 开始拷贝属性(使用for…in…循环)<br>for( var i in superObj ){<br>  subObj[i] = superObj[i];<br>}</p>
+<p>console.log(subObj)<br>console.log(superObj)<br>存在问题：<br>如果继承过来的成员是引用类型的话,<br>那么这个引用类型的成员在父对象和子对象之间是共享的,<br>也就是说修改了之后, 父子对象都会受到影响.</p>
+<p>(2) 原型式继承<br>借用构造函数的原型对象实现继承<br>// 创建父构造函数<br>function SuperClass(name){<br>  this.name = name;<br>  this.showName = function(){<br>    alert(this.name);<br>  }<br>}</p>
+<p>// 设置父构造器的原型对象<br>SuperClass.prototype.showAge = function(){<br>  console.log(this.age);<br>}</p>
+<p>// 创建子构造函数<br>function SubClass(){</p>
+<p>}</p>
+<p>// 设置子构造函数的原型对象实现继承<br>SubClass.prototype = SuperClass.prototype;</p>
+<p>var child = new SubClass()<br>问题：</p>
+<p>父构造函数的原型对象和子构造函数的原型对象上的成员有共享问题<br>只能继承父构造函数的原型对象上的成员, 不能继承父构造函数的实例对象的成员</p>
+<p>(3) 原型链继承<br>即 子构造函数.prototype = new 父构造函数()<br>// 创建父构造函数<br>function SuperClass(){<br>    this.name = ‘liyajie’;<br>    this.age = 25;<br>    this.showName = function(){<br>        console.log(this.name);<br>    }<br>}<br>// 设置父构造函数的原型<br>SuperClass.prototype.friends = [‘小名’, ‘小强’];<br>SuperClass.prototype.showAge = function(){<br>    console.log(this.age);<br>}<br>// 创建子构造函数<br>function SubClass(){</p>
+<p>}<br>// 实现继承<br>SubClass.prototype = new SuperClass();<br>// 修改子构造函数的原型的构造器属性<br>SubClass.prototype.constructor = SubClass;</p>
+<p>var child = new SubClass();<br>console.log(child.name); // liyajie<br>console.log(child.age);// 25<br>child.showName();// liyajie<br>child.showAge();// 25<br>console.log(child.friends); // [‘小名’,’小强’]</p>
+<p>// 当我们改变friends的时候, 父构造函数的原型对象的也会变化<br>child.friends.push(‘小王八’);<br>console.log(child.friends);[“小名”, “小强”, “小王八”]<br>var father = new SuperClass();<br>console.log(father.friends);[“小名”, “小强”, “小王八”]<br>问题：</p>
+<p>不能给父构造函数传递参数，父子构造函数的原型对象之间有共享问题</p>
+<p>(4) 借用构造函数<br>使用call和apply借用其他构造函数的成员, 可以解决给父构造函数传递参数的问题, 但是获取不到父构造函数原型上的成员.也不存在共享问题<br>// 创建父构造函数<br>function Person(name){<br>  this.name = name;<br>  this.freinds = [‘小王’, ‘小强’];<br>  this.showName = function(){<br>     console.log(this.name);<br>  }<br>}</p>
+<p>// 创建子构造函数<br> function Student(name){<br>  // 使用call借用Person的构造函数<br>  Person.call(this, name);<br> }</p>
+<p> // 测试是否有了 Person 的成员<br> var stu = new Student(‘Li’);<br> stu.showName(); // Li<br> console.log(stu.friends); // [‘小王’,’小强’]</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="https://sariay.github.io/img/post-cover/74.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -365,10 +369,10 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）" rel="prev">
-				&laquo;上一篇
-			</a>
 		
+			<a href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）" rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
 
@@ -384,29 +388,6 @@
 <div class="relate-post">
 	
 		<ul>
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/02/javascript基础（二）/" title="javascript基础（二）">
-								javascript基础（二）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 2日, 2019				
-							</p>
-							<p class="relate-post-content">
-								#继承 － 原型，原型连，es6继承 ，call，apply(1) 属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象var superObj = {  name: ‘Li’,  age: 25,  friends: [...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/02/javascript基础（二）/" title="javascript基础（二）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="javascript基础（二）"/>
-							</a>
-						</div>
-					</li>											
-			
 			
 					<li>
 						<div class="relate-post-text">
@@ -426,6 +407,33 @@
 							<a href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=852247412,628825777&amp;fm=26&amp;gp=0.jpg" alt="javascript基础（一）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/forever/" title="Forever">
+								Forever			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								I love three things:
+the sun ,the moon and you.
+the sun is for the day ,the moon is for the night
+and you forever.
+//...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/forever/" title="Forever">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="https://sariay.github.io/img/post-cover/74.jpg" alt="Forever"/>
 							</a>
 						</div>
 					</li>											

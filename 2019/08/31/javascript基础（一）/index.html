@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Forever | Pononpa
+      javascript基础（一） | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Forever》
+			当前文章&nbsp;:&nbsp;《javascript基础（一）》
 		
 	</p>
 
@@ -273,8 +273,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/31/forever/" itemprop="url">
-		Forever
+	<a href="/2019/08/31/javascript基础（一）/" itemprop="url">
+		javascript基础（一）
 	</a>
 
 	</div>
@@ -287,8 +287,8 @@
 
 	发布于
 
-	<a href="/2019/08/31/forever/" itemprop="url">
-		<time datetime="2019-08-31T06:03:27.287Z" itemprop="datePublished">
+	<a href="/2019/08/31/javascript基础（一）/" itemprop="url">
+		<time datetime="2019-08-31T07:36:13.189Z" itemprop="datePublished">
 	  		2019-08-31
 	  </time>
 	</a>
@@ -305,8 +305,8 @@
 
 	更新于
 
-	<a href="/2019/08/31/forever/" itemprop="url">
-		<time datetime="2019-08-31T06:03:27.287Z" itemprop="dateUpdated">
+	<a href="/2019/08/31/javascript基础（一）/" itemprop="url">
+		<time datetime="2019-08-31T07:36:13.189Z" itemprop="dateUpdated">
 	  		2019-09-02
 	  </time>
 	</a> 
@@ -318,8 +318,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/love/" class=" ">
-			love
+		<a href="/tags/JS/" class=" ">
+			JS
 		</a>
 	
 		
@@ -332,25 +332,25 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>I love three things:</p>
-<p>the sun ,the moon and you.</p>
-<p>the sun is for the day ,the moon is for the night</p>
-<p>and you forever.</p>
-<p>//</p>
-<p>I saw you                                      </p>
-<p>You smiled warmly                             </p>
-<p>The world began waking up.                     </p>
-<p>初见你</p>
-<p>温婉一笑</p>
-<p>似万物复苏</p>
-<p>//</p>
-<p>I love you</p>
-<p>but I missed you</p>
-<p>then I miss you forever.</p>
+		<p>#面向对象&amp;面向过程<br>面向过程总结:<br>面向过程是一种自上向下的编程。<br>面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重要的因素。<br>缺点：没有面向对象易维护、易复用、易扩展<br>面向对象总结:<br>面向对象是将事物高度抽象化。面向对象必须先建立抽象模型，之后直接使用模型就行了。<br>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护<br>缺点：性能比面向过程低</p>
+<p>#对象的创建－字面量，原型，构造函数等各自特点</p>
+<ol>
+<li>工厂模式<br>function createPerson(name,age,job){<br>var o=new Object();<br>o.name=name;<br>o.age=age;<br>o.job=job;<br>o.sayName=function(){<br> alert(this.name);<br>};<br>return o;   //将创建的对象返回<br>}<br>var person=createPerson(“Jim”,22,”Doctor”);<br>缺点：工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（怎样知道一个对象的类型）。</li>
+</ol>
+<ol start="2">
+<li>构造函数模式<br>function Person(name,age,job){<br>this.name=name;<br>this.age=age;<br>this.job=job;<br>this.sayName=function(){<br> alert(this.name);<br>}<br>}<br>var person=new Person(“Jim”,22,”Doctor”);</li>
+</ol>
+<p>构造函数模式相对于工厂模式有几个显著的区别<br>（1） 没有显式地创建对象<br>（2）直接将属性和方法赋给了this对象<br>（3）没有return语句<br>（4）函数名的首字母大写（Person和createPerson）：按照惯例，构造函数始终都是以大写字母开头，而非构造函数则应该以小写字母开头</p>
+<p>缺点：ECMAScript中的函数是对象，因此每定义一个函数，也就是实例化了一个对象。而构造函数在每次创建的时候都会完成同样任务的function实例(sayName)，这是很没有必要的。因此可以把函数定义转移到构造函数外部来解决这个问题。</p>
+<ol start="3">
+<li>原型模式<br>function Person(){}<br>Person.prototype.name=”Jim”;<br>Person.prototype.age=22;<br>Person.protoType.job=”Doctor”;<br>Person.protoType.sayName=function(){<br>alert(this.name);<br>}<br>var person=new Person();<br>person.sayName();   //Jim<br>#可以让所有对象实例共享它所包含的属性和方法。<br>原型语法简单写法：<br>function Person(){}<br>Person.prototype={<br>constructor:Person,<br>name:”Jim”,<br>age:22,<br>job:”Doctor”,<br>sayName:function(){<br> alert(this.name);<br>}<br>}<br>缺点：“共享”性，即当没有对Person的friends赋值时，直接调用原型属性并修改，就会直接导致原型修改。<br>function Person(){}<br>Person.prototype={<br>friends:[“Amy”,”Sam”],<br>};<br>var person1=new Person();<br>var person2=new Person();<br>person1.friends.push(“Van”);<br>alert(person1.friends);     //“Amy,Sam,Van”<br>alert(person2.friends);     //“Amy,Sam,Van”</li>
+</ol>
+<p>总结：<br>（1）工厂模式：在函数里面创建对象，并添加属性和方法。但没有解决对象识别问题，最后被构造函数模式所取代。<br>（2）构造函数模式：可以像创建内置对象实例一样使用new操作符。但没函数不局限于任何对象，因此没有了封装性。<br>（3）原型模式：使用构造函数的prototype属性指定应该共享的属性和方法。但单独使用原型模式的话，就会使不需要共享的属性和方法被共享</p>
+<p>###构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="https://sariay.github.io/img/post-cover/74.jpg"></div>
+	<div id="current-post-cover" data-scr="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=852247412,628825777&fm=26&gp=0.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -365,10 +365,14 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）" rel="prev">
+			<a href="/2019/09/02/javascript基础（二）/" title="javascript基础（二）" rel="prev">
 				&laquo;上一篇
 			</a>
 		
+		
+			<a href="/2019/08/31/forever/" title="Forever" rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
 
@@ -410,22 +414,26 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）">
-								javascript基础（一）			
+							<a class="relate-post-title" href="/2019/08/31/forever/" title="Forever">
+								Forever			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
 								八月 31日, 2019				
 							</p>
 							<p class="relate-post-content">
-								#面向对象&amp;面向过程面向过程总结:面向过程是一种自上向下的编程。面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重...
+								I love three things:
+the sun ,the moon and you.
+the sun is for the day ,the moon is for the night
+and you forever.
+//...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）">				
+							<a href="/2019/08/31/forever/" title="Forever">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=852247412,628825777&amp;fm=26&amp;gp=0.jpg" alt="javascript基础（一）"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="https://sariay.github.io/img/post-cover/74.jpg" alt="Forever"/>
 							</a>
 						</div>
 					</li>											
