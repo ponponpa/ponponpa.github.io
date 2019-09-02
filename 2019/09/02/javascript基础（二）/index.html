@@ -332,29 +332,17 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>#继承 － 原型，原型连，es6继承 ，call，apply<br>(1) 属性拷贝<br>就是将对象的成员复制一份给需要继承的对象<br>// 创建父对象<br>var superObj = {<br>  name: ‘Li’,<br>  age: 25,<br>  friends: [‘小明’, ‘小李’, ‘小赵’],<br>  showName: function(){<br>    alert(this.name);<br>  }<br>}</p>
-<p>// 创建需要继承的子对象<br>var subObj = {};</p>
-<p>// 开始拷贝属性(使用for…in…循环)<br>for( var i in superObj ){<br>  subObj[i] = superObj[i];<br>}</p>
-<p>console.log(subObj)<br>console.log(superObj)<br>存在问题：<br>如果继承过来的成员是引用类型的话,<br>那么这个引用类型的成员在父对象和子对象之间是共享的,<br>也就是说修改了之后, 父子对象都会受到影响.</p>
-<p>(2) 原型式继承<br>借用构造函数的原型对象实现继承<br>// 创建父构造函数<br>function SuperClass(name){<br>  this.name = name;<br>  this.showName = function(){<br>    alert(this.name);<br>  }<br>}</p>
-<p>// 设置父构造器的原型对象<br>SuperClass.prototype.showAge = function(){<br>  console.log(this.age);<br>}</p>
-<p>// 创建子构造函数<br>function SubClass(){</p>
-<p>}</p>
-<p>// 设置子构造函数的原型对象实现继承<br>SubClass.prototype = SuperClass.prototype;</p>
-<p>var child = new SubClass()<br>问题：</p>
-<p>父构造函数的原型对象和子构造函数的原型对象上的成员有共享问题<br>只能继承父构造函数的原型对象上的成员, 不能继承父构造函数的实例对象的成员</p>
+		<p>#继承 － 原型，原型连，es6继承 ，call，apply<br>(1) 属性拷贝<br>就是将对象的成员复制一份给需要继承的对象<br>// 创建父对象<br>var superObj = {<br>  name: ‘Li’,<br>  age: 25,<br>  friends: [‘小明’, ‘小李’, ‘小赵’],<br>  showName: function(){<br>    alert(this.name);<br>  }<br>}<br>// 创建需要继承的子对象<br>var subObj = {};<br>// 开始拷贝属性(使用for…in…循环)<br>for( var i in superObj ){<br>  subObj[i] = superObj[i];<br>}<br>console.log(subObj)<br>console.log(superObj)<br>存在问题：<br>如果继承过来的成员是引用类型的话,<br>那么这个引用类型的成员在父对象和子对象之间是共享的,<br>也就是说修改了之后, 父子对象都会受到影响.</p>
+<p>(2) 原型式继承<br>借用构造函数的原型对象实现继承<br>// 创建父构造函数<br>function SuperClass(name){<br>  this.name = name;<br>  this.showName = function(){<br>    alert(this.name);<br>  }<br>}<br>// 设置父构造器的原型对象<br>SuperClass.prototype.showAge = function(){<br>  console.log(this.age);<br>}<br>// 创建子构造函数<br>function SubClass(){</p>
+<p>}<br>// 设置子构造函数的原型对象实现继承<br>SubClass.prototype = SuperClass.prototype;<br>var child = new SubClass()<br>问题：<br>父构造函数的原型对象和子构造函数的原型对象上的成员有共享问题<br>只能继承父构造函数的原型对象上的成员, 不能继承父构造函数的实例对象的成员</p>
 <p>(3) 原型链继承<br>即 子构造函数.prototype = new 父构造函数()<br>// 创建父构造函数<br>function SuperClass(){<br>    this.name = ‘liyajie’;<br>    this.age = 25;<br>    this.showName = function(){<br>        console.log(this.name);<br>    }<br>}<br>// 设置父构造函数的原型<br>SuperClass.prototype.friends = [‘小名’, ‘小强’];<br>SuperClass.prototype.showAge = function(){<br>    console.log(this.age);<br>}<br>// 创建子构造函数<br>function SubClass(){</p>
-<p>}<br>// 实现继承<br>SubClass.prototype = new SuperClass();<br>// 修改子构造函数的原型的构造器属性<br>SubClass.prototype.constructor = SubClass;</p>
-<p>var child = new SubClass();<br>console.log(child.name); // liyajie<br>console.log(child.age);// 25<br>child.showName();// liyajie<br>child.showAge();// 25<br>console.log(child.friends); // [‘小名’,’小强’]</p>
-<p>// 当我们改变friends的时候, 父构造函数的原型对象的也会变化<br>child.friends.push(‘小王八’);<br>console.log(child.friends);[“小名”, “小强”, “小王八”]<br>var father = new SuperClass();<br>console.log(father.friends);[“小名”, “小强”, “小王八”]<br>问题：</p>
-<p>不能给父构造函数传递参数，父子构造函数的原型对象之间有共享问题</p>
-<p>(4) 借用构造函数<br>使用call和apply借用其他构造函数的成员, 可以解决给父构造函数传递参数的问题, 但是获取不到父构造函数原型上的成员.也不存在共享问题<br>// 创建父构造函数<br>function Person(name){<br>  this.name = name;<br>  this.freinds = [‘小王’, ‘小强’];<br>  this.showName = function(){<br>     console.log(this.name);<br>  }<br>}</p>
-<p>// 创建子构造函数<br> function Student(name){<br>  // 使用call借用Person的构造函数<br>  Person.call(this, name);<br> }</p>
-<p> // 测试是否有了 Person 的成员<br> var stu = new Student(‘Li’);<br> stu.showName(); // Li<br> console.log(stu.friends); // [‘小王’,’小强’]</p>
+<p>}<br>// 实现继承<br>SubClass.prototype = new SuperClass();<br>// 修改子构造函数的原型的构造器属性<br>SubClass.prototype.constructor = SubClass;<br>var child = new SubClass();<br>console.log(child.name); // liyajie<br>console.log(child.age);// 25<br>child.showName();// liyajie<br>child.showAge();// 25<br>console.log(child.friends); // [‘小名’,’小强’]<br>// 当我们改变friends的时候, 父构造函数的原型对象的也会变化<br>child.friends.push(‘小王八’);<br>console.log(child.friends);[“小名”, “小强”, “小王八”]<br>var father = new SuperClass();<br>console.log(father.friends);[“小名”, “小强”, “小王八”]<br>问题：<br>不能给父构造函数传递参数，父子构造函数的原型对象之间有共享问题</p>
+<p>(4) 借用构造函数<br>使用call和apply借用其他构造函数的成员, 可以解决给父构造函数传递参数的问题, 但是获取不到父构造函数原型上的成员.也不存在共享问题<br>// 创建父构造函数<br>function Person(name){<br>  this.name = name;<br>  this.freinds = [‘小王’, ‘小强’];<br>  this.showName = function(){<br>     console.log(this.name);<br>  }<br>}<br>// 创建子构造函数<br> function Student(name){<br>  // 使用call借用Person的构造函数<br>  Person.call(this, name);<br> }<br> // 测试是否有了 Person 的成员<br> var stu = new Student(‘Li’);<br> stu.showName(); // Li<br> console.log(stu.friends); // [‘小王’,’小强’]</p>
+<p> (5)ES6 </p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=852247412,628825777&fm=26&gp=0.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
