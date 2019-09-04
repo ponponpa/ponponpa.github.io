@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      React基础 | Pononpa
+      markdown文件常用语法介绍 | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《React基础》
+			当前文章&nbsp;:&nbsp;《markdown文件常用语法介绍》
 		
 	</p>
 
@@ -285,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/09/03/React/" itemprop="url">
-		React基础
+	<a href="/2019/09/04/markdown常用语法介绍/" itemprop="url">
+		markdown文件常用语法介绍
 	</a>
 
 	</div>
@@ -299,9 +299,9 @@
 
 	发布于
 
-	<a href="/2019/09/03/React/" itemprop="url">
-		<time datetime="2019-09-03T03:29:53.019Z" itemprop="datePublished">
-	  		2019-09-03
+	<a href="/2019/09/04/markdown常用语法介绍/" itemprop="url">
+		<time datetime="2019-09-04T09:32:21.530Z" itemprop="datePublished">
+	  		2019-09-04
 	  </time>
 	</a>
 	&nbsp;
@@ -317,8 +317,8 @@
 
 	更新于
 
-	<a href="/2019/09/03/React/" itemprop="url">
-		<time datetime="2019-09-03T03:29:53.019Z" itemprop="dateUpdated">
+	<a href="/2019/09/04/markdown常用语法介绍/" itemprop="url">
+		<time datetime="2019-09-04T09:32:21.530Z" itemprop="dateUpdated">
 	  		2019-09-04
 	  </time>
 	</a> 
@@ -330,12 +330,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/基础/" class=" ">
-			基础
-		</a>
-	
-		<a href="/tags/React/" class=" ">
-			React
+		<a href="/tags/说明/" class=" ">
+			说明
 		</a>
 	
 		
@@ -348,45 +344,38 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h1 id="React基础知识"><a href="#React基础知识" class="headerlink" title="React基础知识"></a>React基础知识</h1><hr>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><hr>
-<p>本章节将从React的特点、如何使用React、JSX语法，然后会对组件(Component）以及组件的属性(props)、状态(state)、生命周期等方面进行讲解。</p>
-<h3 id="通过本章节能学到什么？"><a href="#通过本章节能学到什么？" class="headerlink" title="通过本章节能学到什么？"></a>通过本章节能学到什么？</h3><hr>
+		<p>平时在写项目的时候经常要写一些README等等的说明性文件，但是这样的文件一般都是.md的文件，编写的语法自然跟其他格式的文件有所区别，至于为什么要用这种格式的文件，鬼知道，大家都这么用，跟着用就对了。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>markdown的正文内容很好写，就按照一篇HTML文档写就可以了；但是不需要写那些样板代码，直接写普通文字或者我们想要嵌入的HTML标签和css样式即可。</p>
+<p>markdown文档的换行也和HTML是类似的，你敲一个换行符他会当做什么都没发生，想要换行你可以使用HTML的<br>标签或者是两段文字中间空一行。</p>
+<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br></pre></td></tr></table></figure>
+
+<h3 id="标题-1"><a href="#标题-1" class="headerlink" title="标题"></a>标题</h3><h4 id="标题-2"><a href="#标题-2" class="headerlink" title="标题"></a>标题</h4><h5 id="标题-3"><a href="#标题-3" class="headerlink" title="标题"></a>标题</h5><h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 1 </span><br><span class="line">* 2</span><br><span class="line">- 3</span><br><span class="line">- 4</span><br><span class="line">+ 5</span><br><span class="line">+ 6</span><br><span class="line">1. 7</span><br><span class="line">2. 8</span><br><span class="line">3. 9</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>对React有个全面的认识；</li>
-<li>熟悉JSX基本语法；</li>
-<li>了解组件结构；</li>
-<li>熟悉组件的生命周期；</li>
-<li>学会使用props；</li>
-<li>学会使用state；</li>
-<li>熟悉自定义组件；<h3 id="React是什么？"><a href="#React是什么？" class="headerlink" title="React是什么？"></a>React是什么？</h3></li>
+<li>1 </li>
 </ul>
-<hr>
-<p>React 是 Facebook 推出的开源 JavaScript Library，它是一个用于组建用户界面的JavaScript库，让你以更简单的方式来创建交互式用户界面，它的出现让许多革新性的 Web 观念开始流行起来，例如：Virtual DOM、Component，声明式渲染等。<br><br>声明式与命令式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 命令式编程：命令“机器”如何去做事情(how)，这样不管你想要的是什么(what)，它都会按照你的命令实现。</span><br><span class="line"><span class="number">2.</span> 声明式编程：告诉“机器”你想要的是什么(what)，让机器想出如何去做(how)。</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://codepen.io/crazycodeboy/pen/VVJLYm" target="_blank" rel="noopener">演示</a></p>
+<ul>
+<li>2</li>
+</ul>
+<ul>
+<li>3</li>
+</ul>
 <ol>
-<li>当数据改变时，React将高效的更新和渲染需要更新的组件。声明式视图使你的代码更可预测，更容易调试。</li>
-<li>构建封装管理自己的状态的组件，然后将它们组装成复杂的用户界面。由于组件逻辑是用JavaScript编写的，而不是模板，所以你可以轻松地通过您的应用程序传递丰富的数据，并保持DOM状态。<h3 id="自动搭建脚手架"><a href="#自动搭建脚手架" class="headerlink" title="自动搭建脚手架"></a>自动搭建脚手架</h3></li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
 </ol>
-<hr>
-<p>构建一个新的 React 单页应用，可以通过<a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">Create React App</a>来完成。它可以帮助你配置开发环境，以便你可以使用最新的 JavaScript 特性，还能提供一个友好的开发体验，并为生产环境优化你的应用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br><span class="line">create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://www.baidu.com" target="_blank" rel="noopener">baidu</a></p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><p>！<a href="https://www.baidu.com/img/bd_logo1.png" target="_blank" rel="noopener">baidu</a></p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p><code>&lt;p&gt;这是一个代码块&lt;/p&gt;</code></p>
+<h1 id="分割线，删除线"><a href="#分割线，删除线" class="headerlink" title="分割线，删除线"></a>分割线，删除线</h1><hr>
+<p><del>删除线</del></p>
+<h1 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*字体倾斜*</span><br><span class="line">_字体倾斜_</span><br><span class="line"></span><br><span class="line">**字体加粗**</span><br><span class="line">__字体加粗__</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;react&quot;: &quot;^16.6.3&quot;,//是 React 的核心库</span><br><span class="line">    &quot;react-dom&quot;: &quot;^16.6.3&quot;,//提供与 DOM 相关的功能</span><br><span class="line">    &quot;react-scripts&quot;: &quot;2.1.1&quot;//create-react-app 的一个核心包，一些脚本和工具的默认配置都集成在里面</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="ReactDOM-render"><a href="#ReactDOM-render" class="headerlink" title="ReactDOM.render"></a>ReactDOM.render</h3><hr>
-<p><code>ReactDOM.render(element, container[, callback])</code><br>渲染一个 React 元素到由 container 提供的 DOM 中，并且返回组件的一个 引用(reference) （或者对于 无状态组件 返回 null ）。</p>
-<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><hr>
-<p>JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。 每一个XML标签都会被JSX转换工具转换成纯JavaScript代码，使用JSX，组件的结构和组件之间的关系看上去更加清晰。 JSX并不是React必须使用的，但React官方建议我们使用 JSX , 因为它能定义简洁且我们熟知的包含属性的树状结构语法。<br><strong>Usage:</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">React.render(<span class="comment">//使用JSX</span></span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;div&gt;content&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('example')</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">React.render(/</span><span class="regexp">/不使用JSX</span></span><br><span class="line"><span class="regexp">    React.createElement('div', null,</span></span><br><span class="line"><span class="regexp">        React.createElement('div', null,</span></span><br><span class="line"><span class="regexp">            React.createElement('div', null, 'content')</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    ),</span></span><br><span class="line"><span class="regexp">    document.getElementById('example')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-	
+<h1 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h1>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/3.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/4.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -401,12 +390,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）" rel="next">
+			<a href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -424,6 +409,32 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/forever/" title="Forever">
+								Forever			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+I saw you                                      
+You smiled warmly                             
+The world began wakin...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/forever/" title="Forever">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="Forever"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -455,23 +466,27 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/04/markdown常用语法介绍/" title="markdown文件常用语法介绍">
-								markdown文件常用语法介绍			
+							<a class="relate-post-title" href="/2019/09/03/React/" title="React基础">
+								React基础			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								九月 4日, 2019				
+								九月 3日, 2019				
 							</p>
 							<p class="relate-post-content">
-								平时在写项目的时候经常要写一些README等等的说明性文件，但是这样的文件一般都是.md的文件，编写的语法自然跟其他格式的文件有所区别，至于为什么要用这种格式的文件，鬼知道，大家都这么用，跟着用就对了。
-正文markdown的正文内容...
+								React基础知识
+概述
+本章节将从React的特点、如何使用React、JSX语法，然后会对组件(Component）以及组件的属性(props)、状态(state)、生命周期等方面进行讲解。
+通过本章节能学到什么？
+
+对React...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/09/04/markdown常用语法介绍/" title="markdown文件常用语法介绍">				
+							<a href="/2019/09/03/React/" title="React基础">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/4.jpg" alt="markdown文件常用语法介绍"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.jpg" alt="React基础"/>
 							</a>
 						</div>
 					</li>											
@@ -547,32 +562,6 @@
 							<a href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（一）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/31/forever/" title="Forever">
-								Forever			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 31日, 2019				
-							</p>
-							<p class="relate-post-content">
-								
-I saw you                                      
-You smiled warmly                             
-The world began wakin...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/31/forever/" title="Forever">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="Forever"/>
 							</a>
 						</div>
 					</li>											
