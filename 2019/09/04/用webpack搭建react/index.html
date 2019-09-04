@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      javascript基础（三） | Pononpa
+      webpack搭建一个react环境 | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《javascript基础（三）》
+			当前文章&nbsp;:&nbsp;《webpack搭建一个react环境》
 		
 	</p>
 
@@ -285,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/09/02/javascript基础（三）/" itemprop="url">
-		javascript基础（三）
+	<a href="/2019/09/04/用webpack搭建react/" itemprop="url">
+		webpack搭建一个react环境
 	</a>
 
 	</div>
@@ -299,9 +299,9 @@
 
 	发布于
 
-	<a href="/2019/09/02/javascript基础（三）/" itemprop="url">
-		<time datetime="2019-09-02T12:27:33.073Z" itemprop="datePublished">
-	  		2019-09-02
+	<a href="/2019/09/04/用webpack搭建react/" itemprop="url">
+		<time datetime="2019-09-04T08:59:01.505Z" itemprop="datePublished">
+	  		2019-09-04
 	  </time>
 	</a>
 	&nbsp;
@@ -317,9 +317,9 @@
 
 	更新于
 
-	<a href="/2019/09/02/javascript基础（三）/" itemprop="url">
-		<time datetime="2019-09-02T12:27:33.073Z" itemprop="dateUpdated">
-	  		2019-09-03
+	<a href="/2019/09/04/用webpack搭建react/" itemprop="url">
+		<time datetime="2019-09-04T08:59:01.505Z" itemprop="dateUpdated">
+	  		2019-09-04
 	  </time>
 	</a> 
 
@@ -330,12 +330,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/JS/" class=" ">
-			JS
+		<a href="/tags/React/" class=" ">
+			React
 		</a>
 	
-		<a href="/tags/闭包/" class=" ">
-			闭包
+		<a href="/tags/webpack/" class=" ">
+			webpack
 		</a>
 	
 		
@@ -348,33 +348,55 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。</p>
-<p>需要明确的几点：</p>
+		<ol>
+<li><p>生成package.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用webpack构建react环境,装webpack三大环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack webpack-cli webpack-dev-serve react react-dom --save-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建基础文件</p>
+</li>
+</ol>
 <ul>
-<li>闭包一定是函数对象 <a href="https://github.com/wintercn/blog/issues/3" target="_blank" rel="noopener">wintercn大大的闭包考证</a>  </li>
-<li>闭包和词法作用域，作用域链，垃圾回收机制息息相关</li>
-<li>当函数一定是在其定义的作用域外进行的访问时，才产生闭包</li>
-<li>闭包是由该函数和其上层执行上下文共同构成</li>
+<li><p>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件webpack.config.js</p>
+</li>
+<li><p>入口文件main.js</p>
+</li>
+<li><p>根主件App.js</p>
+</li>
+<li><p><em>注意：*</em><br>js模块如果使用es6语言编写 安装babel依赖(编译babel语言)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-loader@7 babel-core babel-preset-react webpack --save-dev</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<p>内存泄漏：<br><code>我们应该保证执行代码只保存有用的数据，一旦数据不再有用，我们就应该让垃圾回收机制对其进行回收，释放内存。</code><br>闭包阻止了垃圾回收机制对变量进行回收，因此变量会永远存在内存中，即使当变量不再被使用时，这样会造成内存泄漏，会严重影响页面的性能。因此当变量对象不再适用时，我们要将其释放。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log( a );</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bar;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> baz = foo();</span><br><span class="line"> baz(); <span class="comment">//baz指向的对象会永远存在堆内存中</span></span><br><span class="line"> baz = <span class="literal">null</span>; <span class="comment">//如果baz不再使用，将其指向的对象释放</span></span><br></pre></td></tr></table></figure>
+<p>并在官网把配置代码加入webpack.config.js中<br>同时在webpack.config.js添加<code>修改端口：devserver</code><br>最后添加HtmlWebpackPlugin的插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev html-webpack-plugin</span><br></pre></td></tr></table></figure>
 
-<h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><p>1.模块<br>一个模块应该具有私有属性、私有方法和公有属性、公有方法。<br>而闭包能很好的将模块的公有属性、方法暴露出来。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> name = <span class="string">"echo"</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		getName</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log( myModule.name ); <span class="comment">// echo</span></span><br><span class="line"><span class="built_in">console</span>.log( myModule.getName() ); <span class="comment">// echo</span></span><br></pre></td></tr></table></figure>
+<h2 id="为了方便阅读，我把文件贴在下面"><a href="#为了方便阅读，我把文件贴在下面" class="headerlink" title="为了方便阅读，我把文件贴在下面"></a>为了方便阅读，我把文件贴在下面</h2><p>main.js和App.js都放在根目录下src文件夹中<br>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span> ;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span>,document.getElementById("app"))</span></span><br></pre></td></tr></table></figure>
 
-<p>“return”关键字将对象引用导出赋值给myModule，从而应用到闭包。</p>
-<p>2.延时器(setTimeout)、计数器(setInterval)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log( i );</span><br><span class="line">	&#125;, <span class="number">1000</span> * i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>App.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./css/common.css'</span></span><br><span class="line"><span class="comment">// import img from './img/1.img'</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2 className=<span class="string">'tit'</span>&gt;React webpack&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">                &lt;p&gt;hello&lt;/</span>p&gt;</span><br><span class="line">                &#123;<span class="comment">/* &lt;img src=&#123;img&#125;/&gt; */</span>&#125;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default App;</span></span><br></pre></td></tr></table></figure>
 
-<p><code>每秒钟输出一个5，一共输出5次。</code><br><code>如何做到每秒钟输出一个数，以此为0，1，2，3，4呢？</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	(<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log( j );</span><br><span class="line">		&#125;, <span class="number">1000</span> * j)</span><br><span class="line">	&#125;)(i)	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>webpack.config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);  </span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">"webpack"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">'development'</span>,</span><br><span class="line">  entry: <span class="string">'./src/main.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            presets: [<span class="string">'react'</span>,<span class="string">'es2015'</span>]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [ <span class="string">'style-loader'</span>, <span class="string">'css-loader'</span> ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: path.join(__dirname, <span class="string">"dist"</span>),</span><br><span class="line">    compress:<span class="literal">true</span>,</span><br><span class="line">    port:<span class="number">9000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [<span class="comment">//html模板</span></span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;<span class="attr">template</span>: <span class="string">"./index.html"</span>&#125;),</span><br><span class="line">    <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上面第一个例子中每次循环中的setTimeout回调函数记住的i的值是for循环作用域中的值，此时都是5，而第二个例子记住的i的数为setTimeout的父级作用域自执行函数中的j的值，依次为0，1，2，3，4。</p>
-<p>3.监听器</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySeletor(<span class="string">"#div"</span>);</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log( oDiv.id );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	
+<ol start="4">
+<li>配置json文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">    &quot;dev&quot;: &quot;webpack-dev-server&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;webpack&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>最后，运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/2.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/4.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -389,12 +411,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/09/03/React/" title="React基础" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2019/09/02/javascript基础（二）/" title="javascript基础（二）" rel="next">
+			<a href="/2019/09/03/React/" title="React基础" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -412,6 +430,61 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/03/React/" title="React基础">
+								React基础			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 3日, 2019				
+							</p>
+							<p class="relate-post-content">
+								React基础知识
+概述
+本章节将从React的特点、如何使用React、JSX语法，然后会对组件(Component）以及组件的属性(props)、状态(state)、生命周期等方面进行讲解。
+通过本章节能学到什么？
+
+对React...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/03/React/" title="React基础">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.jpg" alt="React基础"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">
+								javascript基础（三）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 2日, 2019				
+							</p>
+							<p class="relate-post-content">
+								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
+需要明确的几点：
+
+闭包一定是函数对象 wintercn大大的闭包考证  
+闭包和词法作用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（三）"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -456,62 +529,6 @@
 							<a href="/2019/08/31/javascript基础（一）/" title="javascript基础（一）">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（一）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境">
-								webpack搭建一个react环境			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 4日, 2019				
-							</p>
-							<p class="relate-post-content">
-								
-生成package.json
-1npm init
-
-用webpack构建react环境,装webpack三大环境
-1npm i webpack webpack-cli webpack-dev-serve react react-do...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/4.jpg" alt="webpack搭建一个react环境"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/03/React/" title="React基础">
-								React基础			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 3日, 2019				
-							</p>
-							<p class="relate-post-content">
-								React基础知识
-概述
-本章节将从React的特点、如何使用React、JSX语法，然后会对组件(Component）以及组件的属性(props)、状态(state)、生命周期等方面进行讲解。
-通过本章节能学到什么？
-
-对React...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/03/React/" title="React基础">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.jpg" alt="React基础"/>
 							</a>
 						</div>
 					</li>											

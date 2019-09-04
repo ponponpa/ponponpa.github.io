@@ -366,10 +366,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 命令式编程：命令“机器”如何去做事情(how)，这样不管你想要的是什么(what)，它都会按照你的命令实现。</span><br><span class="line"><span class="number">2.</span> 声明式编程：告诉“机器”你想要的是什么(what)，让机器想出如何去做(how)。</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://codepen.io/crazycodeboy/pen/VVJLYm" target="_blank" rel="noopener">演示</a></p>
-<ul>
+<ol>
 <li>当数据改变时，React将高效的更新和渲染需要更新的组件。声明式视图使你的代码更可预测，更容易调试。</li>
 <li>构建封装管理自己的状态的组件，然后将它们组装成复杂的用户界面。由于组件逻辑是用JavaScript编写的，而不是模板，所以你可以轻松地通过您的应用程序传递丰富的数据，并保持DOM状态。<h3 id="自动搭建脚手架"><a href="#自动搭建脚手架" class="headerlink" title="自动搭建脚手架"></a>自动搭建脚手架</h3></li>
-</ul>
+</ol>
 <hr>
 <p>构建一个新的 React 单页应用，可以通过<a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">Create React App</a>来完成。它可以帮助你配置开发环境，以便你可以使用最新的 JavaScript 特性，还能提供一个友好的开发体验，并为生产环境优化你的应用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br><span class="line">create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
@@ -379,8 +379,8 @@
 <h3 id="ReactDOM-render"><a href="#ReactDOM-render" class="headerlink" title="ReactDOM.render"></a>ReactDOM.render</h3><hr>
 <p><code>ReactDOM.render(element, container[, callback])</code><br>渲染一个 React 元素到由 container 提供的 DOM 中，并且返回组件的一个 引用(reference) （或者对于 无状态组件 返回 null ）。</p>
 <h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><hr>
-<p>JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。 每一个XML标签都会被JSX转换工具转换成纯JavaScript代码，使用JSX，组件的结构和组件之间的关系看上去更加清晰。 JSX并不是React必须使用的，但React官方建议我们使用 JSX , 因为它能定义简洁且我们熟知的包含属性的树状结构语法。</p>
-<h6 id="Usage"><a href="#Usage" class="headerlink" title="Usage:"></a>Usage:</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">React.render(<span class="comment">//使用JSX</span></span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;div&gt;content&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('example')</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">React.render(/</span><span class="regexp">/不使用JSX</span></span><br><span class="line"><span class="regexp">    React.createElement('div', null,</span></span><br><span class="line"><span class="regexp">        React.createElement('div', null,</span></span><br><span class="line"><span class="regexp">            React.createElement('div', null, 'content')</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    ),</span></span><br><span class="line"><span class="regexp">    document.getElementById('example')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<p>JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。 每一个XML标签都会被JSX转换工具转换成纯JavaScript代码，使用JSX，组件的结构和组件之间的关系看上去更加清晰。 JSX并不是React必须使用的，但React官方建议我们使用 JSX , 因为它能定义简洁且我们熟知的包含属性的树状结构语法。<br><strong>Usage:</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">React.render(<span class="comment">//使用JSX</span></span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;div&gt;content&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('example')</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">React.render(/</span><span class="regexp">/不使用JSX</span></span><br><span class="line"><span class="regexp">    React.createElement('div', null,</span></span><br><span class="line"><span class="regexp">        React.createElement('div', null,</span></span><br><span class="line"><span class="regexp">            React.createElement('div', null, 'content')</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    ),</span></span><br><span class="line"><span class="regexp">    document.getElementById('example')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 	
@@ -401,6 +401,10 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
+			<a href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境" rel="prev">
+				&laquo;上一篇
+			</a>
+		
 		
 			<a href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）" rel="next">
 				下一篇&raquo;
@@ -420,6 +424,34 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境">
+								webpack搭建一个react环境			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 4日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+生成package.json
+1npm init
+
+用webpack构建react环境,装webpack三大环境
+1npm i webpack webpack-cli webpack-dev-serve react react-do...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/4.jpg" alt="webpack搭建一个react环境"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
