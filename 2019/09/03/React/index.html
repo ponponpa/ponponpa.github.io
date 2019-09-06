@@ -33,7 +33,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -348,8 +349,8 @@
 </ul>
 <hr>
 <p>React 是 Facebook 推出的开源 JavaScript Library，它是一个用于组建用户界面的JavaScript库，让你以更简单的方式来创建交互式用户界面，它的出现让许多革新性的 Web 观念开始流行起来，例如：Virtual DOM、Component，声明式渲染等。<br><br>声明式与命令式</p>
-<pre class=" language-js"><code class="language-js"><span class="token number">1</span><span class="token punctuation">.</span> <span class="token function">命令式编程：命令“机器”如何去做事情</span><span class="token punctuation">(</span>how<span class="token punctuation">)</span><span class="token function">，这样不管你想要的是什么</span><span class="token punctuation">(</span>what<span class="token punctuation">)</span>，它都会按照你的命令实现。
-<span class="token number">2</span><span class="token punctuation">.</span> <span class="token function">声明式编程：告诉“机器”你想要的是什么</span><span class="token punctuation">(</span>what<span class="token punctuation">)</span><span class="token function">，让机器想出如何去做</span><span class="token punctuation">(</span>how<span class="token punctuation">)</span>。</code></pre>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token number">1</span><span class="token punctuation">.</span> <span class="token function">命令式编程：命令“机器”如何去做事情</span><span class="token punctuation">(</span>how<span class="token punctuation">)</span><span class="token function">，这样不管你想要的是什么</span><span class="token punctuation">(</span>what<span class="token punctuation">)</span>，它都会按照你的命令实现。
+<span class="token number">2</span><span class="token punctuation">.</span> <span class="token function">声明式编程：告诉“机器”你想要的是什么</span><span class="token punctuation">(</span>what<span class="token punctuation">)</span><span class="token function">，让机器想出如何去做</span><span class="token punctuation">(</span>how<span class="token punctuation">)</span>。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><a href="https://codepen.io/crazycodeboy/pen/VVJLYm" target="_blank" rel="noopener">演示</a></p>
 <ol>
 <li>当数据改变时，React将高效的更新和渲染需要更新的组件。声明式视图使你的代码更可预测，更容易调试。</li>
@@ -368,7 +369,7 @@ npm start</code></pre><pre><code>&quot;dependencies&quot;: {
 <p><code>ReactDOM.render(element, container[, callback])</code><br>渲染一个 React 元素到由 container 提供的 DOM 中，并且返回组件的一个 引用(reference) （或者对于 无状态组件 返回 null ）。</p>
 <h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><hr>
 <p>JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。 每一个XML标签都会被JSX转换工具转换成纯JavaScript代码，使用JSX，组件的结构和组件之间的关系看上去更加清晰。 JSX并不是React必须使用的，但React官方建议我们使用 JSX , 因为它能定义简洁且我们熟知的包含属性的树状结构语法。<br><strong>Usage:</strong></p>
-<pre class=" language-js"><code class="language-js">React<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">//使用JSX</span>
+<pre class="line-numbers language-js"><code class="language-js">React<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">//使用JSX</span>
     <span class="token operator">&lt;</span>div<span class="token operator">></span>
         <span class="token operator">&lt;</span>div<span class="token operator">></span>
             <span class="token operator">&lt;</span>div<span class="token operator">></span>content<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
@@ -383,7 +384,7 @@ React<span class="token punctuation">.</span><span class="token function">render
         <span class="token punctuation">)</span>
     <span class="token punctuation">)</span><span class="token punctuation">,</span>
     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'example'</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 
             </div>

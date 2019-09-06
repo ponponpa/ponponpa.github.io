@@ -32,7 +32,8 @@ var superObj = {
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -333,7 +334,7 @@ var superObj = {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="继承-－-原型，原型连，es6继承-，call，apply"><a href="#继承-－-原型，原型连，es6继承-，call，apply" class="headerlink" title="继承 － 原型，原型连，es6继承 ，call，apply"></a>继承 － 原型，原型连，es6继承 ，call，apply</h1><h3 id="属性拷贝"><a href="#属性拷贝" class="headerlink" title="属性拷贝"></a>属性拷贝</h3><p>就是将对象的成员复制一份给需要继承的对象<br>// 创建父对象</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> superObj <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> superObj <span class="token operator">=</span> <span class="token punctuation">{</span>
   name<span class="token punctuation">:</span> <span class="token string">'Li'</span><span class="token punctuation">,</span>
   age<span class="token punctuation">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
   friends<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'小明'</span><span class="token punctuation">,</span> <span class="token string">'小李'</span><span class="token punctuation">,</span> <span class="token string">'小赵'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -348,10 +349,10 @@ var superObj = {
   subObj<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> superObj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>subObj<span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>superObj<span class="token punctuation">)</span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>superObj<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>存在问题：<br>如果继承过来的成员是引用类型的话,<br>那么这个引用类型的成员在父对象和子对象之间是共享的,<br>也就是说修改了之后, 父子对象都会受到影响.</p>
 <h3 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h3><p>借用构造函数的原型对象实现继承</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建父构造函数</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建父构造函数</span>
 <span class="token keyword">function</span> <span class="token function">SuperClass</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -368,10 +369,10 @@ SuperClass<span class="token punctuation">.</span>prototype<span class="token pu
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// 设置子构造函数的原型对象实现继承</span>
 SubClass<span class="token punctuation">.</span>prototype <span class="token operator">=</span> SuperClass<span class="token punctuation">.</span>prototype<span class="token punctuation">;</span>
-<span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>问题：<br>父构造函数的原型对象和子构造函数的原型对象上的成员有共享问题<br>只能继承父构造函数的原型对象上的成员, 不能继承父构造函数的实例对象的成员</p>
 <h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><p>即 子构造函数.prototype = new 父构造函数()</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建父构造函数</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建父构造函数</span>
 <span class="token keyword">function</span> <span class="token function">SuperClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'liyajie'</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
@@ -403,10 +404,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 child<span class="token punctuation">.</span>friends<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'小王八'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>child<span class="token punctuation">.</span>friends<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">[</span><span class="token string">"小名"</span><span class="token punctuation">,</span> <span class="token string">"小强"</span><span class="token punctuation">,</span> <span class="token string">"小王八"</span><span class="token punctuation">]</span>
 <span class="token keyword">var</span> father <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SuperClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>father<span class="token punctuation">.</span>friends<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">[</span><span class="token string">"小名"</span><span class="token punctuation">,</span> <span class="token string">"小强"</span><span class="token punctuation">,</span> <span class="token string">"小王八"</span><span class="token punctuation">]</span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>father<span class="token punctuation">.</span>friends<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">[</span><span class="token string">"小名"</span><span class="token punctuation">,</span> <span class="token string">"小强"</span><span class="token punctuation">,</span> <span class="token string">"小王八"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>问题：<br>不能给父构造函数传递参数，父子构造函数的原型对象之间有共享问题</p>
 <h3 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h3><p>使用call和apply借用其他构造函数的成员, 可以解决给父构造函数传递参数的问题, 但是获取不到父构造函数原型上的成员.也不存在共享问题</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建父构造函数</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 创建父构造函数</span>
 <span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>freinds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'小王'</span><span class="token punctuation">,</span> <span class="token string">'小强'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -422,8 +423,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
  <span class="token comment" spellcheck="true">// 测试是否有了 Person 的成员</span>
  <span class="token keyword">var</span> stu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">'Li'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  stu<span class="token punctuation">.</span><span class="token function">showName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Li</span>
- console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>stu<span class="token punctuation">.</span>friends<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// ['小王','小强']</span></code></pre>
-<h3 id="ES6对比"><a href="#ES6对比" class="headerlink" title="ES6对比"></a>ES6对比</h3><pre class=" language-js"><code class="language-js"> <span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 父类</span>
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>stu<span class="token punctuation">.</span>friends<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// ['小王','小强']</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="ES6对比"><a href="#ES6对比" class="headerlink" title="ES6对比"></a>ES6对比</h3><pre class="line-numbers language-js"><code class="language-js"> <span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 父类</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>showName <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -436,8 +437,8 @@ Person<span class="token punctuation">.</span>prototype<span class="token punctu
 SubPerson<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 子类继承父类的方法</span>
 <span class="token keyword">var</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubPerson</span><span class="token punctuation">(</span><span class="token string">'ponponpa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p1<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// ponponpa</span>
-<span class="token comment" spellcheck="true">// console.log(p1.showName());  // ponponpa</span></code></pre>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">// console.log(p1.showName());  // ponponpa</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
     <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -457,7 +458,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">var</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubPerson</span><span class="token punctuation">(</span><span class="token string">'ponponpa'</span><span class="token punctuation">,</span><span class="token string">'前端开发'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p1<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// ponponpa</span>
 <span class="token comment" spellcheck="true">// console.log(p1.showName());  // ponponpa</span>
-<span class="token comment" spellcheck="true">// console.log(p1.job); // 前端开发</span></code></pre>
+<span class="token comment" spellcheck="true">// console.log(p1.job); // 前端开发</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>extends就代表这继承的意思，super就是指向父类的构造函数，指代了整个prototype对象或者_proto_指针指向的对象，</p>
 <h3 id="call-apply"><a href="#call-apply" class="headerlink" title="call(),apply()"></a>call(),apply()</h3><p>funtion</p>
 
