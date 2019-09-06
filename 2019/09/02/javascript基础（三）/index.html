@@ -32,7 +32,8 @@
   <!-- leancloud -->
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
 <script src="/js/leancloud.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 	<body>
 		<!-- Preloader -->
 
@@ -330,12 +331,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/JS/" class=" ">
-			JS
-		</a>
-	
 		<a href="/tags/闭包/" class=" ">
 			闭包
+		</a>
+	
+		<a href="/tags/JS/" class=" ">
+			JS
 		</a>
 	
 		
@@ -357,21 +358,52 @@
 <li>闭包是由该函数和其上层执行上下文共同构成</li>
 </ul>
 <p>内存泄漏：<br><code>我们应该保证执行代码只保存有用的数据，一旦数据不再有用，我们就应该让垃圾回收机制对其进行回收，释放内存。</code><br>闭包阻止了垃圾回收机制对变量进行回收，因此变量会永远存在内存中，即使当变量不再被使用时，这样会造成内存泄漏，会严重影响页面的性能。因此当变量对象不再适用时，我们要将其释放。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log( a );</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bar;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> baz = foo();</span><br><span class="line"> baz(); <span class="comment">//baz指向的对象会永远存在堆内存中</span></span><br><span class="line"> baz = <span class="literal">null</span>; <span class="comment">//如果baz不再使用，将其指向的对象释放</span></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+     <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">return</span> bar<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token keyword">let</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//baz指向的对象会永远存在堆内存中</span>
+ baz <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//如果baz不再使用，将其指向的对象释放</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><p>1.模块<br>一个模块应该具有私有属性、私有方法和公有属性、公有方法。<br>而闭包能很好的将模块的公有属性、方法暴露出来。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> name = <span class="string">"echo"</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		getName</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log( myModule.name ); <span class="comment">// echo</span></span><br><span class="line"><span class="built_in">console</span>.log( myModule.getName() ); <span class="comment">// echo</span></span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> myModule <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>window<span class="token punctuation">,</span> undefined<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">"echo"</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        name<span class="token punctuation">,</span>
+        getName
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> myModule<span class="token punctuation">.</span>name <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// echo</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> myModule<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// echo</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>“return”关键字将对象引用导出赋值给myModule，从而应用到闭包。</p>
 <p>2.延时器(setTimeout)、计数器(setInterval)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log( i );</span><br><span class="line">	&#125;, <span class="number">1000</span> * i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> i <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span> <span class="token operator">*</span> i<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>每秒钟输出一个5，一共输出5次。</code><br><code>如何做到每秒钟输出一个数，以此为0，1，2，3，4呢？</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	(<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log( j );</span><br><span class="line">		&#125;, <span class="number">1000</span> * j)</span><br><span class="line">	&#125;)(i)	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> j <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span> <span class="token operator">*</span> j<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>    
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面第一个例子中每次循环中的setTimeout回调函数记住的i的值是for循环作用域中的值，此时都是5，而第二个例子记住的i的数为setTimeout的父级作用域自执行函数中的j的值，依次为0，1，2，3，4。</p>
 <p>3.监听器</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySeletor(<span class="string">"#div"</span>);</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log( oDiv.id );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> oDiv <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySeletor</span><span class="token punctuation">(</span><span class="token string">"#div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+oDiv<span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> oDiv<span class="token punctuation">.</span>id <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	
 	</div>
 	
 	<div id="current-post-cover" data-scr="/img/2.jpg"></div>
@@ -424,7 +456,10 @@
 							</p>
 							<p class="relate-post-content">
 								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
-12345678910111213141516var superObj = &#123;  name: 'Li...
+var superObj = {
+  name: 'Li',
+  age: 25,
+  friends: ['...
 							</p>
 						</div>
 
@@ -496,11 +531,8 @@
 							</p>
 							<p class="relate-post-content">
 								
-生成package.json
-1npm init
-
-用webpack构建react环境,装webpack三大环境
-1npm i webpack webpack-cli webpack-dev-serve react react-do...
+生成package.jsonnpm init
+用webpack构建react环境,装webpack三大环境npm i webpack webpack-cli webpack-dev-serve react react-dom --s...
 							</p>
 						</div>
 
@@ -642,82 +674,7 @@ The world began wakin...
 
 
 
-	 
-	<script src="/plugin/clipboard/clipboard.js"></script>
-	<script>
-		// Copy code !
-	    function codePreprocessing() {
-	        $("#article-content .highlight").each(function() {
-
-	            $(this).wrap('<div id="post-code"></div>');
-
-	        })
-
-	        $("#article-content #post-code").each(function() {
-
-	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
-
-	        })
-
-	        $("#article-content .copy-nav").each(function() {
-	            var temp = $(this).next().attr('class'),
-	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
-
-	            $(this).find('.code-language').text(language);
-
-	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
-
-	        });
-	    }
-
-		function codeCopy() {
-		    $('#article-content #post-code').each(function(i) {
-		        var codeCopyId = 'codeCopy-' + i;
-
-		        var codeNode = $(this).find('.code'),
-		            copyButton = $(this).find('.copy-btn');
-
-		        codeNode.attr('id', codeCopyId);
-		        copyButton.attr('data-clipboard-target-id', codeCopyId);
-		    })
-
-		    
-			var clipboard = new ClipboardJS('.copy-btn', {
-					target: function(trigger) {
-						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
-					}
-		      	});
-
-			//pure js
-			function showTooltip(elem, msg) {		   
-				elem.setAttribute('aria-label', msg);
-				elem.setAttribute('class', 'copy-btn copy-status');
-				setTimeout(function() {
-					elem.setAttribute('class', 'copy-btn');
-				}, 2000);
-			}
-
-			clipboard.on('success', function(e) {
-			    e.clearSelection();
-			    console.info('Action:', e.action);		   
-			    console.info('Trigger:', e.trigger);
-			    showTooltip(e.trigger, 'Copied!');
-			    
-			});
-			clipboard.on('error', function(e) {
-			    console.error('Action:', e.action);
-			    console.error('Trigger:', e.trigger);
-			});
-		
-
-		}
-
-		if ($('.layout-post').length) {
-		    codePreprocessing();
-		    codeCopy();
-		} 
-	</script>
-
+	
 
 
 
