@@ -32,8 +32,7 @@
   <!-- leancloud -->
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
 <script src="/js/leancloud.js"></script>
-<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 	<body>
 		<!-- Preloader -->
 
@@ -345,12 +344,8 @@
 <p>梦里梦见梦不见的是你</p>
 <p>梦里梦见梦里梦不见的也是你</p>
 <hr>
-<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">//如果冬天里你的手是冰冷的</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>you<span class="token punctuation">.</span>hand<span class="token operator">==</span>cold<span class="token operator">&amp;</span>amp<span class="token punctuation">;</span><span class="token operator">&amp;</span>amp<span class="token punctuation">;</span>weather<span class="token punctuation">;</span><span class="token operator">=</span>winter<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//将我手上的温度全部给予你</span>
-  <span class="token function">giveyoulove</span><span class="token punctuation">(</span>myhand<span class="token punctuation">.</span>temp<span class="token punctuation">,</span>yourhand<span class="token punctuation">.</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//换取你幸福的脸庞</span>
-<span class="token keyword">return</span> you<span class="token punctuation">.</span>happyface<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果冬天里你的手是冰冷的</span></span><br><span class="line"><span class="keyword">if</span>(you.hand==cold&amp;amp;&amp;amp;weather;=winter)</span><br><span class="line"><span class="comment">//将我手上的温度全部给予你</span></span><br><span class="line">  giveyoulove(myhand.temp,yourhand.temp);</span><br><span class="line"><span class="comment">//换取你幸福的脸庞</span></span><br><span class="line"><span class="keyword">return</span> you.happyface;</span><br></pre></td></tr></table></figure>
+
 	
 	</div>
 	
@@ -424,8 +419,11 @@
 							</p>
 							<p class="relate-post-content">
 								
-生成package.jsonnpm init
-用webpack构建react环境,装webpack三大环境npm i webpack webpack-cli webpack-dev-serve react react-dom --s...
+生成package.json
+1npm init
+
+用webpack构建react环境,装webpack三大环境
+1npm i webpack webpack-cli webpack-dev-serve react react-do...
 							</p>
 						</div>
 
@@ -504,10 +502,7 @@
 							</p>
 							<p class="relate-post-content">
 								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
-var superObj = {
-  name: 'Li',
-  age: 25,
-  friends: ['...
+12345678910111213141516var superObj = &#123;  name: 'Li...
 							</p>
 						</div>
 
@@ -619,7 +614,82 @@ var superObj = {
 
 
 
-	
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
 
 
 

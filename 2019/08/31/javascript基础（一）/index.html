@@ -32,8 +32,7 @@
   <!-- leancloud -->
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
 <script src="/js/leancloud.js"></script>
-<link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 	<body>
 		<!-- Preloader -->
 
@@ -354,67 +353,31 @@
 <li>面向对象总结:<br>面向对象是将事物高度抽象化。面向对象必须先建立抽象模型，之后直接使用模型就行了。<br>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护<br>缺点：性能比面向过程低</li>
 </ul>
 <h1 id="对象的创建－字面量，原型，构造函数等各自特点"><a href="#对象的创建－字面量，原型，构造函数等各自特点" class="headerlink" title="对象的创建－字面量，原型，构造函数等各自特点"></a>对象的创建－字面量，原型，构造函数等各自特点</h1><ol>
-<li>工厂模式<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">createPerson</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>job<span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token keyword">var</span> o<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-o<span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
-o<span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
-o<span class="token punctuation">.</span>job<span class="token operator">=</span>job<span class="token punctuation">;</span>
-o<span class="token punctuation">.</span>sayName<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
- <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span> o<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//将创建的对象返回</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> person<span class="token operator">=</span><span class="token function">createPerson</span><span class="token punctuation">(</span><span class="token string">"Jim"</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token string">"Doctor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-缺点：工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（怎样知道一个对象的类型）。</li>
+<li>工厂模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name=name;</span><br><span class="line">  o.age=age;</span><br><span class="line">  o.job=job;</span><br><span class="line">  o.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> o;   <span class="comment">//将创建的对象返回</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=createPerson(<span class="string">"Jim"</span>,<span class="number">22</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
+<p>缺点：工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（怎样知道一个对象的类型）。</p>
 <ol start="2">
-<li>构造函数模式<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">,</span>job<span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>job<span class="token operator">=</span>job<span class="token punctuation">;</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>sayName<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
- <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> person<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Jim"</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token string">"Doctor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<li>构造函数模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=name;</span><br><span class="line">  <span class="keyword">this</span>.age=age;</span><br><span class="line">  <span class="keyword">this</span>.job=job;</span><br><span class="line">  <span class="keyword">this</span>.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=<span class="keyword">new</span> Person(<span class="string">"Jim"</span>,<span class="number">22</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <p>构造函数模式相对于工厂模式有几个显著的区别<br>（1） 没有显式地创建对象<br>（2）直接将属性和方法赋给了this对象<br>（3）没有return语句<br>（4）函数名的首字母大写（Person和createPerson）：按照惯例，构造函数始终都是以大写字母开头，而非构造函数则应该以小写字母开头</p>
 <p>缺点：ECMAScript中的函数是对象，因此每定义一个函数，也就是实例化了一个对象。而构造函数在每次创建的时候都会完成同样任务的function实例(sayName)，这是很没有必要的。因此可以把函数定义转移到构造函数外部来解决这个问题。</p>
 <ol start="3">
-<li>原型模式<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"Jim"</span><span class="token punctuation">;</span>
-Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">22</span><span class="token punctuation">;</span>
-Person<span class="token punctuation">.</span>protoType<span class="token punctuation">.</span>job<span class="token operator">=</span><span class="token string">"Doctor"</span><span class="token punctuation">;</span>
-Person<span class="token punctuation">.</span>protoType<span class="token punctuation">.</span>sayName<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> person<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-person<span class="token punctuation">.</span><span class="token function">sayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//Jim</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-#可以让所有对象实例共享它所包含的属性和方法。<br>原型语法简单写法：<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-Person<span class="token punctuation">.</span>prototype<span class="token operator">=</span><span class="token punctuation">{</span>
-constructor<span class="token punctuation">:</span>Person<span class="token punctuation">,</span>
-name<span class="token punctuation">:</span><span class="token string">"Jim"</span><span class="token punctuation">,</span>
-age<span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">,</span>
-job<span class="token punctuation">:</span><span class="token string">"Doctor"</span><span class="token punctuation">,</span>
-sayName<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
- <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-缺点：“共享”性，即当没有对Person的friends赋值时，直接调用原型属性并修改，就会直接导致原型修改。<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-Person<span class="token punctuation">.</span>prototype<span class="token operator">=</span><span class="token punctuation">{</span>
-friends<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">"Amy"</span><span class="token punctuation">,</span><span class="token string">"Sam"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> person1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> person2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-person1<span class="token punctuation">.</span>friends<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"Van"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">alert</span><span class="token punctuation">(</span>person1<span class="token punctuation">.</span>friends<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//"Amy,Sam,Van"</span>
-<span class="token function">alert</span><span class="token punctuation">(</span>person2<span class="token punctuation">.</span>friends<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//"Amy,Sam,Van"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<li>原型模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.name=<span class="string">"Jim"</span>;</span><br><span class="line">Person.prototype.age=<span class="number">22</span>;</span><br><span class="line">Person.protoType.job=<span class="string">"Doctor"</span>;</span><br><span class="line">Person.protoType.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=<span class="keyword">new</span> Person();</span><br><span class="line">person.sayName();   <span class="comment">//Jim</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
+<p>#可以让所有对象实例共享它所包含的属性和方法。<br>原型语法简单写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">  <span class="keyword">constructor</span>:Person,</span><br><span class="line">  name:"Jim",</span><br><span class="line">  age:22,</span><br><span class="line">  job:"Doctor",</span><br><span class="line">  sayName:function()&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缺点：“共享”性，即当没有对Person的friends赋值时，直接调用原型属性并修改，就会直接导致原型修改。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">  friends:[<span class="string">"Amy"</span>,<span class="string">"Sam"</span>],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person1=<span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2=<span class="keyword">new</span> Person();</span><br><span class="line">person1.friends.push(<span class="string">"Van"</span>);</span><br><span class="line">alert(person1.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br><span class="line">alert(person2.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br></pre></td></tr></table></figure>
+
 <p>总结：<br>（1）工厂模式：在函数里面创建对象，并添加属性和方法。但没有解决对象识别问题，最后被构造函数模式所取代。<br>（2）构造函数模式：可以像创建内置对象实例一样使用new操作符。但没函数不局限于任何对象，因此没有了封装性。<br>（3）原型模式：使用构造函数的prototype属性指定应该共享的属性和方法。但单独使用原型模式的话，就会使不需要共享的属性和方法被共享</p>
-<h3 id="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"><a href="#构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性" class="headerlink" title="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"></a>构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</h3><p><a href="https://ponponpa.github.io" target="_blank" rel="noopener">我的博客</a>  </p>
-	
+<h3 id="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"><a href="#构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性" class="headerlink" title="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"></a>构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</h3>	
 	</div>
 	
 	<div id="current-post-cover" data-scr="/img/2.jpg"></div>
@@ -494,10 +457,7 @@ person1<span class="token punctuation">.</span>friends<span class="token punctua
 							</p>
 							<p class="relate-post-content">
 								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
-var superObj = {
-  name: 'Li',
-  age: 25,
-  friends: ['...
+12345678910111213141516var superObj = &#123;  name: 'Li...
 							</p>
 						</div>
 
@@ -545,8 +505,11 @@ var superObj = {
 							</p>
 							<p class="relate-post-content">
 								
-生成package.jsonnpm init
-用webpack构建react环境,装webpack三大环境npm i webpack webpack-cli webpack-dev-serve react react-dom --s...
+生成package.json
+1npm init
+
+用webpack构建react环境,装webpack三大环境
+1npm i webpack webpack-cli webpack-dev-serve react react-do...
 							</p>
 						</div>
 
@@ -688,7 +651,82 @@ The world began wakin...
 
 
 
-	
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
 
 
 
