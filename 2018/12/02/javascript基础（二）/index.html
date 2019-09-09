@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      javascript基础（三） | Pononpa
+      javascript基础（二） | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《javascript基础（三）》
+			当前文章&nbsp;:&nbsp;《javascript基础（二）》
 		
 	</p>
 
@@ -285,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/09/02/javascript基础（三）/" itemprop="url">
-		javascript基础（三）
+	<a href="/2018/12/02/javascript基础（二）/" itemprop="url">
+		javascript基础（二）
 	</a>
 
 	</div>
@@ -299,9 +299,9 @@
 
 	发布于
 
-	<a href="/2019/09/02/javascript基础（三）/" itemprop="url">
-		<time datetime="2019-09-02T12:27:33.073Z" itemprop="datePublished">
-	  		2019-09-02
+	<a href="/2018/12/02/javascript基础（二）/" itemprop="url">
+		<time datetime="2018-12-01T16:00:00.000Z" itemprop="datePublished">
+	  		2018-12-02
 	  </time>
 	</a>
 	&nbsp;
@@ -317,9 +317,9 @@
 
 	更新于
 
-	<a href="/2019/09/02/javascript基础（三）/" itemprop="url">
-		<time datetime="2019-09-02T12:27:33.073Z" itemprop="dateUpdated">
-	  		2019-09-03
+	<a href="/2018/12/02/javascript基础（二）/" itemprop="url">
+		<time datetime="2018-12-01T16:00:00.000Z" itemprop="dateUpdated">
+	  		2019-09-09
 	  </time>
 	</a> 
 
@@ -334,8 +334,8 @@
 			JS
 		</a>
 	
-		<a href="/tags/闭包/" class=" ">
-			闭包
+		<a href="/tags/继承/" class=" ">
+			继承
 		</a>
 	
 		
@@ -348,33 +348,31 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。</p>
-<p>需要明确的几点：</p>
-<ul>
-<li>闭包一定是函数对象 <a href="https://github.com/wintercn/blog/issues/3" target="_blank" rel="noopener">wintercn大大的闭包考证</a>  </li>
-<li>闭包和词法作用域，作用域链，垃圾回收机制息息相关</li>
-<li>当函数一定是在其定义的作用域外进行的访问时，才产生闭包</li>
-<li>闭包是由该函数和其上层执行上下文共同构成</li>
-</ul>
-<p>内存泄漏：<br><code>我们应该保证执行代码只保存有用的数据，一旦数据不再有用，我们就应该让垃圾回收机制对其进行回收，释放内存。</code><br>闭包阻止了垃圾回收机制对变量进行回收，因此变量会永远存在内存中，即使当变量不再被使用时，这样会造成内存泄漏，会严重影响页面的性能。因此当变量对象不再适用时，我们要将其释放。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log( a );</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bar;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> baz = foo();</span><br><span class="line"> baz(); <span class="comment">//baz指向的对象会永远存在堆内存中</span></span><br><span class="line"> baz = <span class="literal">null</span>; <span class="comment">//如果baz不再使用，将其指向的对象释放</span></span><br></pre></td></tr></table></figure>
+		<h1 id="继承-－-原型，原型连，es6继承-，call，apply"><a href="#继承-－-原型，原型连，es6继承-，call，apply" class="headerlink" title="继承 － 原型，原型连，es6继承 ，call，apply"></a>继承 － 原型，原型连，es6继承 ，call，apply</h1><h3 id="属性拷贝"><a href="#属性拷贝" class="headerlink" title="属性拷贝"></a>属性拷贝</h3><p>就是将对象的成员复制一份给需要继承的对象<br>// 创建父对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> superObj = &#123;</span><br><span class="line">  name: <span class="string">'Li'</span>,</span><br><span class="line">  age: <span class="number">25</span>,</span><br><span class="line">  friends: [<span class="string">'小明'</span>, <span class="string">'小李'</span>, <span class="string">'小赵'</span>],</span><br><span class="line">  showName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建需要继承的子对象</span></span><br><span class="line"><span class="keyword">var</span> subObj = &#123;&#125;;</span><br><span class="line"><span class="comment">// 开始拷贝属性(使用for...in...循环)</span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i <span class="keyword">in</span> superObj )&#123;</span><br><span class="line">  subObj[i] = superObj[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(subObj)</span><br><span class="line"><span class="built_in">console</span>.log(superObj)</span><br></pre></td></tr></table></figure>
 
-<h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><p>1.模块<br>一个模块应该具有私有属性、私有方法和公有属性、公有方法。<br>而闭包能很好的将模块的公有属性、方法暴露出来。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> name = <span class="string">"echo"</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		getName</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log( myModule.name ); <span class="comment">// echo</span></span><br><span class="line"><span class="built_in">console</span>.log( myModule.getName() ); <span class="comment">// echo</span></span><br></pre></td></tr></table></figure>
+<p>存在问题：<br>如果继承过来的成员是引用类型的话,<br>那么这个引用类型的成员在父对象和子对象之间是共享的,<br>也就是说修改了之后, 父子对象都会受到影响.</p>
+<h3 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h3><p>借用构造函数的原型对象实现继承</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建父构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperClass</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置父构造器的原型对象</span></span><br><span class="line">SuperClass.prototype.showAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建子构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置子构造函数的原型对象实现继承</span></span><br><span class="line">SubClass.prototype = SuperClass.prototype;</span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> SubClass()</span><br></pre></td></tr></table></figure>
 
-<p>“return”关键字将对象引用导出赋值给myModule，从而应用到闭包。</p>
-<p>2.延时器(setTimeout)、计数器(setInterval)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log( i );</span><br><span class="line">	&#125;, <span class="number">1000</span> * i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题：<br>父构造函数的原型对象和子构造函数的原型对象上的成员有共享问题<br>只能继承父构造函数的原型对象上的成员, 不能继承父构造函数的实例对象的成员</p>
+<h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><p>即 子构造函数.prototype = new 父构造函数()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建父构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'liyajie'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = <span class="number">25</span>;</span><br><span class="line">    <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置父构造函数的原型</span></span><br><span class="line">SuperClass.prototype.friends = [<span class="string">'小名'</span>, <span class="string">'小强'</span>];</span><br><span class="line">SuperClass.prototype.showAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建子构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实现继承</span></span><br><span class="line">SubClass.prototype = <span class="keyword">new</span> SuperClass();</span><br><span class="line"><span class="comment">// 修改子构造函数的原型的构造器属性</span></span><br><span class="line">SubClass.prototype.constructor = SubClass;</span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> SubClass();</span><br><span class="line"><span class="built_in">console</span>.log(child.name); <span class="comment">// liyajie</span></span><br><span class="line"><span class="built_in">console</span>.log(child.age);<span class="comment">// 25</span></span><br><span class="line">child.showName();<span class="comment">// liyajie</span></span><br><span class="line">child.showAge();<span class="comment">// 25</span></span><br><span class="line"><span class="built_in">console</span>.log(child.friends); <span class="comment">// ['小名','小强']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当我们改变friends的时候, 父构造函数的原型对象的也会变化</span></span><br><span class="line">child.friends.push(<span class="string">'小王八'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(child.friends);[<span class="string">"小名"</span>, <span class="string">"小强"</span>, <span class="string">"小王八"</span>]</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> SuperClass();</span><br><span class="line"><span class="built_in">console</span>.log(father.friends);[<span class="string">"小名"</span>, <span class="string">"小强"</span>, <span class="string">"小王八"</span>]</span><br></pre></td></tr></table></figure>
 
-<p><code>每秒钟输出一个5，一共输出5次。</code><br><code>如何做到每秒钟输出一个数，以此为0，1，2，3，4呢？</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	(<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log( j );</span><br><span class="line">		&#125;, <span class="number">1000</span> * j)</span><br><span class="line">	&#125;)(i)	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题：<br>不能给父构造函数传递参数，父子构造函数的原型对象之间有共享问题</p>
+<h3 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h3><p>使用call和apply借用其他构造函数的成员, 可以解决给父构造函数传递参数的问题, 但是获取不到父构造函数原型上的成员.也不存在共享问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建父构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.freinds = [<span class="string">'小王'</span>, <span class="string">'小强'</span>];</span><br><span class="line">  <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建子构造函数</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 使用call借用Person的构造函数</span></span><br><span class="line">  Person.call(<span class="keyword">this</span>, name);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// 测试是否有了 Person 的成员</span></span><br><span class="line"> <span class="keyword">var</span> stu = <span class="keyword">new</span> Student(<span class="string">'Li'</span>);</span><br><span class="line"> stu.showName(); <span class="comment">// Li</span></span><br><span class="line"> <span class="built_in">console</span>.log(stu.friends); <span class="comment">// ['小王','小强']</span></span><br></pre></td></tr></table></figure>
 
-<p>上面第一个例子中每次循环中的setTimeout回调函数记住的i的值是for循环作用域中的值，此时都是5，而第二个例子记住的i的数为setTimeout的父级作用域自执行函数中的j的值，依次为0，1，2，3，4。</p>
-<p>3.监听器</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySeletor(<span class="string">"#div"</span>);</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log( oDiv.id );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	
+<h3 id="ES6对比"><a href="#ES6对比" class="headerlink" title="ES6对比"></a>ES6对比</h3> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;  <span class="comment">// 父类</span></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubPerson</span>(<span class="params">name,job</span>)</span>&#123;  <span class="comment">// 子类</span></span><br><span class="line">    Person.call(<span class="keyword">this</span>,name);  <span class="comment">// 子类继承父类的属性 需要将this指向父类中的name</span></span><br><span class="line">    <span class="keyword">this</span>.job = job;  <span class="comment">// job是子类自己的属性</span></span><br><span class="line">&#125;</span><br><span class="line">SubPerson.prototype = <span class="keyword">new</span> Person();  <span class="comment">// 子类继承父类的方法</span></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> SubPerson(<span class="string">'ponponpa'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.name);  <span class="comment">// ponponpa</span></span><br><span class="line"><span class="comment">// console.log(p1.showName());  // ponponpa</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    showName()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubPerson</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name,job)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);    <span class="comment">// 指向父类的构造函数</span></span><br><span class="line">        <span class="keyword">this</span>.job = job;</span><br><span class="line">    &#125;</span><br><span class="line">    showJob()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.job;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> SubPerson(<span class="string">'ponponpa'</span>,<span class="string">'前端开发'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.name);  <span class="comment">// ponponpa</span></span><br><span class="line"><span class="comment">// console.log(p1.showName());  // ponponpa</span></span><br><span class="line"><span class="comment">// console.log(p1.job); // 前端开发</span></span><br></pre></td></tr></table></figure>
+
+<p>extends就代表这继承的意思，super就是指向父类的构造函数，指代了整个prototype对象或者_proto_指针指向的对象，</p>
+<h3 id="call-apply"><a href="#call-apply" class="headerlink" title="call(),apply()"></a>call(),apply()</h3><p>funtion</p>
+	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/2.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/10.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -389,12 +387,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/09/03/React/" title="React基础（一）" rel="prev">
+			<a href="/2019/08/31/forever/" title="Forever" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/08/31/forever/" title="Forever" rel="next">
+			<a href="/2018/12/01/javascript基础（一）/" title="javascript基础（一）" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -415,23 +413,26 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/12/02/javascript基础（二）/" title="javascript基础（二）">
-								javascript基础（二）			
+							<a class="relate-post-title" href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">
+								javascript基础（三）			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								十二月 2日, 2018				
+								九月 2日, 2019				
 							</p>
 							<p class="relate-post-content">
-								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
-12345678910111213141516var superObj = &#123;  name: 'Li...
+								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
+需要明确的几点：
+
+闭包一定是函数对象 wintercn大大的闭包考证  
+闭包和词法作用...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2018/12/02/javascript基础（二）/" title="javascript基础（二）">				
+							<a href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/10.jpg" alt="javascript基础（二）"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（三）"/>
 							</a>
 						</div>
 					</li>											

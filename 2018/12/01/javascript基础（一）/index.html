@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      关于Flux,Vuex,Redux的思考 | Pononpa
+      javascript基础（一） | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《关于Flux,Vuex,Redux的思考》
+			当前文章&nbsp;:&nbsp;《javascript基础（一）》
 		
 	</p>
 
@@ -285,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/09/05/关于Flux,Vuex,Redux的思考/" itemprop="url">
-		关于Flux,Vuex,Redux的思考
+	<a href="/2018/12/01/javascript基础（一）/" itemprop="url">
+		javascript基础（一）
 	</a>
 
 	</div>
@@ -299,9 +299,9 @@
 
 	发布于
 
-	<a href="/2019/09/05/关于Flux,Vuex,Redux的思考/" itemprop="url">
-		<time datetime="2019-09-05T14:14:22.698Z" itemprop="datePublished">
-	  		2019-09-05
+	<a href="/2018/12/01/javascript基础（一）/" itemprop="url">
+		<time datetime="2018-11-30T16:00:00.000Z" itemprop="datePublished">
+	  		2018-12-01
 	  </time>
 	</a>
 	&nbsp;
@@ -317,9 +317,9 @@
 
 	更新于
 
-	<a href="/2019/09/05/关于Flux,Vuex,Redux的思考/" itemprop="url">
-		<time datetime="2019-09-05T14:14:22.698Z" itemprop="dateUpdated">
-	  		2019-09-05
+	<a href="/2018/12/01/javascript基础（一）/" itemprop="url">
+		<time datetime="2018-11-30T16:00:00.000Z" itemprop="dateUpdated">
+	  		2019-09-09
 	  </time>
 	</a> 
 
@@ -330,16 +330,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/flux/" class=" ">
-			flux
+		<a href="/tags/对象/" class=" ">
+			对象
 		</a>
 	
-		<a href="/tags/vuex/" class=" ">
-			vuex
-		</a>
-	
-		<a href="/tags/redux/" class=" ">
-			redux
+		<a href="/tags/JS/" class=" ">
+			JS
 		</a>
 	
 		
@@ -352,36 +348,39 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h2 id="数据管理工具Flux、Redux、Vuex的区别"><a href="#数据管理工具Flux、Redux、Vuex的区别" class="headerlink" title="数据管理工具Flux、Redux、Vuex的区别:"></a>数据管理工具Flux、Redux、Vuex的区别:</h2><p>为什么要进行数据管理？</p>
-<p>组件式开发的核心思路是MVC，Model层的数据发生变化，驱动View层的视图发生变化。<strong>试想一个场景，如果ModelA触发ModelB变化，导致ViewB发生变化，ViewB发生变化时，触发了ModelC变化，ModelC又触发了其他Model的变化…，我们想知道一个View的变化究竟是那个数据导致的，</strong>追查起来就很困难，于是就记录数据的变化就很有必要了，其实换一个高大上的名字就是数据状态管理。</p>
-<h3 id="怎么有效地进行数据管理？"><a href="#怎么有效地进行数据管理？" class="headerlink" title="怎么有效地进行数据管理？"></a>怎么有效地进行数据管理？</h3><ol>
-<li>数据集中管理<br>view中的数据统一放置到一个仓库（store）中，要渲染页面的时候，从中取出当前状态的数据（state），然后将state中的最新的数据通过props传递到组件中，然后渲染组件，实现试图展现。</li>
-<li>精细化拆解数据操作<br>要修改store中的state，为了做到数据的操作可追溯，尽量将数据的操作拆解成一个个小函数，当然纯函数最好。</li>
-<li>单向数据驱动<br>组件中不能直接修改state的值，修改state，只能发出修改请求（action），由action触发数据操作。</li>
+		<h1 id="面向对象-amp-面向过程"><a href="#面向对象-amp-面向过程" class="headerlink" title="面向对象&amp;面向过程"></a>面向对象&amp;面向过程</h1><ul>
+<li>面向过程总结:<br>面向过程是一种自上向下的编程。<br>面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重要的因素。<br>缺点：没有面向对象易维护、易复用、易扩展</li>
+<li>面向对象总结:<br>面向对象是将事物高度抽象化。面向对象必须先建立抽象模型，之后直接使用模型就行了。<br>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护<br>缺点：性能比面向过程低</li>
+</ul>
+<h1 id="对象的创建－字面量，原型，构造函数等各自特点"><a href="#对象的创建－字面量，原型，构造函数等各自特点" class="headerlink" title="对象的创建－字面量，原型，构造函数等各自特点"></a>对象的创建－字面量，原型，构造函数等各自特点</h1><ol>
+<li>工厂模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name=name;</span><br><span class="line">  o.age=age;</span><br><span class="line">  o.job=job;</span><br><span class="line">  o.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> o;   <span class="comment">//将创建的对象返回</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=createPerson(<span class="string">"Jim"</span>,<span class="number">22</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<p>总之，数据集中管理就需要应用<strong>使用唯一的数据Tree，存放在store中</strong>；精细化拆解数据操作就是<strong>需要提供小而纯的函数，来修改state</strong>；单就向数据驱动需要<strong>提供唯一能修改state的渠道</strong>。</p>
-<h2 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h2><hr>
-<p>Flux数据流的顺序是:<br>View发起Action-&gt;Action传递到Dispatcher-&gt;Dispatcher将通知Store-&gt;Store的状态改变通知View进行改变<br><img src="https://ask.qcloudimg.com/http-save/yehe-1217459/5gw6kqmjk8.png?imageView2/2/w/1620" alt="图示"><br>ps:<a href="https://github.com/flyer-dev/flux_learn" target="_blank" rel="noopener">基于Flux架构思想写的一个小demo</a></p>
-<h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><hr>
-<p>Redux相对于Flux的改进：</p>
-<ul>
-<li>把store和Dispatcher合并,结构更加简单清晰</li>
-<li>新增state角色，代表每个时间点store对应的值，对状态的管理更加明确<br>Redux数据流的顺序是:<br>View调用store.dispatch发起Action-&gt;store接受Action(action传入reducer函数,reducer函数返回一个新的state)-&gt;通知store.subscribe订阅的重新渲染函数<br><img src="https://ask.qcloudimg.com/http-save/yehe-1217459/xihbsyzesb.png?imageView2/2/w/1620" alt="图示"><br>ps:<a href="https://github.com/reduxjs/redux/tree/master/examples/counter" target="_blank" rel="noopener">阮一峰老师的Redux+React小demo</a></li>
-</ul>
-<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><hr>
-<p>Vuex是专门为Vue设计的状态管理框架,<br>同样基于Flux架构，并吸收了Redux的优点</p>
-<p>Vuex相对于Redux的不同点有:</p>
-<ul>
-<li>改进了Redux中的Action和Reducer函数，以mutations变化函数取代Reducer，<br>无需switch,只需在对应的mutation函数里改变state值即可</li>
-<li>由于Vue自动重新渲染的特性，无需订阅重新渲染函数，只要生成新的State即可</li>
-</ul>
-<p>Vuex数据流的顺序是:<br>View调用store.commit提交对应的请求到Store中对应的mutation函数-&gt;store改变(vue检测到数据变化自动渲染)<br>ps:<a href="https://jsfiddle.net/yyx990803/n9jmu5v7/" target="_blank" rel="noopener">Vuex官方文档上的小demo</a></p>
-<hr>
-<h2 id="使用数据管理工具的场景"><a href="#使用数据管理工具的场景" class="headerlink" title="使用数据管理工具的场景"></a>使用数据管理工具的场景</h2><p>数据管理主要是方便SPA开发时，管理多个组件或子页面的公用数据，如果仅仅是简单个的单页，您最好不要使用Redux或Vuex。</p>
-	
+<p>缺点：工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（怎样知道一个对象的类型）。</p>
+<ol start="2">
+<li>构造函数模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=name;</span><br><span class="line">  <span class="keyword">this</span>.age=age;</span><br><span class="line">  <span class="keyword">this</span>.job=job;</span><br><span class="line">  <span class="keyword">this</span>.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=<span class="keyword">new</span> Person(<span class="string">"Jim"</span>,<span class="number">22</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>构造函数模式相对于工厂模式有几个显著的区别<br>（1） 没有显式地创建对象<br>（2）直接将属性和方法赋给了this对象<br>（3）没有return语句<br>（4）函数名的首字母大写（Person和createPerson）：按照惯例，构造函数始终都是以大写字母开头，而非构造函数则应该以小写字母开头</p>
+<p>缺点：ECMAScript中的函数是对象，因此每定义一个函数，也就是实例化了一个对象。而构造函数在每次创建的时候都会完成同样任务的function实例(sayName)，这是很没有必要的。因此可以把函数定义转移到构造函数外部来解决这个问题。</p>
+<ol start="3">
+<li>原型模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.name=<span class="string">"Jim"</span>;</span><br><span class="line">Person.prototype.age=<span class="number">22</span>;</span><br><span class="line">Person.protoType.job=<span class="string">"Doctor"</span>;</span><br><span class="line">Person.protoType.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=<span class="keyword">new</span> Person();</span><br><span class="line">person.sayName();   <span class="comment">//Jim</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>#可以让所有对象实例共享它所包含的属性和方法。<br>原型语法简单写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">  <span class="keyword">constructor</span>:Person,</span><br><span class="line">  name:"Jim",</span><br><span class="line">  age:22,</span><br><span class="line">  job:"Doctor",</span><br><span class="line">  sayName:function()&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缺点：“共享”性，即当没有对Person的friends赋值时，直接调用原型属性并修改，就会直接导致原型修改。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">  friends:[<span class="string">"Amy"</span>,<span class="string">"Sam"</span>],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person1=<span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2=<span class="keyword">new</span> Person();</span><br><span class="line">person1.friends.push(<span class="string">"Van"</span>);</span><br><span class="line">alert(person1.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br><span class="line">alert(person2.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br></pre></td></tr></table></figure>
+
+<p>总结：<br>（1）工厂模式：在函数里面创建对象，并添加属性和方法。但没有解决对象识别问题，最后被构造函数模式所取代。<br>（2）构造函数模式：可以像创建内置对象实例一样使用new操作符。但没函数不局限于任何对象，因此没有了封装性。<br>（3）原型模式：使用构造函数的prototype属性指定应该共享的属性和方法。但单独使用原型模式的话，就会使不需要共享的属性和方法被共享</p>
+<h3 id="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"><a href="#构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性" class="headerlink" title="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"></a>构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</h3>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/5.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/3.png"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -396,14 +395,10 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/09/08/React基础二/" title="react 基础（二）" rel="prev">
+			<a href="/2018/12/02/javascript基础（二）/" title="javascript基础（二）" rel="prev">
 				&laquo;上一篇
 			</a>
 		
-		
-			<a href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境" rel="next">
-				下一篇&raquo;
-			</a>
 			
 	</span>
 
@@ -419,6 +414,57 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">
+								javascript基础（三）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 2日, 2019				
+							</p>
+							<p class="relate-post-content">
+								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
+需要明确的几点：
+
+闭包一定是函数对象 wintercn大大的闭包考证  
+闭包和词法作用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（三）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2018/12/02/javascript基础（二）/" title="javascript基础（二）">
+								javascript基础（二）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 2日, 2018				
+							</p>
+							<p class="relate-post-content">
+								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
+12345678910111213141516var superObj = &#123;  name: 'Li...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2018/12/02/javascript基础（二）/" title="javascript基础（二）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/10.jpg" alt="javascript基础（二）"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -463,6 +509,30 @@ cd my-app 进入项目npm start  启动
 							<a href="/2019/09/08/React基础二/" title="react 基础（二）">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/11.jpg" alt="react 基础（二）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/05/关于Flux,Vuex,Redux的思考/" title="关于Flux,Vuex,Redux的思考">
+								关于Flux,Vuex,Redux的思考			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 5日, 2019				
+							</p>
+							<p class="relate-post-content">
+								数据管理工具Flux、Redux、Vuex的区别:为什么要进行数据管理？
+组件式开发的核心思路是MVC，Model层的数据发生变化，驱动View层的视图发生变化。试想一个场景，如果ModelA触发ModelB变化，导致ViewB发生变...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/05/关于Flux,Vuex,Redux的思考/" title="关于Flux,Vuex,Redux的思考">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/5.jpg" alt="关于Flux,Vuex,Redux的思考"/>
 							</a>
 						</div>
 					</li>											
@@ -526,33 +596,6 @@ cd my-app 进入项目npm start  启动
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">
-								javascript基础（三）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 2日, 2019				
-							</p>
-							<p class="relate-post-content">
-								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
-需要明确的几点：
-
-闭包一定是函数对象 wintercn大大的闭包考证  
-闭包和词法作用...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/02/javascript基础（三）/" title="javascript基础（三）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（三）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2019/08/31/forever/" title="Forever">
 								Forever			
 							</a>
@@ -572,54 +615,6 @@ The world began wakin...
 							<a href="/2019/08/31/forever/" title="Forever">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="Forever"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/12/02/javascript基础（二）/" title="javascript基础（二）">
-								javascript基础（二）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 2日, 2018				
-							</p>
-							<p class="relate-post-content">
-								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
-12345678910111213141516var superObj = &#123;  name: 'Li...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2018/12/02/javascript基础（二）/" title="javascript基础（二）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/10.jpg" alt="javascript基础（二）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/12/01/javascript基础（一）/" title="javascript基础（一）">
-								javascript基础（一）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 1日, 2018				
-							</p>
-							<p class="relate-post-content">
-								面向对象&amp;面向过程
-面向过程总结:面向过程是一种自上向下的编程。面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2018/12/01/javascript基础（一）/" title="javascript基础（一）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.png" alt="javascript基础（一）"/>
 							</a>
 						</div>
 					</li>											
