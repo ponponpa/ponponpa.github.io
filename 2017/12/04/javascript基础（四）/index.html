@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Forever | Pononpa
+      javascript基础（四） | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Forever》
+			当前文章&nbsp;:&nbsp;《javascript基础（四）》
 		
 	</p>
 
@@ -266,6 +266,18 @@
 		插件作者：KELEN
 		插件来源: https://github.com/KELEN/katelog
 -->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
 	 
 
 <div class="layout-post">
@@ -273,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/31/forever/" itemprop="url">
-		Forever
+	<a href="/2017/12/04/javascript基础（四）/" itemprop="url">
+		javascript基础（四）
 	</a>
 
 	</div>
@@ -287,9 +299,9 @@
 
 	发布于
 
-	<a href="/2019/08/31/forever/" itemprop="url">
-		<time datetime="2019-08-31T06:03:27.287Z" itemprop="datePublished">
-	  		2019-08-31
+	<a href="/2017/12/04/javascript基础（四）/" itemprop="url">
+		<time datetime="2017-12-03T16:00:00.000Z" itemprop="datePublished">
+	  		2017-12-04
 	  </time>
 	</a>
 	&nbsp;
@@ -305,9 +317,9 @@
 
 	更新于
 
-	<a href="/2019/08/31/forever/" itemprop="url">
-		<time datetime="2019-08-31T06:03:27.287Z" itemprop="dateUpdated">
-	  		2019-09-03
+	<a href="/2017/12/04/javascript基础（四）/" itemprop="url">
+		<time datetime="2017-12-03T16:00:00.000Z" itemprop="dateUpdated">
+	  		2019-09-16
 	  </time>
 	</a> 
 
@@ -318,8 +330,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/love/" class=" ">
-			love
+		<a href="/tags/JS/" class=" ">
+			JS
+		</a>
+	
+		<a href="/tags/es6/" class=" ">
+			es6
 		</a>
 	
 		
@@ -332,24 +348,17 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<hr>
-<p>I saw you                                      </p>
-<p>You smiled warmly                             </p>
-<p>The world began waking up.                     </p>
-<p>初见你</p>
-<p>温婉一笑</p>
-<p>似万物复苏</p>
-<hr>
-<p>梦里梦见你</p>
-<p>梦里梦见梦不见的是你</p>
-<p>梦里梦见梦里梦不见的也是你</p>
-<hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果冬天里你的手是冰冷的</span></span><br><span class="line"><span class="keyword">if</span>(you.hand==cold&amp;amp;&amp;amp;weather;=winter)</span><br><span class="line"><span class="comment">//将我手上的温度全部给予你</span></span><br><span class="line">  giveyoulove(myhand.temp,yourhand.temp);</span><br><span class="line"><span class="comment">//换取你幸福的脸庞</span></span><br><span class="line"><span class="keyword">return</span> you.happyface;</span><br></pre></td></tr></table></figure>
-
+		<h1 id="ES6常用的新增技术"><a href="#ES6常用的新增技术" class="headerlink" title="ES6常用的新增技术"></a>ES6常用的新增技术</h1><hr>
+<h3 id="this的指向性"><a href="#this的指向性" class="headerlink" title="this的指向性"></a>this的指向性</h3><ol>
+<li>调用其所在函数的对象，而且是离谁近就是指向谁（此对于常规对象，原型链， getter &amp; setter等都适用）；</li>
+<li>构造函数下，this与被创建的新对象绑定；</li>
+<li>DOM事件，this指向触发事件的元素；</li>
+<li>内联事件分两种情况，bind绑定， call &amp; apply 方法等</li>
+</ol>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/1.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/8.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -364,12 +373,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/09/04/用webpack搭建react/" title="webpack搭建一个react环境" rel="prev">
+			<a href="/2019/08/01/React/" title="React基础（一）" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/08/02/React基础二/" title="react 基础（二）" rel="next">
+			<a href="/2017/12/03/javascript基础（三）/" title="javascript基础（三）" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -387,6 +396,81 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/03/javascript基础（三）/" title="javascript基础（三）">
+								javascript基础（三）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 3日, 2017				
+							</p>
+							<p class="relate-post-content">
+								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
+需要明确的几点：
+
+闭包一定是函数对象 wintercn大大的闭包考证  
+闭包和词法作用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/03/javascript基础（三）/" title="javascript基础（三）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（三）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/02/javascript基础（二）/" title="javascript基础（二）">
+								javascript基础（二）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 2日, 2017				
+							</p>
+							<p class="relate-post-content">
+								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
+12345678910111213141516var superObj = &#123;  name: 'Li...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/02/javascript基础（二）/" title="javascript基础（二）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/10.jpg" alt="javascript基础（二）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/01/javascript基础（一）/" title="javascript基础（一）">
+								javascript基础（一）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 1日, 2017				
+							</p>
+							<p class="relate-post-content">
+								面向对象&amp;面向过程
+面向过程总结:面向过程是一种自上向下的编程。面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/01/javascript基础（一）/" title="javascript基础（一）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.png" alt="javascript基础（一）"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -467,6 +551,32 @@ cd my-app 进入项目npm start  启动
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/31/forever/" title="Forever">
+								Forever			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 31日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+I saw you                                      
+You smiled warmly                             
+The world began wakin...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/31/forever/" title="Forever">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="Forever"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2019/08/02/React基础二/" title="react 基础（二）">
 								react 基础（二）			
 							</a>
@@ -511,108 +621,6 @@ cd my-app 进入项目npm start  启动
 							<a href="/2019/08/01/React/" title="React基础（一）">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/9.jpg" alt="React基础（一）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/04/javascript基础（四）/" title="javascript基础（四）">
-								javascript基础（四）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 4日, 2017				
-							</p>
-							<p class="relate-post-content">
-								ES6常用的新增技术
-this的指向性
-调用其所在函数的对象，而且是离谁近就是指向谁（此对于常规对象，原型链， getter &amp; setter等都适用）；
-构造函数下，this与被创建的新对象绑定；
-DOM事件，this指向触...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/04/javascript基础（四）/" title="javascript基础（四）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/8.jpg" alt="javascript基础（四）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/03/javascript基础（三）/" title="javascript基础（三）">
-								javascript基础（三）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 3日, 2017				
-							</p>
-							<p class="relate-post-content">
-								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
-需要明确的几点：
-
-闭包一定是函数对象 wintercn大大的闭包考证  
-闭包和词法作用...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/03/javascript基础（三）/" title="javascript基础（三）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript基础（三）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/02/javascript基础（二）/" title="javascript基础（二）">
-								javascript基础（二）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 2日, 2017				
-							</p>
-							<p class="relate-post-content">
-								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
-12345678910111213141516var superObj = &#123;  name: 'Li...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/02/javascript基础（二）/" title="javascript基础（二）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/10.jpg" alt="javascript基础（二）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/01/javascript基础（一）/" title="javascript基础（一）">
-								javascript基础（一）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 1日, 2017				
-							</p>
-							<p class="relate-post-content">
-								面向对象&amp;面向过程
-面向过程总结:面向过程是一种自上向下的编程。面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/01/javascript基础（一）/" title="javascript基础（一）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.png" alt="javascript基础（一）"/>
 							</a>
 						</div>
 					</li>											
