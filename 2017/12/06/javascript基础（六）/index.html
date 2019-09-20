@@ -348,12 +348,59 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h3 id="XMLHttpRequest-是-AJAX-的基础："><a href="#XMLHttpRequest-是-AJAX-的基础：" class="headerlink" title="XMLHttpRequest 是 AJAX 的基础："></a>XMLHttpRequest 是 AJAX 的基础：</h3><p>所有现代浏览器均支持 XMLHttpRequest 对象<br>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
-<ol>
-<li>创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建 XMLHttpRequest 对象</span></span><br><span class="line"><span class="keyword">var</span> xmlHttpReq = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="comment">//老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象</span></span><br><span class="line"><span class="keyword">var</span> xmlHttpReq = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br></pre></td></tr></table></figure>
+		<h2 id="ajax的底层交互原理以及ajax的简单封装"><a href="#ajax的底层交互原理以及ajax的简单封装" class="headerlink" title="ajax的底层交互原理以及ajax的简单封装"></a>ajax的底层交互原理以及ajax的简单封装</h2><hr>
+<p>AJAX即“Asyn Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。<br>Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。<br>Ajax的目的是提高用户体验，较少网络数据的传输量。<br><img src="https://upload-images.jianshu.io/upload_images/3174701-cdb67e435d967ec3?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="AJAX"></p>
+<h3 id="Ajax的使用"><a href="#Ajax的使用" class="headerlink" title="Ajax的使用"></a>Ajax的使用</h3><h4 id="1-创建Ajax核心对象XMLHttpRequest-记得考虑兼容性"><a href="#1-创建Ajax核心对象XMLHttpRequest-记得考虑兼容性" class="headerlink" title="1.创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)"></a>1.创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">var</span> xhr=<span class="literal">null</span>;  </span><br><span class="line"><span class="number">2.</span> <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)  </span><br><span class="line"><span class="number">3.</span>   &#123;<span class="comment">// 兼容 IE7+, Firefox, Chrome, Opera, Safari  </span></span><br><span class="line"><span class="number">4.</span>   xhr=<span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line"><span class="number">5.</span>   &#125; <span class="keyword">else</span>&#123;<span class="comment">// 兼容 IE6, IE5 </span></span><br><span class="line"><span class="number">6.</span>     xhr=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);  </span><br><span class="line"><span class="number">7.</span>   &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-向服务器发送请求"><a href="#2-向服务器发送请求" class="headerlink" title="2.向服务器发送请求"></a>2.向服务器发送请求</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.open(method,url,<span class="keyword">async</span>);  </span><br><span class="line"><span class="number">2.</span> send(string);<span class="comment">//post请求时才使用字符串参数，否则不用带参数。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>method：请求的类型；GET 或 POST</li>
+<li>url：文件在服务器上的位置</li>
+<li>async：true（异步）或 false（同步）</li>
+</ul>
+<p><strong>注意：post请求一定要设置请求头的格式内容</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"POST"</span>,<span class="string">"test.html"</span>,<span class="literal">true</span>);  </span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);  </span><br><span class="line">xhr.send(<span class="string">"fname=Henry&amp;lname=Ford"</span>);  <span class="comment">//post请求参数放在send里面，即请求体</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-服务器响应处理（区分同步跟异步两种情况）"><a href="#3-服务器响应处理（区分同步跟异步两种情况）" class="headerlink" title="3.服务器响应处理（区分同步跟异步两种情况）"></a>3.服务器响应处理（区分同步跟异步两种情况）</h4><p><strong>①同步处理</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.open(<span class="string">"GET"</span>,<span class="string">"info.txt"</span>,<span class="literal">false</span>);  </span><br><span class="line"><span class="number">2.</span> xhr.send();  </span><br><span class="line"><span class="number">3.</span> <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xhr.responseText; <span class="comment">//获取数据直接显示在页面上</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>②异步处理</strong><br>相对来说比较复杂，要在请求状态改变事件中处理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)  </span>&#123; </span><br><span class="line"><span class="number">2.</span>    <span class="keyword">if</span> (xhr.readyState==<span class="number">4</span> &amp;&amp;xhr.status==<span class="number">200</span>)  &#123; </span><br><span class="line"><span class="number">3.</span>       <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xhr.responseText;  </span><br><span class="line"><span class="number">4.</span>      &#125;</span><br><span class="line"><span class="number">5.</span>    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>③GET和POST请求数据区别</strong></p>
+<ul>
+<li>使用Get请求时,参数在URL中显示,而使用Post方式,则放在send里面</li>
+<li>使用Get请求发送数据量小,Post请求发送数据量大</li>
+<li>使用Get请求安全性低，会被缓存，而Post请求反之<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/list?page=5'</span>);</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
 
 </li>
-</ol>
+</ul>
+<p>GET请求参数需要拼在url上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'/list'</span>);</span><br><span class="line">xhr.send(<span class="string">'page=5&amp;pageSize=20'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="POST请求数据是放在send里面的"><a href="#POST请求数据是放在send里面的" class="headerlink" title="POST请求数据是放在send里面的"></a>POST请求数据是放在send里面的</h2><p>PS:<br><strong>什么是readyState？</strong><br>readyState是XMLHttpRequest对象的一个属性，用来标识当前XMLHttpRequest对象处于什么状态。<br>readyState总共有5个状态值，分别为0~4，每个值代表了不同的含义</p>
+<ul>
+<li>0：未初始化 – 尚未调用.open()方法；</li>
+<li>1：启动 – 已经调用.open()方法，但尚未调用.send()方法；</li>
+<li>2：发送 – 已经调用.send()方法，但尚未接收到响应；</li>
+<li>3：接收 – 已经接收到部分响应数据；</li>
+<li>4：完成 – 已经接收到全部响应数据，而且已经可以在客户端使用了；</li>
+</ul>
+<p><strong>什么是status？</strong><br>HTTP状态码(status)由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：</p>
+<h2 id><a href="#" class="headerlink" title></a><img src="https://upload-images.jianshu.io/upload_images/3174701-091a41d7e780c5df?imageMogr2/auto-orient/strip%7CimageView2/2/w/846/format/webp" alt="status"></h2><h2 id="ajax和axios、fetch的区别"><a href="#ajax和axios、fetch的区别" class="headerlink" title="ajax和axios、fetch的区别"></a>ajax和axios、fetch的区别</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">			type:<span class="string">"get"</span>,</span><br><span class="line">			url:<span class="string">""</span>,</span><br><span class="line">			<span class="keyword">async</span>:<span class="literal">true</span>,</span><br><span class="line">			data:&#123;&#125;,</span><br><span class="line">			dataType:<span class="string">""</span>,</span><br><span class="line">			success:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			&#125;</span><br><span class="line">	    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>AJAX:<br>是基于XHR原生开发的，目前已有的fetch可替代。本身是针对mvc的编程模式，不太适合目前mvvm的编程模式。jQuery本身比较大，如果单纯的使用ajax可以自己封装一个，不然会影响性能体验。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">    method: <span class="string">'post'</span>,</span><br><span class="line">    url: <span class="string">''</span>,</span><br><span class="line">    data: &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AXIOS:<br>从浏览器中创XMLHttpRequest请求。<br>node.js中创建http请求。<br>自动转换为json数据类型<br>支持promise API ，提供了一些并发请求的接口。<br>是vue全家桶技术之一，在vue中需要使用npm install axios –save-dev来安装依赖。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">  <span class="keyword">let</span> data = response.json();</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e);</span><br></pre></td></tr></table></figure>
+
+<p>FETCH:<br>脱离了xhr。<br>是es规范里新的实现方式。<br>更加底层，提供了丰富的API。<br>.fetch没有办法原生监测请求的进度，而XHR可以。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>ajax是最早出现发送后端请求的技术，属于原生js范畴,核心是使用XMLHttpRequest对象,使用较多并有先后顺序的话，容易产生回调地狱。</p>
+<p>fetch号称可以代替ajax的技术，是基于es6中的Promise对象设计的，参数和jQuery中的ajax类似，它并不是对ajax进一步封装，它属于原生js范畴。没有使用XMLHttpRequest对象。</p>
+<p>axios不是原生js,使用时需要对其进行安装，客户端和服务器端都可以使用，可以在请求和相应阶段进行拦截，基于promise对象。</p>
+<p><a href="https://www.jianshu.com/p/4cfbb0ed6cd1" target="_blank" rel="noopener">简单封装AJAX</a></p>
 	
 	</div>
 	
@@ -598,8 +645,8 @@ cd my-app 进入项目npm start  启动
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/02/React基础二/" title="React 基础（二）">
-								React 基础（二）			
+							<a class="relate-post-title" href="/2019/08/02/React基础二/" title="React基础（二）">
+								React基础（二）			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
@@ -611,9 +658,9 @@ cd my-app 进入项目npm start  启动
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/02/React基础二/" title="React 基础（二）">				
+							<a href="/2019/08/02/React基础二/" title="React基础（二）">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/11.jpg" alt="React 基础（二）"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/11.jpg" alt="React基础（二）"/>
 							</a>
 						</div>
 					</li>											
