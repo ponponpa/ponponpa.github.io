@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Forever | Pononpa
+      javascript你需要知道的事（六） | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Forever》
+			当前文章&nbsp;:&nbsp;《javascript你需要知道的事（六）》
 		
 	</p>
 
@@ -266,6 +266,18 @@
 		插件作者：KELEN
 		插件来源: https://github.com/KELEN/katelog
 -->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
 	 
 
 <div class="layout-post">
@@ -273,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2016/09/28/forever/" itemprop="url">
-		Forever
+	<a href="/2017/12/06/javascript基础（六）/" itemprop="url">
+		javascript你需要知道的事（六）
 	</a>
 
 	</div>
@@ -287,9 +299,9 @@
 
 	发布于
 
-	<a href="/2016/09/28/forever/" itemprop="url">
-		<time datetime="2016-09-27T16:00:00.000Z" itemprop="datePublished">
-	  		2016-09-28
+	<a href="/2017/12/06/javascript基础（六）/" itemprop="url">
+		<time datetime="2017-12-05T16:00:00.000Z" itemprop="datePublished">
+	  		2017-12-06
 	  </time>
 	</a>
 	&nbsp;
@@ -305,9 +317,9 @@
 
 	更新于
 
-	<a href="/2016/09/28/forever/" itemprop="url">
-		<time datetime="2016-09-27T16:00:00.000Z" itemprop="dateUpdated">
-	  		2019-09-16
+	<a href="/2017/12/06/javascript基础（六）/" itemprop="url">
+		<time datetime="2017-12-05T16:00:00.000Z" itemprop="dateUpdated">
+	  		2019-09-20
 	  </time>
 	</a> 
 
@@ -318,8 +330,12 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/love/" class=" ">
-			love
+		<a href="/tags/JS/" class=" ">
+			JS
+		</a>
+	
+		<a href="/tags/ajax交互/" class=" ">
+			ajax交互
 		</a>
 	
 		
@@ -332,24 +348,16 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<hr>
-<p>I saw you                                      </p>
-<p>You smiled warmly                             </p>
-<p>The world began waking up.                     </p>
-<p>初见你</p>
-<p>温婉一笑</p>
-<p>似万物复苏</p>
-<hr>
-<p>梦里梦见你</p>
-<p>梦里梦见梦不见的是你</p>
-<p>梦里梦见梦里梦不见的也是你</p>
-<hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果冬天里你的手是冰冷的</span></span><br><span class="line"><span class="keyword">if</span>(you.hand==cold&amp;amp;&amp;amp;weather;=winter)</span><br><span class="line"><span class="comment">//将我手上的温度全部给予你</span></span><br><span class="line">  giveyoulove(myhand.temp,yourhand.temp);</span><br><span class="line"><span class="comment">//换取你幸福的脸庞</span></span><br><span class="line"><span class="keyword">return</span> you.happyface;</span><br></pre></td></tr></table></figure>
+		<h3 id="XMLHttpRequest-是-AJAX-的基础："><a href="#XMLHttpRequest-是-AJAX-的基础：" class="headerlink" title="XMLHttpRequest 是 AJAX 的基础："></a>XMLHttpRequest 是 AJAX 的基础：</h3><p>所有现代浏览器均支持 XMLHttpRequest 对象<br>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<ol>
+<li>创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建 XMLHttpRequest 对象</span></span><br><span class="line"><span class="keyword">var</span> xmlHttpReq = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"><span class="comment">//老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象</span></span><br><span class="line"><span class="keyword">var</span> xmlHttpReq = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/1.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/1.png"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -364,10 +372,14 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2017/12/01/javascript基础（一）/" title="javascript你需要知道的事（一）" rel="prev">
+			<a href="/2019/08/01/React/" title="React基础（一）" rel="prev">
 				&laquo;上一篇
 			</a>
 		
+		
+			<a href="/2017/12/05/javascript基础（五）/" title="javascript你需要知道的事（五）" rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
 
@@ -383,6 +395,129 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/05/javascript基础（五）/" title="javascript你需要知道的事（五）">
+								javascript你需要知道的事（五）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 5日, 2017				
+							</p>
+							<p class="relate-post-content">
+								promise,你必须知道这些东西首先，要想知道promise是怎么用的，我们要知道为什么会有promise的出现，
+在实际的使用当中，有非常多的应用场景我们不能立即知道应该如何继续往下执行。最重要也是最主要的一个场景就是ajax请求...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/05/javascript基础（五）/" title="javascript你需要知道的事（五）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.jpg" alt="javascript你需要知道的事（五）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/04/javascript基础（四）/" title="javascript你需要知道的事（四）">
+								javascript你需要知道的事（四）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 4日, 2017				
+							</p>
+							<p class="relate-post-content">
+								ES6常用的新增技术
+this的指向性首先我们需要得出一个非常重要一定要牢记于心的结论，this的指向，是在函数被调用的时候确定的。也就是执行上下文被创建时确定的。因此，一个函数中的this指向，可以是非常灵活的。比如下面的例子中，同...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/04/javascript基础（四）/" title="javascript你需要知道的事（四）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/8.jpg" alt="javascript你需要知道的事（四）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/03/javascript基础（三）/" title="javascript你需要知道的事（三）">
+								javascript你需要知道的事（三）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 3日, 2017				
+							</p>
+							<p class="relate-post-content">
+								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
+需要明确的几点：
+
+闭包一定是函数对象 wintercn大大的闭包考证  
+闭包和词法作用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/03/javascript基础（三）/" title="javascript你需要知道的事（三）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript你需要知道的事（三）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/02/javascript基础（二）/" title="javascript你需要知道的事（二）">
+								javascript你需要知道的事（二）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 2日, 2017				
+							</p>
+							<p class="relate-post-content">
+								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
+12345678910111213141516var superObj = &#123;  name: 'Li...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/02/javascript基础（二）/" title="javascript你需要知道的事（二）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/10.jpg" alt="javascript你需要知道的事（二）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/01/javascript基础（一）/" title="javascript你需要知道的事（一）">
+								javascript你需要知道的事（一）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 1日, 2017				
+							</p>
+							<p class="relate-post-content">
+								面向对象&amp;面向过程
+面向过程总结:面向过程是一种自上向下的编程。面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/01/javascript基础（一）/" title="javascript你需要知道的事（一）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.png" alt="javascript你需要知道的事（一）"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -507,129 +642,6 @@ cd my-app 进入项目npm start  启动
 							<a href="/2019/08/01/React/" title="React基础（一）">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/9.jpg" alt="React基础（一）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/06/javascript基础（六）/" title="javascript你需要知道的事（六）">
-								javascript你需要知道的事（六）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 6日, 2017				
-							</p>
-							<p class="relate-post-content">
-								XMLHttpRequest 是 AJAX 的基础：所有现代浏览器均支持 XMLHttpRequest 对象XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
-...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/06/javascript基础（六）/" title="javascript你需要知道的事（六）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.png" alt="javascript你需要知道的事（六）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/05/javascript基础（五）/" title="javascript你需要知道的事（五）">
-								javascript你需要知道的事（五）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 5日, 2017				
-							</p>
-							<p class="relate-post-content">
-								promise,你必须知道这些东西首先，要想知道promise是怎么用的，我们要知道为什么会有promise的出现，
-在实际的使用当中，有非常多的应用场景我们不能立即知道应该如何继续往下执行。最重要也是最主要的一个场景就是ajax请求...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/05/javascript基础（五）/" title="javascript你需要知道的事（五）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.jpg" alt="javascript你需要知道的事（五）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/04/javascript基础（四）/" title="javascript你需要知道的事（四）">
-								javascript你需要知道的事（四）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 4日, 2017				
-							</p>
-							<p class="relate-post-content">
-								ES6常用的新增技术
-this的指向性首先我们需要得出一个非常重要一定要牢记于心的结论，this的指向，是在函数被调用的时候确定的。也就是执行上下文被创建时确定的。因此，一个函数中的this指向，可以是非常灵活的。比如下面的例子中，同...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/04/javascript基础（四）/" title="javascript你需要知道的事（四）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/8.jpg" alt="javascript你需要知道的事（四）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/03/javascript基础（三）/" title="javascript你需要知道的事（三）">
-								javascript你需要知道的事（三）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 3日, 2017				
-							</p>
-							<p class="relate-post-content">
-								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
-需要明确的几点：
-
-闭包一定是函数对象 wintercn大大的闭包考证  
-闭包和词法作用...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/03/javascript基础（三）/" title="javascript你需要知道的事（三）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript你需要知道的事（三）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/02/javascript基础（二）/" title="javascript你需要知道的事（二）">
-								javascript你需要知道的事（二）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 2日, 2017				
-							</p>
-							<p class="relate-post-content">
-								继承 － 原型，原型连，es6继承 ，call，apply属性拷贝就是将对象的成员复制一份给需要继承的对象// 创建父对象
-12345678910111213141516var superObj = &#123;  name: 'Li...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/02/javascript基础（二）/" title="javascript你需要知道的事（二）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/10.jpg" alt="javascript你需要知道的事（二）"/>
 							</a>
 						</div>
 					</li>											
