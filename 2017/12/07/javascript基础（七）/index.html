@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      javascript之ajax | Pononpa
+      javascript之关于拷贝 | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《javascript之ajax》
+			当前文章&nbsp;:&nbsp;《javascript之关于拷贝》
 		
 	</p>
 
@@ -285,8 +285,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2017/12/06/javascript基础（六）/" itemprop="url">
-		javascript之ajax
+	<a href="/2017/12/07/javascript基础（七）/" itemprop="url">
+		javascript之关于拷贝
 	</a>
 
 	</div>
@@ -299,9 +299,9 @@
 
 	发布于
 
-	<a href="/2017/12/06/javascript基础（六）/" itemprop="url">
-		<time datetime="2017-12-05T16:00:00.000Z" itemprop="datePublished">
-	  		2017-12-06
+	<a href="/2017/12/07/javascript基础（七）/" itemprop="url">
+		<time datetime="2017-12-06T16:00:00.000Z" itemprop="datePublished">
+	  		2017-12-07
 	  </time>
 	</a>
 	&nbsp;
@@ -317,8 +317,8 @@
 
 	更新于
 
-	<a href="/2017/12/06/javascript基础（六）/" itemprop="url">
-		<time datetime="2017-12-05T16:00:00.000Z" itemprop="dateUpdated">
+	<a href="/2017/12/07/javascript基础（七）/" itemprop="url">
+		<time datetime="2017-12-06T16:00:00.000Z" itemprop="dateUpdated">
 	  		2019-09-21
 	  </time>
 	</a> 
@@ -334,8 +334,8 @@
 			JS
 		</a>
 	
-		<a href="/tags/ajax交互/" class=" ">
-			ajax交互
+		<a href="/tags/深拷贝-浅拷贝/" class=" ">
+			深拷贝&amp;浅拷贝
 		</a>
 	
 		
@@ -348,63 +348,52 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h2 id="ajax的底层交互原理以及ajax的简单封装"><a href="#ajax的底层交互原理以及ajax的简单封装" class="headerlink" title="ajax的底层交互原理以及ajax的简单封装"></a>ajax的底层交互原理以及ajax的简单封装</h2><hr>
-<p>AJAX即“Asyn Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。<br>Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。<br>Ajax的目的是提高用户体验，较少网络数据的传输量。<br><img src="/img/3174701-cdb67e435d967ec3.jpg" alt="AJAX"></p>
-<h3 id="Ajax的使用"><a href="#Ajax的使用" class="headerlink" title="Ajax的使用"></a>Ajax的使用</h3><h4 id="1-创建Ajax核心对象XMLHttpRequest-记得考虑兼容性"><a href="#1-创建Ajax核心对象XMLHttpRequest-记得考虑兼容性" class="headerlink" title="1.创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)"></a>1.创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">var</span> xhr=<span class="literal">null</span>;  </span><br><span class="line"><span class="number">2.</span> <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)  </span><br><span class="line"><span class="number">3.</span>   &#123;<span class="comment">// 兼容 IE7+, Firefox, Chrome, Opera, Safari  </span></span><br><span class="line"><span class="number">4.</span>   xhr=<span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line"><span class="number">5.</span>   &#125; <span class="keyword">else</span>&#123;<span class="comment">// 兼容 IE6, IE5 </span></span><br><span class="line"><span class="number">6.</span>     xhr=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);  </span><br><span class="line"><span class="number">7.</span>   &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-向服务器发送请求"><a href="#2-向服务器发送请求" class="headerlink" title="2.向服务器发送请求"></a>2.向服务器发送请求</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.open(method,url,<span class="keyword">async</span>);  </span><br><span class="line"><span class="number">2.</span> send(string);<span class="comment">//post请求时才使用字符串参数，否则不用带参数。</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>method：请求的类型；GET 或 POST</li>
-<li>url：文件在服务器上的位置</li>
-<li>async：true（异步）或 false（同步）</li>
-</ul>
-<p><strong>注意：post请求一定要设置请求头的格式内容</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"POST"</span>,<span class="string">"test.html"</span>,<span class="literal">true</span>);  </span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);  </span><br><span class="line">xhr.send(<span class="string">"fname=Henry&amp;lname=Ford"</span>);  <span class="comment">//post请求参数放在send里面，即请求体</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-服务器响应处理（区分同步跟异步两种情况）"><a href="#3-服务器响应处理（区分同步跟异步两种情况）" class="headerlink" title="3.服务器响应处理（区分同步跟异步两种情况）"></a>3.服务器响应处理（区分同步跟异步两种情况）</h4><p><strong>①同步处理</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.open(<span class="string">"GET"</span>,<span class="string">"info.txt"</span>,<span class="literal">false</span>);  </span><br><span class="line"><span class="number">2.</span> xhr.send();  </span><br><span class="line"><span class="number">3.</span> <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xhr.responseText; <span class="comment">//获取数据直接显示在页面上</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>②异步处理</strong><br>相对来说比较复杂，要在请求状态改变事件中处理。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)  </span>&#123; </span><br><span class="line"><span class="number">2.</span>    <span class="keyword">if</span> (xhr.readyState==<span class="number">4</span> &amp;&amp;xhr.status==<span class="number">200</span>)  &#123; </span><br><span class="line"><span class="number">3.</span>       <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xhr.responseText;  </span><br><span class="line"><span class="number">4.</span>      &#125;</span><br><span class="line"><span class="number">5.</span>    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>③GET和POST请求数据区别</strong></p>
-<ul>
-<li>使用Get请求时,参数在URL中显示,而使用Post方式,则放在send里面</li>
-<li>使用Get请求发送数据量小,Post请求发送数据量大</li>
-<li>使用Get请求安全性低，会被缓存，而Post请求反之<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/list?page=5'</span>);</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
+		<h1 id="深拷贝与浅拷贝以及实现方式"><a href="#深拷贝与浅拷贝以及实现方式" class="headerlink" title="深拷贝与浅拷贝以及实现方式"></a>深拷贝与浅拷贝以及实现方式</h1><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><blockquote>
+<p><strong>浅拷贝将原对象或原数组的引用直接赋给新对象，新数组，新对象／数组只是原对象的一个引用</strong>（拷贝后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响）</p>
+</blockquote>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><blockquote>
+<p>深拷贝是将原对象的各个属性的“值”逐个复制出去，而且将原对象各个属性所包含的对象也依次采用深拷贝的方法递归复制到新对象上（注意拷贝的“值”而不是“引用”）</p>
+</blockquote>
+<h3 id="什么时候使用深拷贝"><a href="#什么时候使用深拷贝" class="headerlink" title="什么时候使用深拷贝?"></a>什么时候使用深拷贝?</h3><blockquote>
+<p>我们在希望改变新的数组（对象）的时候，不改变原数组（对象）</p>
+</blockquote>
+<h3 id="使用深拷贝的注意事项"><a href="#使用深拷贝的注意事项" class="headerlink" title="使用深拷贝的注意事项"></a>使用深拷贝的注意事项</h3><blockquote>
+<p>如果对象比较大，层级也比较多，深拷贝会带来性能上的问题。所以在遇到需要使用深拷贝，考虑有没有其他的方案，实际应用中主要还是以浅拷贝为主</p>
+</blockquote>
+<hr>
+<h3 id="浅拷贝的实现方式"><a href="#浅拷贝的实现方式" class="headerlink" title="浅拷贝的实现方式"></a>浅拷贝的实现方式</h3><ul>
+<li><p><strong>自定义函数</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象</span></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line">obj2.a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//&#123;a:2&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)<span class="comment">//&#123;a:2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组</span></span><br><span class="line"><span class="keyword">var</span> obj1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line">obj2.push(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//[1,2,3,4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Object.assign()</strong><br>Object.assign我们经常会用到合并对象，当然利用Object.assign性质我们也可以实现对象的拷贝。<br>这里要注意的是Object.assign第一个参数必须是个空对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</span><br><span class="line">obj2.a = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//&#123;a:1,b:2&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)<span class="comment">//&#123;a:4,b:2&#125;</span></span><br><span class="line"><span class="comment">//Object.assign()进行的拷贝是浅拷贝,只有第一层是深拷贝</span></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:&#123;<span class="attr">c</span>:<span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</span><br><span class="line">obj2.b.c = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//&#123;a:1,b:&#123;c:4&#125;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)<span class="comment">//&#123;a:1,b:&#123;c:4&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>解构赋值</strong><br>解构赋值和Object.assign()拷贝方式一样，只有第一层是深拷贝</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;...obj1&#125;</span><br><span class="line">obj2.a = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)<span class="comment">//&#123;a:1,b:2&#125;,&#123;a:4,b:2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小李'</span>, <span class="string">'小王'</span>]</span><br><span class="line">&#125;]</span><br><span class="line"><span class="keyword">var</span> obj2 = [...obj1]</span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)<span class="comment">//[&#123;name: '张三',childs: ['小杨']&#125;]</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>GET请求参数需要拼在url上</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'/list'</span>);</span><br><span class="line">xhr.send(<span class="string">'page=5&amp;pageSize=20'</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="POST请求数据是放在send里面的"><a href="#POST请求数据是放在send里面的" class="headerlink" title="POST请求数据是放在send里面的"></a>POST请求数据是放在send里面的</h2><p>PS:<br><strong>什么是readyState？</strong><br>readyState是XMLHttpRequest对象的一个属性，用来标识当前XMLHttpRequest对象处于什么状态。<br>readyState总共有5个状态值，分别为0~4，每个值代表了不同的含义</p>
+<hr>
+<h3 id="深拷贝的实现方式"><a href="#深拷贝的实现方式" class="headerlink" title="深拷贝的实现方式"></a>深拷贝的实现方式</h3><hr>
 <ul>
-<li>0：未初始化 – 尚未调用.open()方法；</li>
-<li>1：启动 – 已经调用.open()方法，但尚未调用.send()方法；</li>
-<li>2：发送 – 已经调用.send()方法，但尚未接收到响应；</li>
-<li>3：接收 – 已经接收到部分响应数据；</li>
-<li>4：完成 – 已经接收到全部响应数据，而且已经可以在客户端使用了；</li>
+<li><strong>利用json.stringify</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小李'</span>, <span class="string">'小王'</span>]</span><br><span class="line">&#125;]</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)</span><br><span class="line"><span class="comment">//obj1：[&#123;name: '张三',childs: ['小李', '小王']&#125;]</span></span><br><span class="line"><span class="comment">//obj1：[&#123;name: '张三',childs: ['小杨']&#125;]</span></span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<p><strong>什么是status？</strong><br>HTTP状态码(status)由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：</p>
-<h2 id><a href="#" class="headerlink" title></a><img src="https://upload-images.jianshu.io/upload_images/3174701-091a41d7e780c5df?imageMogr2/auto-orient/strip%7CimageView2/2/w/846/format/webp" alt="status"></h2><h2 id="ajax和axios、fetch的区别"><a href="#ajax和axios、fetch的区别" class="headerlink" title="ajax和axios、fetch的区别"></a>ajax和axios、fetch的区别</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">			type:<span class="string">"get"</span>,</span><br><span class="line">			url:<span class="string">""</span>,</span><br><span class="line">			<span class="keyword">async</span>:<span class="literal">true</span>,</span><br><span class="line">			data:&#123;&#125;,</span><br><span class="line">			dataType:<span class="string">""</span>,</span><br><span class="line">			success:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			&#125;</span><br><span class="line">	    &#125;);</span><br></pre></td></tr></table></figure>
+<p>但是这种方法存在一种弊端，结果值为undefined,或者function的时候并不会拷贝过来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小李'</span>, <span class="string">'小王'</span>],</span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    age: <span class="literal">undefined</span></span><br><span class="line">&#125;]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line"> </span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)</span><br></pre></td></tr></table></figure>
 
-<p>AJAX:<br>是基于XHR原生开发的，目前已有的fetch可替代。本身是针对mvc的编程模式，不太适合目前mvvm的编程模式。jQuery本身比较大，如果单纯的使用ajax可以自己封装一个，不然会影响性能体验。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">    method: <span class="string">'post'</span>,</span><br><span class="line">    url: <span class="string">''</span>,</span><br><span class="line">    data: &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li><strong>利用递归来实现一个方法进行拷贝</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小王'</span>, <span class="string">'小李'</span>],</span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    age: <span class="literal">undefined</span></span><br><span class="line">&#125;]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj2 = extend(obj1)</span><br><span class="line"> </span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> data === <span class="string">'object'</span> &amp;&amp; data) &#123;</span><br><span class="line">	    <span class="keyword">let</span> val = <span class="keyword">typeof</span> data.length === <span class="string">'number'</span> ? [] : &#123;&#125;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> data) &#123;</span><br><span class="line">	        val[i] = extend(data[i])</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">return</span> val</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	    <span class="keyword">return</span> data</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>AXIOS:<br>从浏览器中创XMLHttpRequest请求。<br>node.js中创建http请求。<br>自动转换为json数据类型<br>支持promise API ，提供了一些并发请求的接口。<br>是vue全家桶技术之一，在vue中需要使用npm install axios –save-dev来安装依赖。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">  <span class="keyword">let</span> data = response.json();</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e);</span><br></pre></td></tr></table></figure>
-
-<p>FETCH:<br>脱离了xhr。<br>是es规范里新的实现方式。<br>更加底层，提供了丰富的API。<br>.fetch没有办法原生监测请求的进度，而XHR可以。</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>ajax是最早出现发送后端请求的技术，属于原生js范畴,核心是使用XMLHttpRequest对象,使用较多并有先后顺序的话，容易产生回调地狱。</p>
-<p>fetch号称可以代替ajax的技术，是基于es6中的Promise对象设计的，参数和jQuery中的ajax类似，它并不是对ajax进一步封装，它属于原生js范畴。没有使用XMLHttpRequest对象。</p>
-<p>axios不是原生js,使用时需要对其进行安装，客户端和服务器端都可以使用，可以在请求和相应阶段进行拦截，基于promise对象。</p>
-<p><a href="https://www.jianshu.com/p/4cfbb0ed6cd1" target="_blank" rel="noopener">简单封装AJAX</a></p>
+</li>
+</ul>
+<p>这样我们就能把所有值都拷贝过来了。    </p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/1.png"></div>
+	<div id="current-post-cover" data-scr="/img/favor/《小女儿月牙儿, 和她的痛车》鬼刀4k壁纸_彼岸图网.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -419,12 +408,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2017/12/07/javascript基础（七）/" title="javascript之关于拷贝" rel="prev">
+			<a href="/2017/12/08/javascript基础（八）/" title="javascript之常用数组" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2017/12/05/javascript基础（五）/" title="javascript之promise" rel="next">
+			<a href="/2017/12/06/javascript基础（六）/" title="javascript之ajax" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -477,26 +466,23 @@ join()（原数组不变）
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/07/javascript基础（七）/" title="javascript之关于拷贝">
-								javascript之关于拷贝			
+							<a class="relate-post-title" href="/2017/12/06/javascript基础（六）/" title="javascript之ajax">
+								javascript之ajax			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								十二月 7日, 2017				
+								十二月 6日, 2017				
 							</p>
 							<p class="relate-post-content">
-								深拷贝与浅拷贝以及实现方式浅拷贝
-浅拷贝将原对象或原数组的引用直接赋给新对象，新数组，新对象／数组只是原对象的一个引用（拷贝后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响）
-
-深拷贝
-深拷贝是将原对象的各个属性的“值”逐个...
+								ajax的底层交互原理以及ajax的简单封装
+AJAX即“Asyn Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。A...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2017/12/07/javascript基础（七）/" title="javascript之关于拷贝">				
+							<a href="/2017/12/06/javascript基础（六）/" title="javascript之ajax">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/《小女儿月牙儿, 和她的痛车》鬼刀4k壁纸_彼岸图网.jpg" alt="javascript之关于拷贝"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.png" alt="javascript之ajax"/>
 							</a>
 						</div>
 					</li>											
