@@ -319,7 +319,7 @@
 
 	<a href="/2018/09/01/vue项目技术小记/" itemprop="url">
 		<time datetime="2018-08-31T16:00:00.000Z" itemprop="dateUpdated">
-	  		2019-10-04
+	  		2019-10-08
 	  </time>
 	</a> 
 
@@ -365,7 +365,8 @@
 
 <hr>
 <h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3><p>Vuex 类似 Redux 的状态管理器，vuex是一个专门为vue.js设计的集中式状态管理架构，用来管理Vue的所有组件状态。我认为就是前端为了方便数据的操作而建立的一个“前端数据库”。</p>
-<h2 id="Vuex基本使用的总结"><a href="#Vuex基本使用的总结" class="headerlink" title="Vuex基本使用的总结"></a><a href="https://www.jianshu.com/p/aae7fee46c36" target="_blank" rel="noopener">Vuex基本使用的总结</a></h2><h3 id="vue生命周期函数"><a href="#vue生命周期函数" class="headerlink" title="vue生命周期函数"></a>vue生命周期函数</h3><p>|                                                        |<br>|钩子函数        |详情                                                                                                                                                        |场景                                                                                            |备注                                                    |<br>|beforeCreate    |实例初始化之后，组件被创建时期，这个时候的 el，data，message 都是 underfined                                                                                |可以加入 loading 事件；在服务器端的应用场景中，这个时候发送数据请求比较多一些                    |                                                        |<br>|created        |实例创建完成后，data、methods 被初始化                                                                                                                        |结束 loading 事件；推荐这个时候发送请求数据，尤其是返回的数据与绑定事件有关时                    |                                                        |<br>|beforeMount    |挂载初始之前，完成 el 初始化，render 被初次调用                                                                                                            |也可以发送数据请求                                                                                |在服务器端渲染期间不会被调用                            |<br>|mounted        |完成挂载                                                                                                                                                    |获取 el 中 DOM 元素，进行 DOM 操作；如果返回的数据操作依赖 DOM 完成，推荐这个时候发送数据请求    |在服务器端渲染期间不会被调用                            |<br>|beofreUpdate    |挂载开始之前调用                                                                                                                                            |挂载完成之前访问现有 DOM ，比如手动移除已添加的事件监听器；也可以进一步修改数据                |在服务器渲染期间不会被调用，只有初次渲染会在服务端调用    |<br>|updated        |由于数据更改，重新渲染界面时调用                                                                                                                            |可执行依赖于 DOM 的操作                                                                        |服务器端渲染期间不会被调用                                |<br>|activated        |keep-alive 组件激活时调用                                                                                                                                    |                                                                                                |服务器端渲染期间不会被调用                                |<br>|deactivated    |组件停用时调用                                                                                                                                                |                                                                                                |服务器端渲染期间不会被调用                                |<br>|beforeDestroy    |实例销毁之前调用                                                                                                                                            |删除钱发出确认信息；清理定时器                                                                    |服务器端渲染期间不会被调用                                |<br>|destroyed        |实例销毁后调有。调用后，所有东西都会被解绑，所有的事件监听器会被移动，子实例也会被销毁                                                                        |提示已删除                                                                                        |服务器端渲染期间不会被调用                                |<br>|errorCaptured    |当捕获一个来自子孙组件的错误时被调用。收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。可返回 false 以阻止该错误继续向上传播。    |修改组件状态                                                                                    |2.5.0新增                                                |<br><strong>日常举栗子</strong>：</p>
+<h2 id="Vuex基本使用的总结"><a href="#Vuex基本使用的总结" class="headerlink" title="Vuex基本使用的总结"></a><a href="https://www.jianshu.com/p/aae7fee46c36" target="_blank" rel="noopener">Vuex基本使用的总结</a></h2><h3 id="vue生命周期函数"><a href="#vue生命周期函数" class="headerlink" title="vue生命周期函数"></a>vue生命周期函数</h3><p>|钩子函数        |描述                                                            |<br>|beforeCreate    |组件实例刚被创建，组件属性计算之前，如data属性等                    |<br>|created        |组件实例创建完成，属性已绑定，但DOM还未生成，$el属性还不存在            |<br>|beforeMount    |模板编译 / 挂载之前                                                |<br>|mounted        |模板编译 / 挂载之后                                                |<br>|beforeUpdate    |组件更新之前                                                        |<br>|update            |组件更新之后                                                        |<br>|activated        |组件被激活时调用                                                    |<br>|deactivated    |组件被移除时调用                                                    |<br>|beforeDestory    |组件销毁前调用                                                    |<br>|destoryed        |组件销毁后调用                                                    |</p>
+<p><strong>日常举栗子</strong>：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.jsdelivr.net/vue/2.1.3/vue.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/</span>p&gt;</span><br><span class="line">    &lt;button v-on:click=<span class="string">"change()"</span>&gt;change&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button v-on:click="destr()"&gt;destroy&lt;/</span>button&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    var app = new Vue(&#123;</span></span><br><span class="line"><span class="string">        el: '#app',</span></span><br><span class="line"><span class="string">        data: &#123;</span></span><br><span class="line"><span class="string">            message: 66</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeCreate: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeCreate 创建前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        created: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('created 创建完毕');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data + JSON.stringify(this.$data));</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeMount: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeMount 挂载前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        mounted: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('mounted 挂载结束');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeUpdate: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeUpdate 更新前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        updated: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('updated 更新完成');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeDestroy: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeDestroy 销毁前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        destroyed: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('destroyed 销毁完成');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        methods: &#123;</span></span><br><span class="line"><span class="string">            change() &#123;</span></span><br><span class="line"><span class="string">                app.message++;</span></span><br><span class="line"><span class="string">            &#125;,</span></span><br><span class="line"><span class="string">            destr() &#123;</span></span><br><span class="line"><span class="string">                app.$destroy();</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>可以在控制台上感受一下。</p>
@@ -387,7 +388,7 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/01/React/" title="React基础（一）" rel="prev">
+			<a href="/2018/09/03/vue关于路由/" title="vue路由知识点" rel="prev">
 				&laquo;上一篇
 			</a>
 		
@@ -413,6 +414,31 @@
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2018/09/03/vue关于路由/" title="vue路由知识点">
+								vue路由知识点			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 3日, 2018				
+							</p>
+							<p class="relate-post-content">
+								路由用什么模式？hash跟history区别，怎么转换？
+
+
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2018/09/03/vue关于路由/" title="vue路由知识点">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-655676.png" alt="vue路由知识点"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2018/08/03/vue中的各种传值传参问题/" title="vue传值传参小结">
 								vue传值传参小结			
 							</a>
@@ -421,9 +447,9 @@
 								八月 3日, 2018				
 							</p>
 							<p class="relate-post-content">
-								vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？
+								vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？VUE中组件之间传值，总结来讲有三种情况，分别是：父组件对子组件、子组件对父组件以及兄弟组件之间传值以及调用。
 
-
+父组件传值给子组件:通过类似于属性绑定的方式，将需要传入...
 							</p>
 						</div>
 
@@ -644,30 +670,6 @@ join()（原数组不变）
 							<a href="/2017/12/07/javascript基础（七）/" title="javascript之关于拷贝">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/《小女儿月牙儿, 和她的痛车》鬼刀4k壁纸_彼岸图网.jpg" alt="javascript之关于拷贝"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/06/javascript基础（六）/" title="javascript之ajax">
-								javascript之ajax			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 6日, 2017				
-							</p>
-							<p class="relate-post-content">
-								ajax的底层交互原理以及ajax的简单封装
-AJAX即“Asyn Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。A...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/06/javascript基础（六）/" title="javascript之ajax">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.png" alt="javascript之ajax"/>
 							</a>
 						</div>
 					</li>											

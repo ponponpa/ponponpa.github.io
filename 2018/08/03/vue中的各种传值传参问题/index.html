@@ -319,7 +319,7 @@
 
 	<a href="/2018/08/03/vue中的各种传值传参问题/" itemprop="url">
 		<time datetime="2018-08-02T16:00:00.000Z" itemprop="dateUpdated">
-	  		2019-10-04
+	  		2019-10-08
 	  </time>
 	</a> 
 
@@ -348,8 +348,93 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<h4 id="vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？"><a href="#vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？" class="headerlink" title="vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？"></a>vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？</h4><blockquote>
+		<h4 id="vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？"><a href="#vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？" class="headerlink" title="vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？"></a>vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？</h4><p>VUE中组件之间传值，总结来讲有三种情况，分别是：父组件对子组件、子组件对父组件以及兄弟组件之间传值以及调用。</p>
+<blockquote>
+<p>父组件传值给子组件:通过类似于属性绑定的方式，将需要传入子组件中的数据，绑定在子组件上，子组件通过props接收传入进来的数据。<br>父组件中可以给子组件传入一个静态的值：</p>
 </blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">title</span>=<span class="string">"My journey with Vue"</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但一般我们都是需要传动态的值，所以需要v-bind绑定：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:title</span>=<span class="string">"post.title"</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line">//也可以写成</span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">:title</span>=<span class="string">"post.title+'by'+post.author.name"</span>&gt;</span><span class="tag">&lt;<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>子组件要显式的用props选项声明它预期的数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 某个子组件中：</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">'hello world'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件传值给父组件<br>通过事件派发的方式传值给父组件，或者告知父组件需要调用方法。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件在组件上定义了一个自定义事件childFn，事件名为parentFn用于接受子组件传过来的message值：</span></span><br><span class="line">&lt;!-- 父组件 --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"test"</span>&gt;</span><br><span class="line">      &lt;test-com @childFn=<span class="string">"parentFn"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">test-com</span>&gt;</span></span></span><br><span class="line">      &lt;br/&gt; </span><br><span class="line">      子组件传来的值 : &#123;&#123;message&#125;&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">''</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">       parentFn(payload) &#123;</span><br><span class="line">        <span class="keyword">this</span>.message = payload;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子组件是一个buttton按钮，并为其添加了一个click事件，当点击的时候使用$emit()触发事件，把message传给父组件。</span></span><br><span class="line">&lt;!-- 子组件 --&gt;</span><br><span class="line">&lt;template&gt; </span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"testCom"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"message"</span> /&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"click"</span>&gt;Send&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ...</span></span><br><span class="line"><span class="regexp">    data() &#123;</span></span><br><span class="line"><span class="regexp">        return &#123;</span></span><br><span class="line"><span class="regexp">          /</span><span class="regexp">/ 默认</span></span><br><span class="line"><span class="regexp">          message: '我是来自子组件的消息'</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    methods: &#123;</span></span><br><span class="line"><span class="regexp">      click() &#123;</span></span><br><span class="line"><span class="regexp">            this.$emit('childFn', this.message);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;    </span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="vue路由-路由传参数有哪些方法？项目中传递什么数据用哪种传参？"><a href="#vue路由-路由传参数有哪些方法？项目中传递什么数据用哪种传参？" class="headerlink" title="vue路由  路由传参数有哪些方法？项目中传递什么数据用哪种传参？"></a>vue路由  路由传参数有哪些方法？项目中传递什么数据用哪种传参？</h4><h3 id="一-使用router-link进行路由导航，传递参数"><a href="#一-使用router-link进行路由导航，传递参数" class="headerlink" title="一.使用router-link进行路由导航，传递参数"></a>一.使用router-link进行路由导航，传递参数</h3><blockquote>
+<p>父组件中：使用<router-link to="/需要跳转的路由路径/需要传递的参数"></router-link>标签进行导航</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/child/123"</span>&gt;</span><span class="tag">&lt;<span class="name">el-button</span>&gt;</span>click<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- child是子页面路由路径，123是需要传递的参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中：使用this.$route.params.num来接收路由参数</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">		&#123;&#123;num&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="javascript">	name:<span class="string">'child'</span>,</span></span><br><span class="line">	data:&#123;</span><br><span class="line"><span class="javascript">		<span class="keyword">return</span>&#123;</span></span><br><span class="line">			num:0</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	mounted()&#123;</span><br><span class="line"><span class="javascript">		<span class="keyword">this</span>.num=<span class="keyword">this</span>.$router.params.num  <span class="comment">//123</span></span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 此时，页面上渲染出路由传递过来的参数num，呈现123 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>地址栏中：localhost:8080/#/child/123(在地址栏中显示传递的参数num,即123, ，刷新页面，参数不丢失)</p>
+</blockquote>
+<h3 id="二、直接调用-router-push-实现携带参数的跳转"><a href="#二、直接调用-router-push-实现携带参数的跳转" class="headerlink" title="二、直接调用$router.push 实现携带参数的跳转"></a>二、直接调用$router.push 实现携带参数的跳转</h3><blockquote>
+<p>父组件中：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"itemId in 3"</span> <span class="attr">:key</span>=<span class="string">"itemId"</span> @<span class="attr">click</span>=<span class="string">"toChild(itemId)"</span>&gt;</span>&#123;&#123;itemId&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="javascript">	name:<span class="string">"home"</span>,</span></span><br><span class="line">	data()&#123;</span><br><span class="line"><span class="javascript">		<span class="keyword">return</span>&#123;&#125;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		toChild(id)&#123;</span><br><span class="line"><span class="javascript">			<span class="keyword">this</span>.$router.push(&#123;</span></span><br><span class="line"><span class="javascript">				path:<span class="string">`/child/<span class="subst">$&#123;id&#125;</span>`</span></span></span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 模板渲染中调用函数，传递参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">	&#123;&#123;this.$router.params.id&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 仍然使用 this.$route.params.id  获取参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路由配置文件中：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	path:&apos;/child/:id&apos;,</span><br><span class="line">	name:&apos;child&apos;,</span><br><span class="line">	component:Child</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>id用来为参数占位,在地址栏中显示传递的参数id, 刷新页面，参数不丢失</p>
+<h3 id="三、通过路由属性中的name来确定匹配的路由，通过params来传递参数"><a href="#三、通过路由属性中的name来确定匹配的路由，通过params来传递参数" class="headerlink" title="三、通过路由属性中的name来确定匹配的路由，通过params来传递参数"></a>三、通过路由属性中的name来确定匹配的路由，通过params来传递参数</h3><blockquote>
+<p>父组件中:</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-col</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"toChild"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="javascript">	name:<span class="string">'home'</span>,</span></span><br><span class="line">	data()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		toChild()&#123;</span><br><span class="line"><span class="javascript">			<span class="keyword">this</span>.$router.push(&#123;</span></span><br><span class="line"><span class="javascript">				name:<span class="string">'childView'</span>,</span></span><br><span class="line">				params:&#123;</span><br><span class="line">					id:1</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用name来匹配路由 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">	&#123;&#123;this.$route.params.id&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 依然使用 this.$route.params.id  接收参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路由配置文件中：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	path:<span class="string">'/child'</span>,</span><br><span class="line">	name:<span class="string">'childView'</span>,</span><br><span class="line">	component:Child</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用name匹配</span></span><br></pre></td></tr></table></figure>
+
+<p>地址栏中：localhost:8080/#/child(地址栏中不显示参数，刷新页面，参数丢失)</p>
+<h3 id="使用path来匹配路由，然后通过query来传递参数，这种情况下-query传递的参数会显示在url后面-id-？"><a href="#使用path来匹配路由，然后通过query来传递参数，这种情况下-query传递的参数会显示在url后面-id-？" class="headerlink" title="使用path来匹配路由，然后通过query来传递参数，这种情况下 query传递的参数会显示在url后面?id=？"></a>使用path来匹配路由，然后通过query来传递参数，这种情况下 query传递的参数会显示在url后面?id=？</h3><blockquote>
+<p>父组件中：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-col</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"toChild"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="javascript">	name:<span class="string">'home'</span>,</span></span><br><span class="line">	data()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		toChild()&#123;</span><br><span class="line"><span class="javascript">			<span class="keyword">this</span>.$router.push(&#123;</span></span><br><span class="line"><span class="javascript">				path:<span class="string">'/child'</span>,</span></span><br><span class="line">				query:&#123;</span><br><span class="line">					id:1</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用query来传递参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">	&#123;&#123;this.$route.query.id&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用 this.$route.query.id来接收参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路由配置文件中：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	path:<span class="string">'/child'</span>,</span><br><span class="line">	name:<span class="string">'child'</span>,</span><br><span class="line">	component:Child</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>地址栏中：localhost:8080/#/child?id=1(参数显示在地址栏中，刷新页面参数不丢失)</p>
+<p>****这里要特别注意 ：在子组件中 获取参数的时候是$route.params 而不是$router ，这很重要<del>~</del></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>1、 this.$router.push进行编程式路由跳转</p>
+<p>2、 router-link 进行页面按钮式路由跳转</p>
+<p>3、 this.$route.params获取路由传递参数</p>
+<p>4、this.$route.query获取路由传递参数</p>
+<p>5、 params 和 query 都是传递参数的，params不会在url上面出现，并且params参数是路由的一部分，是一定要存在的 query则是我们通常看到的url后面的跟在？后面的显示参数</p>
 	
 	</div>
 	
@@ -391,6 +476,31 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2018/09/03/vue关于路由/" title="vue路由知识点">
+								vue路由知识点			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 3日, 2018				
+							</p>
+							<p class="relate-post-content">
+								路由用什么模式？hash跟history区别，怎么转换？
+
+
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2018/09/03/vue关于路由/" title="vue路由知识点">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-655676.png" alt="vue路由知识点"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -623,30 +733,6 @@ join()（原数组不变）
 							<a href="/2017/12/07/javascript基础（七）/" title="javascript之关于拷贝">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/《小女儿月牙儿, 和她的痛车》鬼刀4k壁纸_彼岸图网.jpg" alt="javascript之关于拷贝"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/06/javascript基础（六）/" title="javascript之ajax">
-								javascript之ajax			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十二月 6日, 2017				
-							</p>
-							<p class="relate-post-content">
-								ajax的底层交互原理以及ajax的简单封装
-AJAX即“Asyn Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。A...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/12/06/javascript基础（六）/" title="javascript之ajax">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.png" alt="javascript之ajax"/>
 							</a>
 						</div>
 					</li>											
