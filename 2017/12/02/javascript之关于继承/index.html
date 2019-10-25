@@ -1,0 +1,1072 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+<!DOCTYPE html>
+<html class="html-loading">
+		
+
+<head><meta name="generator" content="Hexo 3.9.0">
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>
+    
+      javascript之关于继承 | Pononpa
+    
+  </title>
+  <meta name="author" content="ponponpa">
+  <meta name="keywords" content>
+  <meta name="description" content>
+	<!-- favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/Annie.css">
+  
+  <!-- jquery -->
+	<script src="/js/jquery.min.js"></script>
+
+  <!-- leancloud -->
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script src="/js/leancloud.js"></script>
+</head>
+	<body>
+		<!-- Preloader -->
+
+	<div id="preloader">
+		<div class="pre-container">
+			
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+						
+		</div>
+	</div>
+
+
+<!-- header -->
+<header class="fixbackground" data-img-mode="random" data-normal-src="/img/1.jpg" data-random-max="110" data-random-src="https://ponponpa.github.io/Random-img/">
+	<div class="mask">
+		<!-- Logo and navigation -->
+		<div class="h-header">
+			<div id="logo">
+				<a href="/">
+						
+						<img src="/img/logo.png" alt="Logo">
+					
+				</a>
+			</div>
+			
+			<div id="navigation-show">
+				<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+			</div>				
+		</div>
+
+		<!-- motto -->
+		<div class="h-body">	
+			
+				<p class="motto"></p>
+			
+		</div>
+		
+		<!-- others: such as time... -->			
+		<div class="h-footer">
+			<a href="javascript:;" id="read-more"><i class="fa fa-angle-double-down" aria-hidden="true"></i>
+			</a>
+
+			
+				<!-- 
+	This is only a demo, please go to "https://time.is" to set your city time! 
+-->
+<style type="text/css">
+	.header-date {
+		font-size: 1.6rem;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		right: 1rem;
+		writing-mode: tb-rl;
+	}	
+	
+	.header-date a {
+		border-bottom: none;
+	}
+
+	@media only screen and (max-width: 768 ) {
+		.header-date {
+			font-size: 1rem;
+		}			
+	}
+</style>
+<div class="header-date">
+	<a href="https://time.is/Beijing" id="time_is_link" rel="nofollow" ></a>
+	<span id="Beijing_z43d"></span>
+</div>
+<script src="//widget.time.is/zh.js"></script>
+<script>
+	time_is_widget.init({
+		Beijing_z43d:{
+			template:"DATE", 
+			date_format:"year年 monthname dnum日"
+		}
+	});
+</script>
+			
+		</div>
+	</div>
+</header>
+
+<div id="navigation-hide">
+	<!-- Progress bar -->
+	<div id="progress-bar"></div>
+
+	<!-- Progress percent -->
+	<div id="progress-percentage"><h1>0.0%</h1></div>
+
+	<div class="toc-switch"><span class="switch-button">目录</span></div>
+
+	<!-- Page title -->
+	<p>
+		
+			当前文章&nbsp;:&nbsp;《javascript之关于继承》
+		
+	</p>
+
+	<!-- Nav trigger for navigation-H-->
+	<a class="nav-trigger"><span></span></a>
+</div>
+
+<!-- Navigation in div(id="navigation-H") -->
+<nav class="nav-container" id="cd-nav">
+	<div class="nav-header">
+		<h3>Navigation</h3>
+		<a href="javascript:;" class="nav-close"></a>
+	</div>
+	<div class="nav-body">
+		<ul>
+	
+		<li class="menu-home">
+			<a href="/" class="menu-item-home">主页</a>
+		</li>
+	
+		<li class="menu-archive">
+			<a href="/archives" class="menu-item-archive">归档</a>
+		</li>
+	
+		<li class="menu-categories">
+			<a href="/categories" class="menu-item-categories">分类</a>
+		</li>
+	
+		<li class="menu-tags">
+			<a href="/tags" class="menu-item-tags">标签</a>
+		</li>
+	
+		<li class="menu-about">
+			<a href="/about" class="menu-item-about">关于</a>
+		</li>
+	
+		<li class="menu-gallery">
+			<a href="/gallery" class="menu-item-gallery">相册</a>
+		</li>
+	
+
+	
+		<li class="menu-search">
+			<a href="javascript:;" class="popup-trigger">搜索</a>
+		</li>
+	
+</ul>
+	</div>
+	<div class="nav-footer">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+</nav>
+			
+		<!--main-->
+		<main>
+			<!--
+	时间：2018-11-17
+	描述：
+		插件名称：katelog.min.js
+		插件作者：KELEN
+		插件来源: https://github.com/KELEN/katelog
+-->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
+	 
+
+<div class="layout-post">
+	<div id="layout-post">
+	<div class="article-title">
+		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+		
+	<a href="/2017/12/02/javascript之关于继承/" itemprop="url">
+		javascript之关于继承
+	</a>
+
+	</div>
+
+	<div class="article-meta">
+		<span>
+			<i class="fa fa-calendar"></i>
+			
+
+
+	发布于
+
+	<a href="/2017/12/02/javascript之关于继承/" itemprop="url">
+		<time datetime="2017-12-01T16:00:00.000Z" itemprop="datePublished">
+	  		2017-12-02
+	  </time>
+	</a>
+	&nbsp;
+
+
+
+
+
+			
+
+
+
+
+	更新于
+
+	<a href="/2017/12/02/javascript之关于继承/" itemprop="url">
+		<time datetime="2017-12-01T16:00:00.000Z" itemprop="dateUpdated">
+	  		2019-09-21
+	  </time>
+	</a> 
+
+
+
+		</span>
+		<span>
+			<i class="fa fa-tags"></i>
+			
+	
+		<a href="/tags/JS/" class=" ">
+			JS
+		</a>
+	
+		<a href="/tags/继承/" class=" ">
+			继承
+		</a>
+	
+		
+		</span>
+		
+		
+
+
+
+	</div>
+
+	<div class="article-content" id="article-content">
+		<h1 id="继承-－-原型，原型连，es6继承-，call，apply"><a href="#继承-－-原型，原型连，es6继承-，call，apply" class="headerlink" title="继承 － 原型，原型连，es6继承 ，call，apply"></a>继承 － 原型，原型连，es6继承 ，call，apply</h1><h3 id="属性拷贝"><a href="#属性拷贝" class="headerlink" title="属性拷贝"></a>属性拷贝</h3><p>就是将对象的成员复制一份给需要继承的对象<br>// 创建父对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> superObj = &#123;</span><br><span class="line">  name: <span class="string">'Li'</span>,</span><br><span class="line">  age: <span class="number">25</span>,</span><br><span class="line">  friends: [<span class="string">'小明'</span>, <span class="string">'小李'</span>, <span class="string">'小赵'</span>],</span><br><span class="line">  showName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建需要继承的子对象</span></span><br><span class="line"><span class="keyword">var</span> subObj = &#123;&#125;;</span><br><span class="line"><span class="comment">// 开始拷贝属性(使用for...in...循环)</span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i <span class="keyword">in</span> superObj )&#123;</span><br><span class="line">  subObj[i] = superObj[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(subObj)</span><br><span class="line"><span class="built_in">console</span>.log(superObj)</span><br></pre></td></tr></table></figure>
+
+<p>存在问题：<br>如果继承过来的成员是引用类型的话,<br>那么这个引用类型的成员在父对象和子对象之间是共享的,<br>也就是说修改了之后, 父子对象都会受到影响.</p>
+<h3 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h3><p>借用构造函数的原型对象实现继承</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建父构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperClass</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置父构造器的原型对象</span></span><br><span class="line">SuperClass.prototype.showAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建子构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置子构造函数的原型对象实现继承</span></span><br><span class="line">SubClass.prototype = SuperClass.prototype;</span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> SubClass()</span><br></pre></td></tr></table></figure>
+
+<p>问题：<br>父构造函数的原型对象和子构造函数的原型对象上的成员有共享问题<br>只能继承父构造函数的原型对象上的成员, 不能继承父构造函数的实例对象的成员</p>
+<h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><p>即 子构造函数.prototype = new 父构造函数()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建父构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'liyajie'</span>;</span><br><span class="line">    <span class="keyword">this</span>.age = <span class="number">25</span>;</span><br><span class="line">    <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置父构造函数的原型</span></span><br><span class="line">SuperClass.prototype.friends = [<span class="string">'小名'</span>, <span class="string">'小强'</span>];</span><br><span class="line">SuperClass.prototype.showAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建子构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubClass</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实现继承</span></span><br><span class="line">SubClass.prototype = <span class="keyword">new</span> SuperClass();</span><br><span class="line"><span class="comment">// 修改子构造函数的原型的构造器属性</span></span><br><span class="line">SubClass.prototype.constructor = SubClass;</span><br><span class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> SubClass();</span><br><span class="line"><span class="built_in">console</span>.log(child.name); <span class="comment">// liyajie</span></span><br><span class="line"><span class="built_in">console</span>.log(child.age);<span class="comment">// 25</span></span><br><span class="line">child.showName();<span class="comment">// liyajie</span></span><br><span class="line">child.showAge();<span class="comment">// 25</span></span><br><span class="line"><span class="built_in">console</span>.log(child.friends); <span class="comment">// ['小名','小强']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当我们改变friends的时候, 父构造函数的原型对象的也会变化</span></span><br><span class="line">child.friends.push(<span class="string">'小王八'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(child.friends);[<span class="string">"小名"</span>, <span class="string">"小强"</span>, <span class="string">"小王八"</span>]</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> SuperClass();</span><br><span class="line"><span class="built_in">console</span>.log(father.friends);[<span class="string">"小名"</span>, <span class="string">"小强"</span>, <span class="string">"小王八"</span>]</span><br></pre></td></tr></table></figure>
+
+<p>问题：<br>不能给父构造函数传递参数，父子构造函数的原型对象之间有共享问题</p>
+<h3 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h3><p>使用call和apply借用其他构造函数的成员, 可以解决给父构造函数传递参数的问题, 但是获取不到父构造函数原型上的成员.也不存在共享问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建父构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.freinds = [<span class="string">'小王'</span>, <span class="string">'小强'</span>];</span><br><span class="line">  <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建子构造函数</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 使用call借用Person的构造函数</span></span><br><span class="line">  Person.call(<span class="keyword">this</span>, name);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// 测试是否有了 Person 的成员</span></span><br><span class="line"> <span class="keyword">var</span> stu = <span class="keyword">new</span> Student(<span class="string">'Li'</span>);</span><br><span class="line"> stu.showName(); <span class="comment">// Li</span></span><br><span class="line"> <span class="built_in">console</span>.log(stu.friends); <span class="comment">// ['小王','小强']</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ES6对比"><a href="#ES6对比" class="headerlink" title="ES6对比"></a>ES6对比</h3> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;  <span class="comment">// 父类</span></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubPerson</span>(<span class="params">name,job</span>)</span>&#123;  <span class="comment">// 子类</span></span><br><span class="line">    Person.call(<span class="keyword">this</span>,name);  <span class="comment">// 子类继承父类的属性 需要将this指向父类中的name</span></span><br><span class="line">    <span class="keyword">this</span>.job = job;  <span class="comment">// job是子类自己的属性</span></span><br><span class="line">&#125;</span><br><span class="line">SubPerson.prototype = <span class="keyword">new</span> Person();  <span class="comment">// 子类继承父类的方法</span></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> SubPerson(<span class="string">'ponponpa'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.name);  <span class="comment">// ponponpa</span></span><br><span class="line"><span class="comment">// console.log(p1.showName());  // ponponpa</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    showName()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubPerson</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name,job)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);    <span class="comment">// 指向父类的构造函数</span></span><br><span class="line">        <span class="keyword">this</span>.job = job;</span><br><span class="line">    &#125;</span><br><span class="line">    showJob()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.job;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> SubPerson(<span class="string">'ponponpa'</span>,<span class="string">'前端开发'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.name);  <span class="comment">// ponponpa</span></span><br><span class="line"><span class="comment">// console.log(p1.showName());  // ponponpa</span></span><br><span class="line"><span class="comment">// console.log(p1.job); // 前端开发</span></span><br></pre></td></tr></table></figure>
+
+<p>extends就代表这继承的意思，super就是指向父类的构造函数，指代了整个prototype对象或者_proto_指针指向的对象，</p>
+<h3 id="call-apply-bind"><a href="#call-apply-bind" class="headerlink" title="call(),apply(),bind()"></a>call(),apply(),bind()</h3><p>简单来说：</p>
+<ul>
+<li><blockquote>
+<p>bind</p>
+<blockquote>
+<p>bind(context,arguments) 返回一个函数</p>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<p>call</p>
+<blockquote>
+<p>call(context,arg1,arg2…) 指定作用域 同时执行函数</p>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<p>apply</p>
+<blockquote>
+<p>apply(context,args) 指定作用域 同时执行函数，后面的参数是数组<br>bind的实现</p>
+</blockquote>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myBind(context,...args)&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">this</span>.apply(context,args)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<p><strong>call和apply都是为了解决改变this的指向。作用都是相同的，只是传参的方式不同.</strong><br><strong>除了第一个参数外，call可以接收一个参数列表，apply只接受一个参数数组。 bind绑定完之后返回一个新的函数，不执行。</strong><br>底层原理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span> (<span class="params">context = window</span>) </span>&#123;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> args = [...arguments].slice(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> result = context.fn(...args);</span><br><span class="line">  <span class="comment">// 执行完后干掉</span></span><br><span class="line">  <span class="keyword">delete</span> context.fn;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span> (<span class="params">context = window</span>) </span>&#123;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> result</span><br><span class="line">  <span class="comment">// 判断 arguments[1] 是不是 undefined</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">arguments</span>[<span class="number">1</span>]) &#123;</span><br><span class="line">    result = context.fn(...arguments[<span class="number">1</span>])</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    result = context.fn()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">delete</span> context.fn</span><br><span class="line">  <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  <span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span> !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Error'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">var</span> args = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line">  <span class="comment">// 返回一个函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 因为返回了一个函数，我们可以 new F()，所以需要判断</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> F) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> _this(...args, ...arguments)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _this.apply(context, args.concat(...arguments))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+	
+	<div id="current-post-cover" data-scr="/img/10.jpg"></div>
+
+	<!-- relate post, comment...-->
+	<div class="investment-container">
+		<div class="investment-header">
+			<div class="investment-title-1">
+				<div class="on">相关文章</div>
+				<div>评论</div>
+				<div>分享</div>
+			</div>
+			<div class="investment-title-2">	            
+				
+	<span>
+		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2017/12/03/javascript之关于闭包/" title="javascript之关于闭包" rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2017/12/01/javascript之面向对象及对象的创建/" title="javascript之面向对象及对象的创建" rel="next">
+				下一篇&raquo;
+			</a>
+			
+	</span>
+
+
+      		
+			</div>	
+		</div>
+		
+		<div class="investment-content">
+			<div class="investment-content-list">
+				
+
+<div class="relate-post">
+	
+		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/08/javascript之常用数组/" title="javascript之常用数组">
+								javascript之常用数组			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 8日, 2017				
+							</p>
+							<p class="relate-post-content">
+								数组方法总结：
+总结一下 JavaScript 中数组 Array 常用的一些方法：
+
+创建数组
+12var arr = []var arr = new Array()
+
+join()（原数组不变）
+
+
+数组 -&gt; 字符串，默认...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/08/javascript之常用数组/" title="javascript之常用数组">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-4332.png" alt="javascript之常用数组"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/07/javascript之关于拷贝/" title="javascript之关于拷贝">
+								javascript之关于拷贝			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 7日, 2017				
+							</p>
+							<p class="relate-post-content">
+								深拷贝与浅拷贝以及实现方式浅拷贝
+浅拷贝将原对象或原数组的引用直接赋给新对象，新数组，新对象／数组只是原对象的一个引用（拷贝后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响）
+
+深拷贝
+深拷贝是将原对象的各个属性的“值”逐个...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/07/javascript之关于拷贝/" title="javascript之关于拷贝">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/《小女儿月牙儿, 和她的痛车》鬼刀4k壁纸_彼岸图网.jpg" alt="javascript之关于拷贝"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/06/javascript之ajax/" title="javascript之ajax">
+								javascript之ajax			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 6日, 2017				
+							</p>
+							<p class="relate-post-content">
+								ajax的底层交互原理以及ajax的简单封装
+AJAX即“Asyn Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。A...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/06/javascript之ajax/" title="javascript之ajax">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.png" alt="javascript之ajax"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/05/javascript之promise/" title="javascript之promise">
+								javascript之promise			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 5日, 2017				
+							</p>
+							<p class="relate-post-content">
+								promise,你必须知道这些东西首先，要想知道promise是怎么用的，我们要知道为什么会有promise的出现，
+在实际的使用当中，有非常多的应用场景我们不能立即知道应该如何继续往下执行。最重要也是最主要的一个场景就是ajax请求...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/05/javascript之promise/" title="javascript之promise">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.jpg" alt="javascript之promise"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/04/javascript之es6新增/" title="javascript之es6新增">
+								javascript之es6新增			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 4日, 2017				
+							</p>
+							<p class="relate-post-content">
+								ES6常用的新增技术
+this的指向性首先我们需要得出一个非常重要一定要牢记于心的结论，this的指向，是在函数被调用的时候确定的。也就是执行上下文被创建时确定的。因此，一个函数中的this指向，可以是非常灵活的。比如下面的例子中，同...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/04/javascript之es6新增/" title="javascript之es6新增">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/8.jpg" alt="javascript之es6新增"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/03/javascript之关于闭包/" title="javascript之关于闭包">
+								javascript之关于闭包			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 3日, 2017				
+							</p>
+							<p class="relate-post-content">
+								闭包当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。
+需要明确的几点：
+
+闭包一定是函数对象 wintercn大大的闭包考证  
+闭包和词法作用...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/03/javascript之关于闭包/" title="javascript之关于闭包">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/2.jpg" alt="javascript之关于闭包"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2017/12/01/javascript之面向对象及对象的创建/" title="javascript之面向对象及对象的创建">
+								javascript之面向对象及对象的创建			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十二月 1日, 2017				
+							</p>
+							<p class="relate-post-content">
+								面向对象&amp;面向过程
+面向过程总结:面向过程是一种自上向下的编程。面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2017/12/01/javascript之面向对象及对象的创建/" title="javascript之面向对象及对象的创建">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/3.png" alt="javascript之面向对象及对象的创建"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/10/25/面试鸡汤/" title="关于面试的二三事">
+								关于面试的二三事			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十月 25日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/10/25/面试鸡汤/" title="关于面试的二三事">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-29348.jpg" alt="关于面试的二三事"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/08/react路由/" title="react 路由">
+								react 路由			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 8日, 2019				
+							</p>
+							<p class="relate-post-content">
+								创建React环境npm install -g create-react-app 全局环境create-react-app my-app  创建项目
+cd my-app 进入项目npm start  启动
+什么是路由？        ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/08/react路由/" title="react 路由">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/101.jpg" alt="react 路由"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/05/关于Flux,Vuex,Redux的思考/" title="关于Flux,Vuex,Redux的思考">
+								关于Flux,Vuex,Redux的思考			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 5日, 2019				
+							</p>
+							<p class="relate-post-content">
+								数据管理工具Flux、Redux、Vuex的区别:为什么要进行数据管理？
+组件式开发的核心思路是MVC，Model层的数据发生变化，驱动View层的视图发生变化。试想一个场景，如果ModelA触发ModelB变化，导致ViewB发生变...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/05/关于Flux,Vuex,Redux的思考/" title="关于Flux,Vuex,Redux的思考">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/10-10.jpg" alt="关于Flux,Vuex,Redux的思考"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+		</ul>
+	
+</div>	
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-comment">
+
+	
+
+		
+
+			<!-- I don't know !!!-->
+			<div>Please check the comment setting in config.yml of hexo-theme-Annie!</div>
+			
+		
+		
+	
+
+</div>
+			</div>
+			<div class="investment-content-list">
+				<div class="layout-share">
+	
+	
+
+		
+			
+			<!-- socialShare share -->
+			<div class="social-share"></div>
+
+<!--  css & js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+			
+		
+		
+	
+</div>
+
+
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+
+<!-- show math formula -->
+
+
+
+	 
+	<script src="/plugin/clipboard/clipboard.js"></script>
+	<script>
+		// Copy code !
+	    function codePreprocessing() {
+	        $("#article-content .highlight").each(function() {
+
+	            $(this).wrap('<div id="post-code"></div>');
+
+	        })
+
+	        $("#article-content #post-code").each(function() {
+
+	            $(this).prepend('<nav class="copy-nav"><span><i class="code-language"></i></span></nav>');
+
+	        })
+
+	        $("#article-content .copy-nav").each(function() {
+	            var temp = $(this).next().attr('class'),
+	                language = ((temp.length > 9) && (temp != null)) ? temp.substr(10) : "none"; //why 9? Need to check language?
+
+	            $(this).find('.code-language').text(language);
+
+	            $(this).append('<span class="copy-btn"><i class="fa fa-copy" aria-hidden="true"></i></span>');
+
+	        });
+	    }
+
+		function codeCopy() {
+		    $('#article-content #post-code').each(function(i) {
+		        var codeCopyId = 'codeCopy-' + i;
+
+		        var codeNode = $(this).find('.code'),
+		            copyButton = $(this).find('.copy-btn');
+
+		        codeNode.attr('id', codeCopyId);
+		        copyButton.attr('data-clipboard-target-id', codeCopyId);
+		    })
+
+		    
+			var clipboard = new ClipboardJS('.copy-btn', {
+					target: function(trigger) {
+						return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+					}
+		      	});
+
+			//pure js
+			function showTooltip(elem, msg) {		   
+				elem.setAttribute('aria-label', msg);
+				elem.setAttribute('class', 'copy-btn copy-status');
+				setTimeout(function() {
+					elem.setAttribute('class', 'copy-btn');
+				}, 2000);
+			}
+
+			clipboard.on('success', function(e) {
+			    e.clearSelection();
+			    console.info('Action:', e.action);		   
+			    console.info('Trigger:', e.trigger);
+			    showTooltip(e.trigger, 'Copied!');
+			    
+			});
+			clipboard.on('error', function(e) {
+			    console.error('Action:', e.action);
+			    console.error('Trigger:', e.trigger);
+			});
+		
+
+		}
+
+		if ($('.layout-post').length) {
+		    codePreprocessing();
+		    codeCopy();
+		} 
+	</script>
+
+
+
+
+
+<link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+<script src="/plugin/fancybox/jquery.fancybox.js"></script>
+
+<script type="text/javascript">
+	var titleID = $('.article-title a'),
+		imageID = $('.article-content img'),
+		videoID = $('.article-content video');
+
+	var postTitle = titleID.text() ? titleID.text() : "No post title!";
+
+	imageID.each(function() {
+		var imgPath = $(this).attr('src'),
+			imgTitle = $(this).attr('alt') ? $(this).attr('alt') : "No image description!";
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox="gallery" data-caption=" 《 ' + postTitle + ' 》 ' + imgTitle + ' "  href=" ' + imgPath + ' "> </a>');
+	});
+
+	videoID.each(function() {
+		var videoPath = $(this).attr('src');
+
+		//给每个匹配的<img>元素打包, 即添加父元素<a>
+		$(this).wrap('<a data-fancybox href=" ' + videoPath + ' "> </a>');
+	});
+	//TODO：支持html5 video
+
+	if($('#layout-post').length) {
+		$('[data-fancybox="gallery"]').fancybox({
+			loop: true,
+			buttons: [
+				"zoom",
+				"share",
+				"slideShow",
+				"fullScreen",
+				//"download",
+				"thumbs",
+				"close"
+			],
+			protect: false
+		});
+	}
+</script>
+		</main>
+
+		<!--footer-->
+		<footer>
+	<div class="social">
+		<ul>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-weibo"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-instagram"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="http://github.com/" target="_blank">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+	
+		<li>
+			<a href="/atom.xml" target="_blank">
+				<i class="fa fa-rss"></i>
+			</a>
+		</li>
+			
+</ul>
+
+	</div>
+		
+	<div class="copyright">
+		<p>
+			 
+				&copy;2017 - 2019, content by ponponpa. All Rights Reserved.
+			
+			
+			
+
+	<!-- busuanzi -->
+	<!-- busuanzi -->
+
+		
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+
+		<span id="busuanzi_container_page_pv">
+	  		本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+		</span>
+
+	
+
+
+
+
+		</p>
+		<!-- <p>
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> 	
+			<a href="javascript:zh_tran('s');" class="zh_click" id="zh_click_s">简体</a> 
+			<a href="javascript:zh_tran('t');" class="zh_click" id="zh_click_t">繁體</a>				
+		</p> -->
+	</div>		
+</footer>
+		
+	<!-- set '1' to show motto in all pages! -->
+
+	<script src="/plugin/motto/motto.js"></script>
+	
+	<script type="text/javascript">
+		$(".motto").html( getMingYanContent() );
+	</script>	
+
+
+
+
+	<!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup" >
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      		ESC
+   		</span>
+		<div class="local-search-header">
+			<div class="input-prompt">				
+			</div>
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			<div class="topN-post">				
+				
+								
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/plugin/search/ziploader.js"></script>
+<script src="/plugin/search/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
+
+
+<!-- love effect -->
+
+	<script src="/plugin/love/love.js"></script>
+
+
+<!-- back to top -->
+
+	
+	<div id="totop">
+  		<a href="javascript:;"  name="TOTOP" class="fa fa-arrow-up" ></a>
+	</div>
+
+
+
+
+<!-- site analysis -->
+
+
+	<!-- site-analysis -->
+	
+	
+	
+	
+	
+ 
+
+<script src="/plugin/vibrant/vibrant.js"></script>
+<script src="/plugin/chinese/chinese.js"></script>
+<script src="/plugin/imgLazyLoader/yall.min.js"></script>
+<script src="/plugin/imgResize/jquery.resizeimagetoparent.min.js"></script>
+<script src="/plugin/nicescroll/jquery.nicescroll.js"></script>
+<script src="/js/resizediv.js"></script>
+<script src="/js/main.js"></script>
+	</body>	
+</html>
