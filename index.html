@@ -272,8 +272,92 @@
 				<div class="post-title" id="post-title-index">			
 					<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 					
-	<a href="/2019/10/25/面试鸡汤/" itemprop="url">
-		关于面试的二三事
+	<a href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" itemprop="url">
+		面试之从敲入 URL 到浏览器渲染完成
+	</a>
+
+				</div>
+
+				<div class="post-content">
+					
+						大致过程：
+当用户输入url地址，浏览器查询DNS查找对应的请求IP地址
+建立TCP连接
+浏览器向服务器发送http请求，如果服务器返回以301之类的重定向，浏览器根据相应头中的location再次发送请求
+服务器接受请求，处理请求生成html代码，返回浏览器，这时的html页面代码可能是经过压缩的
+浏览器接受服务器响应结果，如果有压缩则首先进行解压处理，紧接着就是页面解析渲染
+解析过程分为：解析HTML，构建DOM树，DON树与CSS样式进行附着构造呈现树，布局，绘制
+
+详细过程：
+下面让我们扒下各个过程细节的外衣，坦诚相见吧
+###1. 输入地址浏览器引入了 DNS 预取技术。它是利...
+					
+				</div>
+				
+				<div class="post-meta">
+					<span>
+						发布于
+						<i>
+							
+
+
+
+
+
+
+	<a href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" itemprop="url">
+		<time datetime="2019-11-13T03:36:53.108Z" itemprop="datePublished">
+	  		2019-11-13
+	  </time>
+	</a> 
+
+						</i>
+					</span>
+					
+					
+
+
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+	
+
+					
+						<span class="right">      	
+							<a href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" title="阅读全文">阅读全文</a>	
+						</span>
+					
+				</div>
+			</div>
+		</div>
+	
+		<div class="post" id="post">
+			<div class="post-text">
+				<div class="post-title" id="post-title-index">			
+					<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+					
+	<a href="/2019/10/25/面试之跨域问题/" itemprop="url">
+		面试之跨域
 	</a>
 
 				</div>
@@ -298,7 +382,7 @@
 
 
 
-	<a href="/2019/10/25/面试鸡汤/" itemprop="url">
+	<a href="/2019/10/25/面试之跨域问题/" itemprop="url">
 		<time datetime="2019-10-25T06:31:38.330Z" itemprop="datePublished">
 	  		2019-10-25
 	  </time>
@@ -337,7 +421,7 @@
 
 					
 						<span class="right">      	
-							<a href="/2019/10/25/面试鸡汤/" title="阅读全文">阅读全文</a>	
+							<a href="/2019/10/25/面试之跨域问题/" title="阅读全文">阅读全文</a>	
 						</span>
 					
 				</div>
@@ -977,85 +1061,6 @@ histo...
 					
 						<span class="right">      	
 							<a href="/2018/08/03/vue中的各种传值传参问题/" title="阅读全文">阅读全文</a>	
-						</span>
-					
-				</div>
-			</div>
-		</div>
-	
-		<div class="post" id="post">
-			<div class="post-text">
-				<div class="post-title" id="post-title-index">			
-					<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-					
-	<a href="/2018/08/01/vue底层原理/" itemprop="url">
-		vue中的底层原理
-	</a>
-
-				</div>
-
-				<div class="post-content">
-					
-						vue实现双向绑定原理
-原理vue数据双向绑定通过‘数据劫持’ + 订阅发布模式实现
-数据劫持指的是在访问或者修改对象的某个属性时，通过一段代码拦截这个行为，进行额外的操作或者修改返回结果
-典型的有1.Object.defineProperty()2.es6中Proxy对象
-订阅发布模式定义：对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知订阅发布模式中事件统一由处理中心处理，订阅者发布者互不干扰。优点：实现更多的控制，做权限处理，节流控制之类，例如：发布了很多消息，但是不是所有订阅者都要接收
-123456789101112131415161718...
-					
-				</div>
-				
-				<div class="post-meta">
-					<span>
-						发布于
-						<i>
-							
-
-
-
-
-
-
-	<a href="/2018/08/01/vue底层原理/" itemprop="url">
-		<time datetime="2018-07-31T16:00:00.000Z" itemprop="datePublished">
-	  		2018-08-01
-	  </time>
-	</a> 
-
-						</i>
-					</span>
-					
-					
-
-
-
-					
-
-	<!-- leancloud -->
-	<!--
-	时间：2018-11-27
-	描述：
-		文章访问量：visitors
-		文章喜欢量：likes	
-		文章排行榜：topNPost
-		其他得说明：
-			01-Cookie相关的函数 
-				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
-			02-visitors相关的函数 
-				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
-				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
-			03-topNPost相关的函数
-				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
-			04-likes相关的函数，
-				参考了01 & 02进行简单的设计与实现
--->
-
-
-	
-
-					
-						<span class="right">      	
-							<a href="/2018/08/01/vue底层原理/" title="阅读全文">阅读全文</a>	
 						</span>
 					
 				</div>

@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      react 路由 | Pononpa
+      面试之跨域 | Pononpa
     
   </title>
   <meta name="author" content="ponponpa">
@@ -164,7 +164,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《react 路由》
+			当前文章&nbsp;:&nbsp;《面试之跨域》
 		
 	</p>
 
@@ -273,8 +273,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/09/08/react路由/" itemprop="url">
-		react 路由
+	<a href="/2019/10/25/面试之跨域问题/" itemprop="url">
+		面试之跨域
 	</a>
 
 	</div>
@@ -287,9 +287,9 @@
 
 	发布于
 
-	<a href="/2019/09/08/react路由/" itemprop="url">
-		<time datetime="2019-09-08T10:33:35.201Z" itemprop="datePublished">
-	  		2019-09-08
+	<a href="/2019/10/25/面试之跨域问题/" itemprop="url">
+		<time datetime="2019-10-25T06:31:38.330Z" itemprop="datePublished">
+	  		2019-10-25
 	  </time>
 	</a>
 	&nbsp;
@@ -305,9 +305,9 @@
 
 	更新于
 
-	<a href="/2019/09/08/react路由/" itemprop="url">
-		<time datetime="2019-09-08T10:33:35.201Z" itemprop="dateUpdated">
-	  		2019-09-23
+	<a href="/2019/10/25/面试之跨域问题/" itemprop="url">
+		<time datetime="2019-10-25T06:31:38.330Z" itemprop="dateUpdated">
+	  		2019-11-13
 	  </time>
 	</a> 
 
@@ -316,17 +316,7 @@
 		</span>
 		<span>
 			<i class="fa fa-tags"></i>
-			
-	
-		<a href="/tags/React/" class=" ">
-			React
-		</a>
-	
-		<a href="/tags/路由/" class=" ">
-			路由
-		</a>
-	
-		
+					
 		</span>
 		
 		
@@ -336,41 +326,30 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>创建React环境<br>npm install -g create-react-app 全局环境<br>create-react-app my-app  创建项目</p>
-<p>cd my-app 进入项目<br>npm start  启动</p>
-<p><code>什么是路由？</code><br>        路由是根据不同的 url 地址展示不同的内容或页面。</p>
-<p><code>React Router</code><br>        一个针对React而设计的路由解决方案、可以友好的帮你解决React components 到URl之间的同步映射关系。</p>
-<p>安装依赖   使用2.8.1版本的依赖<br>低版本依赖  npm i react@15 react-dom@15 react-router@2 axios –save-dev<br>npm install <a href="mailto:react-router@2.8.1" target="_blank" rel="noopener">react-router@2.8.1</a> -D<br>配合 react/react-dom  15.6.1版本使用</p>
-<p>import React from ‘react’<br>import ReactDOM from ‘react-dom’<br>import { Router, Route, Link, hashHistory} from ‘react-router’<br>react-router中定义了history这个属性 用于方便管理路由的方向 browserHistory／ hashHistory</p>
-<p><code>定义连接组件</code><br>定义链接的组件，类似于a标签。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link   to=“/users&gt;users&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">&#123;this.props.children&#125;＝＝相当于路由试图的容器</span></span><br></pre></td></tr></table></figure>
+		<p>跨域问题：<br>在前端调试的时候，跨域一直都是一个比较麻烦的问题，这个在之前的文章 关于跨域问题的一个解决方法 中其实已经讨论了一些可以使用的方法。</p>
+<p>如果要使用 JSONP，第一是需要修改的地方比较多，而且也不太符合前端发展的大趋势，如果使用 CORS 的话并没有 application/json 类型。而且更重要的是这只是在前端调试时候的需求，并不是在上线以后的需求，所以对后端有太多的入侵也不好。</p>
+<p>所以就有一个念想突然在大脑中闪过——加入有一个代理不就可以解决这个问题了？但是又想了一下写起来还挺麻烦，于是就被搁置了。</p>
+<p>直到前几天 Stone 提到其实 webpack-dev-server 早就想到并且已经帮我们实现了。</p>
+<p>于是，我就在一个 Vue 项目中进行测试，发现真的很赞，既可以本地 Server 热加载，还可以直接跨域调用远程 API，完美解决了之前遇到的所有问题。</p>
+<p>接下来我简要介绍一下步骤（以一个 Vue 脚手架建立的 webpack 项目为例）：</p>
+<p>首先检查 build/webpack.dev.conf.js 中是否有</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy: config.dev.proxyTable,</span><br></pre></td></tr></table></figure>
 
-<p><code>导航标签应用</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引一下导航标签</span></span><br><span class="line"><span class="keyword">import</span> &#123;Link&#125; <span class="keyword">from</span> <span class="string">"react-router"</span></span><br><span class="line">&lt;Link to=<span class="string">"/home"</span>&gt;首页&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Link to="/</span>about<span class="string">"&gt;关于&lt;/Link&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个配置项，如果被注释掉，请打开注释，如果没有，请加入到 devServer 对象中</p>
+<p>然后在 config/index.js 中的 dev 对象中加入 proxyTable 配置项：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">   <span class="string">'/**'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://api.xxx.com'</span>,</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,</span><br><span class="line">    secure: <span class="literal">false</span></span><br><span class="line">   &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
 
-<p>``导入路由和规则`</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入路由对象，和规则,</span></span><br><span class="line"><span class="keyword">import</span> &#123;Router,Route,hashHistory&#125; <span class="keyword">from</span> <span class="string">"react-router"</span></span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">"./views/Home"</span></span><br><span class="line"><span class="keyword">import</span> About <span class="keyword">from</span> <span class="string">"./views/About"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在router定义路由规则,代表当前整个路由对象，使用hash模式的路由.</span></span><br><span class="line"><span class="comment">// 每个route上面，有一个path,代表路由规则的路径，不需要嵌套的时候，</span></span><br><span class="line"><span class="comment">// 写单标签就可以，嵌套的时候写双标签</span></span><br><span class="line">ReactDOM.render(&lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">    &lt;Route path="/" component=&#123;App&#125;&gt;</span><br><span class="line">        &lt;Route path="/home" component=&#123;Home&#125;/&gt;</span><br><span class="line">        &lt;Route path="/about" component=&#123;About&#125;/&gt;</span><br><span class="line">&lt;/Route&gt;</span><br></pre></td></tr></table></figure>
+<p>前面的键 /** 意思是代理所有请求，如果代理某些请求，可以将其改为诸如 /api 之类的字符串。</p>
+<p>后面的 target 就是要代理到的网站，changeOrigin 的意思就是把 http 请求中的 Origin 字段进行变换，在浏览器接收到后端回复的时候，浏览器会以为这是本地请求，而在后端那边会以为是在站内的调用。</p>
+<p>这样，通过这个简单的配置，就完美地解决了跨域的问题。</p>
+<p>之后，在直接运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 
-<p><code>重定向的基本配置</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">    &lt;Route path="/" component=&#123;App&#125;&gt;</span><br><span class="line">        &#123;/* 在某一个路径下，默认展示试图域名不显示 */&#125;</span><br><span class="line">        &#123;/* &lt;IndexRoute component=&#123;Home&#125; /&gt; */&#125;</span><br><span class="line">        &#123;/* Redirect是跟路径，从哪来。跳到另一个路径，直接跳过 </span><br><span class="line">        &lt;Redirect from="/home" to="/about" /&gt;*/&#125;</span><br><span class="line">        &#123;/* 访问到根路径以后，重新访问到 该路径 */&#125;</span><br><span class="line">        &lt;IndexRedirect to="/home" /&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>修改行间样式</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> active = &#123; <span class="attr">color</span>: <span class="string">'red'</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;h1&gt;路由<span class="number">2.0</span>版本&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">      &lt;Link to="/</span>home<span class="string">" activeStyle=&#123;active&#125;&gt;首页&lt;/Link&gt;</span></span><br><span class="line"><span class="string">      &lt;Link to="</span>/about<span class="string">" activeStyle=&#123;active&#125;&gt;关于&lt;/Link&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>传参 props传参</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line"> &lt;div key=&#123;i&#125;&gt;&lt;Link to=&#123;"/detail/" + item.pid&#125;&gt;&#123;item.pname&#125;&lt;/Link&gt;&lt;/div&gt; )</span><br><span class="line"> 路由也需要站位符，给个id</span><br><span class="line"> &lt;Route path=<span class="string">"/detail/:id"</span> component=&#123;Detail&#125; /&gt;</span><br><span class="line"> 接收参数的话，可以打印</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="keyword">this</span>.props)</span><br></pre></td></tr></table></figure>
-
-<p> <code>在组件内部，展示详情列表，</code><br> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取最新的额值，更新获得详情</span></span><br><span class="line">   componentWillReceiveProps(a) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(a.params.id)</span><br><span class="line">       api.getdetail(&#123; <span class="attr">id</span>: a.props.params.id &#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(data.data)</span><br><span class="line">           <span class="keyword">this</span>.setState(&#123; <span class="attr">detail</span>: data.data &#125;)</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>query的传参</code><br>接收数据，和传参</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">        <span class="comment">// console.log(this.props.params.id)</span></span><br><span class="line">        api.getdetail(&#123; <span class="attr">id</span>: <span class="keyword">this</span>.props.location.query.id &#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(data.data)</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123; <span class="attr">detail</span>: data.data &#125;) </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取最新的额值，更新获得详情</span></span><br><span class="line">    componentWillReceiveProps(a) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a.params.id)</span><br><span class="line">        api.getdetail(&#123; <span class="attr">id</span>: a.location.query.id &#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(data.data)</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123; <span class="attr">detail</span>: data.data &#125;)</span><br><span class="line">        &#125;) </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>hashHistory</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;hashHistory&#125; <span class="keyword">from</span> <span class="string">"react-router"</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">About</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    tap() &#123;</span><br><span class="line">        hashHistory.push(<span class="string">"/home"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;about&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;button onClick=&#123;this.tap.bind(this)&#125;&gt;跳转home&lt;/</span>button&gt;</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
-
+<p>的时候，就可以将测试前端中的 ajax 请求代理到后端服务器进行测试啦！</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/101.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/favor/wallhaven-29348.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -385,12 +364,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/10/25/面试之跨域问题/" title="面试之跨域" rel="prev">
+			<a href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" title="面试之从敲入 URL 到浏览器渲染完成" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/09/05/关于Flux,Vuex,Redux的思考/" title="关于Flux,Vuex,Redux的思考" rel="next">
+			<a href="/2019/09/08/react路由/" title="react 路由" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -408,6 +387,84 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" title="面试之从敲入 URL 到浏览器渲染完成">
+								面试之从敲入 URL 到浏览器渲染完成			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								十一月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								大致过程：
+当用户输入url地址，浏览器查询DNS查找对应的请求IP地址
+建立TCP连接
+浏览器向服务器发送http请求，如果服务器返回以301之类的重定向，浏览器根据相应头中的location再次发送请求
+服务器接受请求，处理请求生...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" title="面试之从敲入 URL 到浏览器渲染完成">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-663397.png" alt="面试之从敲入 URL 到浏览器渲染完成"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2016/09/28/forever/" title="Forever">
+								Forever			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 28日, 2016				
+							</p>
+							<p class="relate-post-content">
+								
+I saw you                                      
+You smiled warmly                             
+The world began wakin...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2016/09/28/forever/" title="Forever">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/1.jpg" alt="Forever"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/08/react路由/" title="react 路由">
+								react 路由			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 8日, 2019				
+							</p>
+							<p class="relate-post-content">
+								创建React环境npm install -g create-react-app 全局环境create-react-app my-app  创建项目
+cd my-app 进入项目npm start  启动
+什么是路由？        ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/08/react路由/" title="react 路由">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/101.jpg" alt="react 路由"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -538,57 +595,6 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" title="面试之从敲入 URL 到浏览器渲染完成">
-								面试之从敲入 URL 到浏览器渲染完成			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十一月 13日, 2019				
-							</p>
-							<p class="relate-post-content">
-								大致过程：
-当用户输入url地址，浏览器查询DNS查找对应的请求IP地址
-建立TCP连接
-浏览器向服务器发送http请求，如果服务器返回以301之类的重定向，浏览器根据相应头中的location再次发送请求
-服务器接受请求，处理请求生...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/11/13/面试之从敲入 URL 到浏览器渲染完成/" title="面试之从敲入 URL 到浏览器渲染完成">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-663397.png" alt="面试之从敲入 URL 到浏览器渲染完成"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/10/25/面试之跨域问题/" title="面试之跨域">
-								面试之跨域			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								十月 25日, 2019				
-							</p>
-							<p class="relate-post-content">
-								跨域问题：在前端调试的时候，跨域一直都是一个比较麻烦的问题，这个在之前的文章 关于跨域问题的一个解决方法 中其实已经讨论了一些可以使用的方法。
-如果要使用 JSONP，第一是需要修改的地方比较多，而且也不太符合前端发展的大趋势，如果使...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/10/25/面试之跨域问题/" title="面试之跨域">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-29348.jpg" alt="面试之跨域"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2018/09/01/vue项目技术小记/" title="vue项目技术小记">
 								vue项目技术小记			
 							</a>
@@ -630,32 +636,6 @@
 							<a href="/2018/08/03/vue中的各种传值传参问题/" title="vue传值传参小结">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-518254.png" alt="vue传值传参小结"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/08/01/vue底层原理/" title="vue中的底层原理">
-								vue中的底层原理			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 1日, 2018				
-							</p>
-							<p class="relate-post-content">
-								vue实现双向绑定原理
-原理vue数据双向绑定通过‘数据劫持’ + 订阅发布模式实现
-数据劫持指的是在访问或者修改对象的某个属性时，通过一段代码拦截这个行为，进行额外的操作或者修改返回结果
-典型的有1.Object.definePro...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2018/08/01/vue底层原理/" title="vue中的底层原理">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/favor/wallhaven-32207.png" alt="vue中的底层原理"/>
 							</a>
 						</div>
 					</li>											
