@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    关于Flux,Vuex,Redux的思考 |  岛
+    跨域问题 |  岛
   </title>
   
   <link rel="shortcut icon" href="/favicon.ico">
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-关于Flux,Vuex,Redux的思考" class="article article-type-post" itemscope
+  <article id="post-跨域问题" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  关于Flux,Vuex,Redux的思考
+  跨域问题
 </h1>
   
 
@@ -47,8 +47,8 @@
 
     
     <div class="article-meta">
-      <a href="/2019/09/05/关于Flux,Vuex,Redux的思考/" class="article-date">
-  <time datetime="2019-09-05T14:14:22.698Z" itemprop="datePublished">2019-09-05</time>
+      <a href="/2019/10/25/跨域问题/" class="article-date">
+  <time datetime="2019-10-25T06:31:38.330Z" itemprop="datePublished">2019-10-25</time>
 </a>
       
     </div>
@@ -56,8 +56,6 @@
 
     
     
-    <div class="tocbot"></div>
-
 
 
 
@@ -71,32 +69,26 @@
       
 
       
-      <h2 id="数据管理工具Flux、Redux、Vuex的区别"><a href="#数据管理工具Flux、Redux、Vuex的区别" class="headerlink" title="数据管理工具Flux、Redux、Vuex的区别:"></a>数据管理工具Flux、Redux、Vuex的区别:</h2><p>为什么要进行数据管理？</p>
-<p>组件式开发的核心思路是MVC，Model层的数据发生变化，驱动View层的视图发生变化。<strong>试想一个场景，如果ModelA触发ModelB变化，导致ViewB发生变化，ViewB发生变化时，触发了ModelC变化，ModelC又触发了其他Model的变化…，我们想知道一个View的变化究竟是那个数据导致的，</strong>追查起来就很困难，于是就记录数据的变化就很有必要了，其实换一个高大上的名字就是数据状态管理。</p>
-<h3 id="怎么有效地进行数据管理？"><a href="#怎么有效地进行数据管理？" class="headerlink" title="怎么有效地进行数据管理？"></a>怎么有效地进行数据管理？</h3><ol>
-<li>数据集中管理<br>view中的数据统一放置到一个仓库（store）中，要渲染页面的时候，从中取出当前状态的数据（state），然后将state中的最新的数据通过props传递到组件中，然后渲染组件，实现试图展现。</li>
-<li>精细化拆解数据操作<br>要修改store中的state，为了做到数据的操作可追溯，尽量将数据的操作拆解成一个个小函数，当然纯函数最好。</li>
-<li>单向数据驱动<br>组件中不能直接修改state的值，修改state，只能发出修改请求（action），由action触发数据操作。</li>
-</ol>
-<p>总之，数据集中管理就需要应用<strong>使用唯一的数据Tree，存放在store中</strong>；精细化拆解数据操作就是<strong>需要提供小而纯的函数，来修改state</strong>；单就向数据驱动需要<strong>提供唯一能修改state的渠道</strong>。</p>
-<h2 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h2><hr>
-<p>Flux数据流的顺序是:<br>View发起Action-&gt;Action传递到Dispatcher-&gt;Dispatcher将通知Store-&gt;Store的状态改变通知View进行改变<br><img src="https://ask.qcloudimg.com/http-save/yehe-1217459/5gw6kqmjk8.png?imageView2/2/w/1620" alt="图示"><br>ps:<a href="https://github.com/flyer-dev/flux_learn" target="_blank" rel="noopener">基于Flux架构思想写的一个小demo</a></p>
-<h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><hr>
-<p>Redux相对于Flux的改进：</p>
-<ul>
-<li>把store和Dispatcher合并,结构更加简单清晰</li>
-<li>新增state角色，代表每个时间点store对应的值，对状态的管理更加明确<br>Redux数据流的顺序是:<br>View调用store.dispatch发起Action-&gt;store接受Action(action传入reducer函数,reducer函数返回一个新的state)-&gt;通知store.subscribe订阅的重新渲染函数<br><img src="https://ask.qcloudimg.com/http-save/yehe-1217459/xihbsyzesb.png?imageView2/2/w/1620" alt="图示"><br>ps:<a href="https://github.com/reduxjs/redux/tree/master/examples/counter" target="_blank" rel="noopener">阮一峰老师的Redux+React小demo</a></li>
-</ul>
-<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><hr>
-<p>Vuex是专门为Vue设计的状态管理框架,<br>同样基于Flux架构，并吸收了Redux的优点</p>
-<p>Vuex相对于Redux的不同点有:</p>
-<ul>
-<li>改进了Redux中的Action和Reducer函数，以mutations变化函数取代Reducer，<br>无需switch,只需在对应的mutation函数里改变state值即可</li>
-<li>由于Vue自动重新渲染的特性，无需订阅重新渲染函数，只要生成新的State即可</li>
-</ul>
-<p>Vuex数据流的顺序是:<br>View调用store.commit提交对应的请求到Store中对应的mutation函数-&gt;store改变(vue检测到数据变化自动渲染)<br><img src="https://ask.qcloudimg.com/http-save/yehe-1217459/ez8jggvm26.png?imageView2/2/w/1620" alt="图示"><br>ps:<a href="https://jsfiddle.net/yyx990803/n9jmu5v7/" target="_blank" rel="noopener">Vuex官方文档上的小demo</a></p>
-<hr>
-<h2 id="使用数据管理工具的场景"><a href="#使用数据管理工具的场景" class="headerlink" title="使用数据管理工具的场景"></a>使用数据管理工具的场景</h2><p>数据管理主要是方便SPA开发时，管理多个组件或子页面的公用数据，如果仅仅是简单个的单页，您最好不要使用Redux或Vuex。</p>
+      <p>跨域问题：<br>在前端调试的时候，跨域一直都是一个比较麻烦的问题，这个在之前的文章 关于跨域问题的一个解决方法 中其实已经讨论了一些可以使用的方法。</p>
+<p>如果要使用 JSONP，第一是需要修改的地方比较多，而且也不太符合前端发展的大趋势，如果使用 CORS 的话并没有 application/json 类型。而且更重要的是这只是在前端调试时候的需求，并不是在上线以后的需求，所以对后端有太多的入侵也不好。</p>
+<p>所以就有一个念想突然在大脑中闪过——加入有一个代理不就可以解决这个问题了？但是又想了一下写起来还挺麻烦，于是就被搁置了。</p>
+<p>直到前几天 Stone 提到其实 webpack-dev-server 早就想到并且已经帮我们实现了。</p>
+<p>于是，我就在一个 Vue 项目中进行测试，发现真的很赞，既可以本地 Server 热加载，还可以直接跨域调用远程 API，完美解决了之前遇到的所有问题。</p>
+<p>接下来我简要介绍一下步骤（以一个 Vue 脚手架建立的 webpack 项目为例）：</p>
+<p>首先检查 build/webpack.dev.conf.js 中是否有</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy: config.dev.proxyTable,</span><br></pre></td></tr></table></figure>
+
+<p>这个配置项，如果被注释掉，请打开注释，如果没有，请加入到 devServer 对象中</p>
+<p>然后在 config/index.js 中的 dev 对象中加入 proxyTable 配置项：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">   <span class="string">'/**'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://api.xxx.com'</span>,</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,</span><br><span class="line">    secure: <span class="literal">false</span></span><br><span class="line">   &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>前面的键 /** 意思是代理所有请求，如果代理某些请求，可以将其改为诸如 /api 之类的字符串。</p>
+<p>后面的 target 就是要代理到的网站，changeOrigin 的意思就是把 http 请求中的 Origin 字段进行变换，在浏览器接收到后端回复的时候，浏览器会以为这是本地请求，而在后端那边会以为是在站内的调用。</p>
+<p>这样，通过这个简单的配置，就完美地解决了跨域的问题。</p>
+<p>之后，在直接运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>的时候，就可以将测试前端中的 ajax 请求代理到后端服务器进行测试啦！</p>
 
       
       <!-- 打赏 -->
@@ -135,10 +127,10 @@
         
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/05/关于Flux,Vuex,Redux的思考/" data-id="ck40n8zc00004uov944zeqr70"
+      <a data-url="http://yoursite.com/2019/10/25/跨域问题/" data-id="ck40n8zc40005uov9sm8nq44l"
         class="article-share-link">分享</a>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flux/">flux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redux/">redux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuex/">vuex</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
 
     </footer>
 
@@ -148,19 +140,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2019/09/08/react路由/" class="article-nav-link">
+      <a href="/2019/11/13/从敲入 URL 到浏览器渲染完成/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            react 路由
+            从敲入 URL 到浏览器渲染完成
           
         </div>
       </a>
     
     
-      <a href="/2019/09/04/用webpack搭建react/" class="article-nav-link">
+      <a href="/2019/09/08/react路由/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">webpack搭建一个react环境</div>
+        <div class="article-nav-title">react 路由</div>
       </a>
     
   </nav>
