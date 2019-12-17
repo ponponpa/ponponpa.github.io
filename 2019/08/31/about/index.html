@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    vue中的底层原理 |  岛
+    about |  岛
   </title>
   
   <link rel="shortcut icon" href="/favicon.ico">
@@ -30,7 +30,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-vue底层原理" class="article article-type-post" itemscope
+  <article id="about-about" class="article article-type-about" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -38,7 +38,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  vue中的底层原理
+  about
 </h1>
   
 
@@ -47,8 +47,8 @@
 
     
     <div class="article-meta">
-      <a href="/2018/08/01/vue底层原理/" class="article-date">
-  <time datetime="2018-07-31T16:00:00.000Z" itemprop="datePublished">2018-08-01</time>
+      <a href="/2019/08/31/about/" class="article-date">
+  <time datetime="2019-08-31T09:05:19.000Z" itemprop="datePublished">2019-08-31</time>
 </a>
       
     </div>
@@ -71,26 +71,26 @@
       
 
       
-      <h1 id="vue实现双向绑定原理"><a href="#vue实现双向绑定原理" class="headerlink" title="vue实现双向绑定原理"></a>vue实现双向绑定原理</h1><hr>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>vue数据双向绑定通过‘数据劫持’ + 订阅发布模式实现</p>
-<h3 id="数据劫持"><a href="#数据劫持" class="headerlink" title="数据劫持"></a>数据劫持</h3><p>指的是在访问或者修改对象的某个属性时，通过一段代码拦截这个行为，进行额外的操作或者修改返回结果</p>
-<p>典型的有<br>1.Object.defineProperty()<br>2.es6中Proxy对象</p>
-<h3 id="订阅发布模式"><a href="#订阅发布模式" class="headerlink" title="订阅发布模式"></a>订阅发布模式</h3><p>定义：对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知<br>订阅发布模式中事件统一由处理中心处理，订阅者发布者互不干扰。<br>优点：实现更多的控制，做权限处理，节流控制之类，例如：发布了很多消息，但是不是所有订阅者都要接收</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现一个处理中心</span></span><br><span class="line"><span class="keyword">let</span> event = &#123;</span><br><span class="line">  clientList: &#123;&#125;, <span class="comment">// 订阅事件列表</span></span><br><span class="line">  <span class="comment">// 订阅</span></span><br><span class="line">  on(key, fn)&#123;</span><br><span class="line">    <span class="comment">// 如果这个事件没有被订阅，那么创建一个列表用来存放事件</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.clientList[key]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.clientList[key] = []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将事件放入已有的事件列表中</span></span><br><span class="line">    <span class="keyword">this</span>.clientList[key].push(fn);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 发布</span></span><br><span class="line">  trigger(type, args)&#123;</span><br><span class="line">    <span class="keyword">let</span> fns = <span class="keyword">this</span>.clientList[type] <span class="comment">// 拿到这个事件的所有监听</span></span><br><span class="line">    <span class="keyword">if</span>(!fns || fns.length === <span class="number">0</span>)&#123;  <span class="comment">// 如果没有这条消息的订阅者</span></span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果存在这个事件的订阅，那么遍历事件列表，触发对应监听</span></span><br><span class="line">    fns.forEach(<span class="function"><span class="params">fn</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 可以在此处添加过滤等处理</span></span><br><span class="line">      fn(args)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>很多前端新人谈到vue的双向绑定回想到v-model，其实我们应该谈谈双向绑定的逻辑，一句话概括起来就是：</p>
-<blockquote>
-<p>在数据渲染时使用prop渲染数据，将prop绑定到子组件自身的数据上，修改数据时更新自身数据来替代prop，watch子组件自身数据的改变，触发事件通知父组件更改绑定到prop的数据。</p>
+      <hr>
+<h1 id="一句话"><a href="#一句话" class="headerlink" title="一句话"></a>一句话</h1><blockquote>
+<p>Just do it ! (翻译：我只是个搞 IT的！哭笑脸)</p>
 </blockquote>
-<p>再往下谈<strong>Vue数据绑定这样做的好处是什么</strong></p>
-<blockquote>
-<p>敲黑板划重点：父组件数据改变时，不会修改存储prop的子组件数据，只是以子组件数据为媒介，完成对prop的双向修改。</p>
+<h1 id="十六字"><a href="#十六字" class="headerlink" title="十六字"></a>十六字</h1><blockquote>
+<p>物竞天择，适者生存<br>成者为王，败者为寇</p>
 </blockquote>
-<h2 id="关于axios的实现原理可以看我在js里面总结的基于Promise对Ajax原理-进行简单封装"><a href="#关于axios的实现原理可以看我在js里面总结的基于Promise对Ajax原理-进行简单封装" class="headerlink" title="关于axios的实现原理可以看我在js里面总结的基于Promise对Ajax原理 进行简单封装"></a>关于axios的实现原理可以看我在js里面总结的<strong>基于Promise对Ajax原理 进行简单封装</strong></h2><h2 id="关于vue项目中用axios出现跨域问题以及和ajax的区别："><a href="#关于vue项目中用axios出现跨域问题以及和ajax的区别：" class="headerlink" title="关于vue项目中用axios出现跨域问题以及和ajax的区别："></a>关于vue项目中用axios出现跨域问题以及和ajax的区别：</h2><p>对于跨域问题，前端一般是不负责解决的，都是交给后台来解决。<br>可以采用以下方式进行解决：<br>1：服务器端设置跨域<br>2：可以自己设置一个代理服务器<br>另外，在express中发起请求就可以避免跨域问题的出现。</p>
-<p>axios.js Vue官方推荐的ajax库<br>vue-resource插件已经官方推荐中去掉</p>
-<blockquote>
-<p>fetch.js fetch是基于Promise的,未来的趋势。<br>axios.js Vue 2.0 官方推荐。</p>
+<h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><blockquote>
+<p>一个莫名其妙的，喜欢敲代码，喜欢研究技术的，表面上高冷、不苟言笑的，<br>偶尔又嬉皮笑脸，偶尔又特立独行的，双重性格的技术爱好者！</p>
+</blockquote>
+<h1 id="兴趣方向"><a href="#兴趣方向" class="headerlink" title="兴趣方向"></a>兴趣方向</h1><blockquote>
+<p>前端技术，javascript,node.js</p>
+</blockquote>
+<h1 id="GitBook"><a href="#GitBook" class="headerlink" title="GitBook"></a>GitBook</h1><blockquote>
+<p><a href>印象笔记</a></p>
+</blockquote>
+<h1 id="参与社区"><a href="#参与社区" class="headerlink" title="参与社区"></a>参与社区</h1><blockquote>
+</blockquote>
+<h1 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h1><blockquote>
+<p>Email：<a href="mailto:776131821@qq.com" target="_blank" rel="noopener">776131821@qq.com</a></p>
 </blockquote>
 
       
@@ -130,11 +130,9 @@
         
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/vue底层原理/" data-id="ck4973cc1000r0cv9js0p9utn"
+      <a data-url="http://yoursite.com/2019/08/31/about/" data-id="ck4973cb700040cv9ppwiqy93"
         class="article-share-link">分享</a>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios底层原理/">axios底层原理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
-
     </footer>
 
   </div>
@@ -143,19 +141,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2018/08/03/vue中的各种传值传参问题/" class="article-nav-link">
+      <a href="/2019/09/04/用webpack搭建react/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            vue传值传参小结
+            webpack搭建一个react环境
           
         </div>
       </a>
     
     
-      <a href="/2017/12/08/javascript之常用数组/" class="article-nav-link">
+      <a href="/2019/08/02/React基础二/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">javascript之常用数组</div>
+        <div class="article-nav-title">React基础（二）</div>
       </a>
     
   </nav>

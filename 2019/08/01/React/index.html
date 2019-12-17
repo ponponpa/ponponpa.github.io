@@ -3,10 +3,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-    
+   
+  <meta name="keywords" content="生活,旅行,思考,代码,博客">
+   
+  <meta name="description" content="一座孤岛">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    React基础（一） |  Pononpa
+    React基础（一） |  岛
   </title>
   
   <link rel="shortcut icon" href="/favicon.ico">
@@ -17,6 +21,7 @@
 
   
 
+<link rel="alternate" href="/atom.xml" title="岛" type="application/atom+xml">
 </head>
 
 </html>
@@ -46,10 +51,6 @@
   <time datetime="2019-07-31T16:00:00.000Z" itemprop="datePublished">2019-08-01</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/React/">React</a>
-  </div>
-
     </div>
     
 
@@ -107,11 +108,11 @@
 <hr>
 <h3 id="组件的属性-props"><a href="#组件的属性-props" class="headerlink" title="组件的属性(props)"></a>组件的属性(props)</h3><p>我们可以通过this.props.xx的形式获取组件对象的属性，对象的属性可以任意定义，但要避免与JavaScript关键字冲突。</p>
 <h4 id="遍历组件的属性"><a href="#遍历组件的属性" class="headerlink" title="遍历组件的属性:"></a>遍历组件的属性:</h4><p>this.props.children会返回组件对象的所有属性。 React 提供一个工具方法 React.Children 来处理 this.props.children 。我们可以用React.Children.map或React.Children.forEach来遍历子节点。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NotesList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;ol&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    React.Children.map(<span class="keyword">this</span>.props.children,(child)=&gt; &#123;</span><br><span class="line">                        <span class="keyword">return</span> &lt;h1&gt;&#123;child&#125;&lt;/h1&gt;;                     </span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;<span class="regexp">/ol&gt;         </span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;NotesList&gt;</span></span><br><span class="line"><span class="regexp">    &lt;span&gt;hello&lt;/</span>span&gt;     </span><br><span class="line">    &lt;span&gt;world&lt;<span class="regexp">/span&gt; </span></span><br><span class="line"><span class="regexp">    &lt;/</span>NotesList&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NotesList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;ol&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    React.Children.map(<span class="keyword">this</span>.props.children,(child)=&gt; &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;child&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;                     </span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;<span class="regexp">/ol&gt;         </span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;NotesList&gt;</span></span><br><span class="line"><span class="regexp">    &lt;span&gt;hello&lt;/</span>span&gt;     </span><br><span class="line">    &lt;span&gt;world&lt;<span class="regexp">/span&gt; </span></span><br><span class="line"><span class="regexp">    &lt;/</span>NotesList&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
 
 <h4 id="ref-属性-获取真实的DOM节点"><a href="#ref-属性-获取真实的DOM节点" class="headerlink" title="ref 属性(获取真实的DOM节点)"></a>ref 属性(获取真实的DOM节点)</h4><p>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 DOM diff ，它可以极大提高网页的性能表现。</p>
 <p>但是，有时需要从组件获取真实 DOM 的节点，这时就要用到 ref 属性。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Todolist</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            list:[]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2&gt;TodoList&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">                &lt;input type='text' ref='ipt'/</span>&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.add.bind(<span class="keyword">this</span>)&#125;&gt;添加&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                &#123;</span></span><br><span class="line"><span class="regexp">                    this.state.list.map((item,i)=&gt;&#123;</span></span><br><span class="line"><span class="regexp">                        return(</span></span><br><span class="line"><span class="regexp">                            &lt;div key=&#123;i&#125;&gt;&#123;item&#125;---&lt;button onClick=&#123;this.delete.bind(this,i)&#125;&gt;删除&lt;/</span>button&gt;&lt;/div&gt;</span><br><span class="line">                        )</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    add()&#123;</span></span><br><span class="line"><span class="regexp">        let arr = this.state.list</span></span><br><span class="line"><span class="regexp">        arr.push(this.refs.ipt.value)</span></span><br><span class="line"><span class="regexp">        console.log(arr)</span></span><br><span class="line"><span class="regexp">        this.setState(&#123;list:arr&#125;)</span></span><br><span class="line"><span class="regexp">        this.refs.ipt.value=''</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    delete(i) &#123;</span></span><br><span class="line"><span class="regexp">      console.log(i)</span></span><br><span class="line"><span class="regexp">      let arr1 = this.state.list</span></span><br><span class="line"><span class="regexp">      arr1.splice(i,1)</span></span><br><span class="line"><span class="regexp">      this.setState(&#123; list: arr1 &#125;)</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Todolist</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            list:[]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2&gt;TodoList&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">                &lt;input type='text' ref='ipt'/</span>&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.add.bind(<span class="keyword">this</span>)&#125;&gt;添加&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                &#123;</span></span><br><span class="line"><span class="regexp">                    this.state.list.map((item,i)=&gt;&#123;</span></span><br><span class="line"><span class="regexp">                        return(</span></span><br><span class="line"><span class="regexp">                            &lt;div key=&#123;i&#125;&gt;&#123;item&#125;---&lt;button onClick=&#123;this.delete.bind(this,i)&#125;&gt;删除&lt;/</span>button&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">                        )</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    add()&#123;</span></span><br><span class="line"><span class="regexp">        let arr = this.state.list</span></span><br><span class="line"><span class="regexp">        arr.push(this.refs.ipt.value)</span></span><br><span class="line"><span class="regexp">        console.log(arr)</span></span><br><span class="line"><span class="regexp">        this.setState(&#123;list:arr&#125;)</span></span><br><span class="line"><span class="regexp">        this.refs.ipt.value=''</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    delete(i) &#123;</span></span><br><span class="line"><span class="regexp">      console.log(i)</span></span><br><span class="line"><span class="regexp">      let arr1 = this.state.list</span></span><br><span class="line"><span class="regexp">      arr1.splice(i,1)</span></span><br><span class="line"><span class="regexp">      this.setState(&#123; list: arr1 &#125;)</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><p>上文讲到了props，组件会根据props的变化来进行渲染，但组件无法改变自身的props，那么组件为了实现交互，可以使用组件的 state 。state 是组件私有的，可以通过state={}方式初始化，通过调用 this.setState() 来改变它。当 state 更新之后，组件就会重新渲染自己。</p>
@@ -164,7 +165,7 @@
         
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/01/React/" data-id="ck3zmpsk20001x4v9syxvvofr"
+      <a data-url="http://yoursite.com/2019/08/01/React/" data-id="ck4973can00010cv9z5chytcs"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
@@ -263,7 +264,7 @@
       <li>
         &copy;
         2016-2019
-        ponponpa
+        Pononpa
       </li>
       <li>
         
@@ -305,7 +306,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Pononpa"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="岛"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -327,11 +328,11 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
+      <a class="nav-item-link" href="https://ponponpa520.lofter.com/">摄影</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我</a>
+      <a class="nav-item-link" href="/2019/about">关于我</a>
     </li>
     
   </ul>
@@ -340,7 +341,7 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="搜索">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
