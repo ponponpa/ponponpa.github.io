@@ -56,88 +56,6 @@
 
     
     
-    <article id="post-vue项目技术小记" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/09/01/vue项目技术小记/"
-    >vue项目技术小记</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/09/01/vue项目技术小记/" class="article-date">
-  <time datetime="2018-08-31T16:00:00.000Z" itemprop="datePublished">2018-09-01</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h2 id="最近做的项目快要结尾了，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～"><a href="#最近做的项目快要结尾了，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～" class="headerlink" title="最近做的项目快要结尾了，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～"></a>最近做的<del>项目快要结尾了</del>，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～</h2><h3 id="异步加载组件"><a href="#异步加载组件" class="headerlink" title="异步加载组件"></a>异步加载组件</h3><p>我们都知道vue一般都是单页面的，也就意味着一开始就要加载全部的组件，这太不友好的，加载时间会慢些。这时候我们就用到异步组件～</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router= <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path:<span class="string">'/login'</span>,</span><br><span class="line">      name:<span class="string">'Login'</span>,</span><br><span class="line">      component:<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'../views/Login'</span>),<span class="comment">//路由懒加载</span></span><br><span class="line">      meta: &#123;</span><br><span class="line">        title: <span class="string">'登录'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="vue指令：非常好用，谁用谁知道"><a href="#vue指令：非常好用，谁用谁知道" class="headerlink" title="vue指令：非常好用，谁用谁知道"></a>vue指令：非常好用，谁用谁知道</h3><p>v-for 用于遍历<br>v-if &amp; v-show 用于隐藏和显示元素(区别在于后者是修改 display:block|none,前者是不创建把元素从dom中删除或者创建.<br>v-bind: 属性绑定,把数据绑定在HTML元素的属性上.<br>v-html &amp; v-text 把数据绑定在HTML元素的属性上,作用同 innerHTML &amp; innerText<br>v-on: 绑定HTML元素事件<br>v-if &amp; v-else-if &amp; v-else 条件渲染</p>
-<h2 id="v-model-绑定表单元素-实现双向绑定"><a href="#v-model-绑定表单元素-实现双向绑定" class="headerlink" title="v-model 绑定表单元素,实现双向绑定"></a>v-model 绑定表单元素,实现双向绑定</h2><h3 id="vue自定义指令："><a href="#vue自定义指令：" class="headerlink" title="vue自定义指令："></a>vue自定义指令：</h3><p>应用场景：<br>element-ui中有个模态框用的是它自定义的指令v-loading，想要同样的效果可以用Vue核心组件中的自定义指令模块。<br>看代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div v-test:user.isman.ischinese = <span class="string">"123"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"1234"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// @ is an alias to /src</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        directives: &#123;</span><br><span class="line">            test: &#123;</span><br><span class="line">                bind(el, binding, vnode, oldVnode) &#123;</span><br><span class="line">                    el.innerHTML = <span class="string">'&lt;h1&gt;指令内容&lt;/h1&gt;'</span> + binding.expression</span><br><span class="line">                    <span class="built_in">console</span>.log(el)</span><br><span class="line">                    <span class="built_in">console</span>.log(binding)</span><br><span class="line">                    <span class="built_in">console</span>.log(vnode)</span><br><span class="line">                    <span class="built_in">console</span>.log(oldVnode)</span><br><span class="line">                &#125;,</span><br><span class="line">                inserted() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'inserted'</span>)</span><br><span class="line">                &#125;,</span><br><span class="line">                update() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'update'</span>)</span><br><span class="line">                &#125;,</span><br><span class="line">                componentUpdated() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'componentUpdated'</span>)</span><br><span class="line">                &#125;,</span><br><span class="line">                unbind() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'unbind'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>directives是一个对象，里面包含了各个指令，每个指令也是个对象，可以在里面自定义配置（比如上面代码中的test{…}，test在模板里面的表现就是v-test）。</p>
-<h4 id="每个指令的解析"><a href="#每个指令的解析" class="headerlink" title="每个指令的解析"></a>每个指令的解析</h4><p>生命周期（钩子，Hook）<br>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。</p>
-<p>inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。</p>
-<p>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新。</p>
-<p>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。</p>
-<h2 id="unbind：只调用一次，指令与元素解绑时调用。"><a href="#unbind：只调用一次，指令与元素解绑时调用。" class="headerlink" title="unbind：只调用一次，指令与元素解绑时调用。"></a>unbind：只调用一次，指令与元素解绑时调用。</h2><h3 id="vue过滤器"><a href="#vue过滤器" class="headerlink" title="vue过滤器"></a>vue过滤器</h3><p>在vue中提供了Vue.filter(‘flterName’,fn)来定义一个过滤器，过滤器可以在HTML代码中使用，如对动态拿到的数据进行过滤，<br>一个简单例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"demo"</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"price"</span>&gt;</span><br><span class="line">        &#123;&#123;price | currency(<span class="string">'$'</span>)&#125;&#125;&lt;!--通过‘|’管道符来过滤前面的price--&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="https:/</span><span class="regexp">/cdn.bootcss.com/</span>vue/<span class="number">2.6</span><span class="number">.10</span>/vue.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    Vue.filter('currency',function(val,unit)&#123;//定义过滤器，并定义功能。</span></span><br><span class="line"><span class="string">        val =  val || 0;</span></span><br><span class="line"><span class="string">        unit = unit || '元';</span></span><br><span class="line"><span class="string">        return val + unit;</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">    new Vue(&#123;</span></span><br><span class="line"><span class="string">        el:'.demo',</span></span><br><span class="line"><span class="string">        data:&#123;</span></span><br><span class="line"><span class="string">            price:'',</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3><p>Vuex 类似 Redux 的状态管理器，vuex是一个专门为vue.js设计的集中式状态管理架构，用来管理Vue的所有组件状态。我认为就是前端为了方便数据的操作而建立的一个“前端数据库”。</p>
-<h2 id="Vuex基本使用的总结"><a href="#Vuex基本使用的总结" class="headerlink" title="Vuex基本使用的总结"></a><a href="https://www.jianshu.com/p/aae7fee46c36" target="_blank" rel="noopener">Vuex基本使用的总结</a></h2><h3 id="vue生命周期函数"><a href="#vue生命周期函数" class="headerlink" title="vue生命周期函数"></a>vue生命周期函数</h3><p>|钩子函数        |描述                                                            |<br>|beforeCreate    |组件实例刚被创建，组件属性计算之前，如data属性等                    |<br>|created        |组件实例创建完成，属性已绑定，但DOM还未生成，$el属性还不存在            |<br>|beforeMount    |模板编译 / 挂载之前                                                |<br>|mounted        |模板编译 / 挂载之后                                                |<br>|beforeUpdate    |组件更新之前                                                        |<br>|update            |组件更新之后                                                        |<br>|activated        |组件被激活时调用                                                    |<br>|deactivated    |组件被移除时调用                                                    |<br>|beforeDestory    |组件销毁前调用                                                    |<br>|destoryed        |组件销毁后调用                                                    |</p>
-<p><strong>日常举栗子</strong>：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.jsdelivr.net/vue/2.1.3/vue.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/</span>p&gt;</span><br><span class="line">    &lt;button v-on:click=<span class="string">"change()"</span>&gt;change&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button v-on:click="destr()"&gt;destroy&lt;/</span>button&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    var app = new Vue(&#123;</span></span><br><span class="line"><span class="string">        el: '#app',</span></span><br><span class="line"><span class="string">        data: &#123;</span></span><br><span class="line"><span class="string">            message: 66</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeCreate: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeCreate 创建前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        created: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('created 创建完毕');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data + JSON.stringify(this.$data));</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeMount: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeMount 挂载前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        mounted: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('mounted 挂载结束');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeUpdate: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeUpdate 更新前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        updated: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('updated 更新完成');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeDestroy: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeDestroy 销毁前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        destroyed: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('destroyed 销毁完成');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        methods: &#123;</span></span><br><span class="line"><span class="string">            change() &#123;</span></span><br><span class="line"><span class="string">                app.message++;</span></span><br><span class="line"><span class="string">            &#125;,</span></span><br><span class="line"><span class="string">            destr() &#123;</span></span><br><span class="line"><span class="string">                app.$destroy();</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>可以在控制台上感受一下。</p>
-
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/vue项目技术小记/" data-id="ck9xtkt7v001ilgv9zux1jzi6"
-        class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue技术栈/">vue技术栈</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
     <article id="post-vue中的各种传值传参问题" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -266,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/03/vue中的各种传值传参问题/" data-id="ck9xtkt7h0016lgv9t28lidjt"
+      <a data-url="http://yoursite.com/2018/08/03/vue中的各种传值传参问题/" data-id="ck9xxf35p000iicv9zdquv7yz"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/传值与传参/">传值与传参</a></li></ul>
@@ -347,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/vue底层原理/" data-id="ck9xtkt7m0018lgv9t97z8ud0"
+      <a data-url="http://yoursite.com/2018/08/01/vue底层原理/" data-id="ck9xxf35z000oicv9ajkxz6m2"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios底层原理/">axios底层原理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
@@ -460,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/javascript之常用数组/" data-id="ck9xtkt6t000xlgv9f0i6dyrb"
+      <a data-url="http://yoursite.com/2017/12/08/javascript之常用数组/" data-id="ck9xxf35p000hicv9o8tpd4ks"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
@@ -562,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/07/javascript之关于拷贝/" data-id="ck9xtkt5h000algv99o3e6z5h"
+      <a data-url="http://yoursite.com/2017/12/07/javascript之关于拷贝/" data-id="ck9xxf3550007icv9olttcnqb"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深拷贝-浅拷贝/">深拷贝&浅拷贝</a></li></ul>
@@ -675,7 +593,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/06/javascript之ajax/" data-id="ck9xtkt5c0006lgv9cl0ycagm"
+      <a data-url="http://yoursite.com/2017/12/06/javascript之ajax/" data-id="ck9xxf34b0000icv9xyjs45fr"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax交互/">ajax交互</a></li></ul>
@@ -754,7 +672,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/javascript之promise/" data-id="ck9xtkt5f0009lgv9q5y2zk53"
+      <a data-url="http://yoursite.com/2017/12/05/javascript之promise/" data-id="ck9xxf3550009icv96u7tfbn5"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
@@ -892,7 +810,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/04/javascript之es6新增/" data-id="ck9xtkt6n000wlgv9p5s4dzzg"
+      <a data-url="http://yoursite.com/2017/12/04/javascript之es6新增/" data-id="ck9xxf377002iicv9s5ahvx3h"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
@@ -975,7 +893,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/03/javascript之关于闭包/" data-id="ck9xtkt6y000zlgv9u7k3bp6a"
+      <a data-url="http://yoursite.com/2017/12/03/javascript之关于闭包/" data-id="ck9xxf35f000cicv9oeisb5xm"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
@@ -1089,10 +1007,99 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/02/javascript之关于继承/" data-id="ck9xtkt7a0011lgv92i0z6dpa"
+      <a data-url="http://yoursite.com/2017/12/02/javascript之关于继承/" data-id="ck9xxf355000aicv98vb6velo"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/继承/">继承</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-javascript之面向对象及对象的创建" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/01/javascript之面向对象及对象的创建/"
+    >javascript之面向对象及对象的创建</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2017/12/01/javascript之面向对象及对象的创建/" class="article-date">
+  <time datetime="2017-11-30T16:00:00.000Z" itemprop="datePublished">2017-12-01</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="面向对象-amp-面向过程"><a href="#面向对象-amp-面向过程" class="headerlink" title="面向对象&amp;面向过程"></a>面向对象&amp;面向过程</h1><ul>
+<li>面向过程总结:<br>面向过程是一种自上向下的编程。<br>面向过程优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重要的因素。<br>缺点：没有面向对象易维护、易复用、易扩展</li>
+<li>面向对象总结:<br>面向对象是将事物高度抽象化。面向对象必须先建立抽象模型，之后直接使用模型就行了。<br>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护<br>缺点：性能比面向过程低</li>
+</ul>
+<h1 id="对象的创建－字面量，原型，构造函数等各自特点"><a href="#对象的创建－字面量，原型，构造函数等各自特点" class="headerlink" title="对象的创建－字面量，原型，构造函数等各自特点"></a>对象的创建－字面量，原型，构造函数等各自特点</h1><ol>
+<li>工厂模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">  o.name=name;</span><br><span class="line">  o.age=age;</span><br><span class="line">  o.job=job;</span><br><span class="line">  o.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> o;   <span class="comment">//将创建的对象返回</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=createPerson(<span class="string">"Jim"</span>,<span class="number">22</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>缺点：工厂模式虽然解决了创建多个相似对象的问题，但却没有解决对象识别的问题（怎样知道一个对象的类型）。</p>
+<ol start="2">
+<li>构造函数模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name=name;</span><br><span class="line">  <span class="keyword">this</span>.age=age;</span><br><span class="line">  <span class="keyword">this</span>.job=job;</span><br><span class="line">  <span class="keyword">this</span>.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=<span class="keyword">new</span> Person(<span class="string">"Jim"</span>,<span class="number">22</span>,<span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>构造函数模式相对于工厂模式有几个显著的区别<br>（1） 没有显式地创建对象<br>（2）直接将属性和方法赋给了this对象<br>（3）没有return语句<br>（4）函数名的首字母大写（Person和createPerson）：按照惯例，构造函数始终都是以大写字母开头，而非构造函数则应该以小写字母开头</p>
+<p>缺点：ECMAScript中的函数是对象，因此每定义一个函数，也就是实例化了一个对象。而构造函数在每次创建的时候都会完成同样任务的function实例(sayName)，这是很没有必要的。因此可以把函数定义转移到构造函数外部来解决这个问题。</p>
+<ol start="3">
+<li>原型模式<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.name=<span class="string">"Jim"</span>;</span><br><span class="line">Person.prototype.age=<span class="number">22</span>;</span><br><span class="line">Person.protoType.job=<span class="string">"Doctor"</span>;</span><br><span class="line">Person.protoType.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person=<span class="keyword">new</span> Person();</span><br><span class="line">person.sayName();   <span class="comment">//Jim</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>#可以让所有对象实例共享它所包含的属性和方法。<br>原型语法简单写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">  <span class="keyword">constructor</span>:Person,</span><br><span class="line">  name:"Jim",</span><br><span class="line">  age:22,</span><br><span class="line">  job:"Doctor",</span><br><span class="line">  sayName:function()&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缺点：“共享”性，即当没有对Person的friends赋值时，直接调用原型属性并修改，就会直接导致原型修改。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype=&#123;</span><br><span class="line">  friends:[<span class="string">"Amy"</span>,<span class="string">"Sam"</span>],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person1=<span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2=<span class="keyword">new</span> Person();</span><br><span class="line">person1.friends.push(<span class="string">"Van"</span>);</span><br><span class="line">alert(person1.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br><span class="line">alert(person2.friends);     <span class="comment">//"Amy,Sam,Van"</span></span><br></pre></td></tr></table></figure>
+
+<p>总结：<br>（1）工厂模式：在函数里面创建对象，并添加属性和方法。但没有解决对象识别问题，最后被构造函数模式所取代。<br>（2）构造函数模式：可以像创建内置对象实例一样使用new操作符。但没函数不局限于任何对象，因此没有了封装性。<br>（3）原型模式：使用构造函数的prototype属性指定应该共享的属性和方法。但单独使用原型模式的话，就会使不需要共享的属性和方法被共享</p>
+<h3 id="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"><a href="#构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性" class="headerlink" title="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"></a>构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</h3>
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/01/javascript之面向对象及对象的创建/" data-id="ck9xxf35p000kicv96ogwyz5z"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
 
     </footer>
 
