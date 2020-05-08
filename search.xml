@@ -8,7 +8,7 @@
       <link href="/2019/12/11/%E6%97%85%E8%A1%8C/"/>
       <url>/2019/12/11/%E6%97%85%E8%A1%8C/</url>
       
-        <content type="html"><![CDATA[<h3 id="HELLO"><a href="#HELLO" class="headerlink" title="HELLO"></a>HELLO</h3>]]></content>
+        <content type="html"><![CDATA[<h3 id="HELLO-大黄童鞋农好啊"><a href="#HELLO-大黄童鞋农好啊" class="headerlink" title="HELLO 大黄童鞋农好啊~"></a>HELLO 大黄童鞋农好啊~</h3>]]></content>
       
       
       
@@ -65,9 +65,9 @@
       
         <tags>
             
-            <tag> 路由 </tag>
-            
             <tag> React </tag>
+            
+            <tag> 路由 </tag>
             
         </tags>
       
@@ -128,6 +128,12 @@
       
       
       
+        <tags>
+            
+            <tag> about </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -143,9 +149,9 @@
       
         <tags>
             
-            <tag> React </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> React </tag>
             
         </tags>
       
@@ -164,9 +170,9 @@
       
         <tags>
             
-            <tag> React </tag>
-            
             <tag> 基础 </tag>
+            
+            <tag> React </tag>
             
         </tags>
       
@@ -227,9 +233,9 @@
       
         <tags>
             
-            <tag> 传值与传参 </tag>
-            
             <tag> vue </tag>
+            
+            <tag> 传值与传参 </tag>
             
         </tags>
       
@@ -313,9 +319,9 @@
       
         <tags>
             
-            <tag> JS </tag>
-            
             <tag> ajax交互 </tag>
+            
+            <tag> JS </tag>
             
         </tags>
       
@@ -334,9 +340,9 @@
       
         <tags>
             
-            <tag> promise </tag>
-            
             <tag> JS </tag>
+            
+            <tag> promise </tag>
             
         </tags>
       
