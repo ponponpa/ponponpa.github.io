@@ -291,9 +291,9 @@
     
     
     
-      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
-    
       <category term="传值与传参" scheme="http://yoursite.com/tags/%E4%BC%A0%E5%80%BC%E4%B8%8E%E4%BC%A0%E5%8F%82/"/>
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
     
   </entry>
   
@@ -401,9 +401,9 @@
     
     
     
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
       <category term="ajax交互" scheme="http://yoursite.com/tags/ajax%E4%BA%A4%E4%BA%92/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
@@ -427,9 +427,9 @@
     
     
     
-      <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
-    
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
     
   </entry>
   
