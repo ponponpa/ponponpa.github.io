@@ -37,9 +37,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       <section class="outer">
@@ -152,10 +160,6 @@
 <h2 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h2><p><img src="https://upload-images.jianshu.io/upload_images/5287253-82f6af8e0cc9012b.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="react生命周期"></p>
  
       <!-- reward -->
-      
-      <div id="reward-btn">
-        Donate
-      </div>
       
     </div>
     
@@ -304,7 +308,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2015-2020
+        2018-2020
         <i class="ri-heart-fill heart_icon"></i> Pononpa
       </li>
     </ul>
@@ -606,9 +610,10 @@
 
 <!-- ClickBoom1 -->
 
-<!-- ClickBoom2 -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+<script src="/js/clickBoom1.js"></script>
 
-<script src="/js/clickBoom2.js"></script>
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 

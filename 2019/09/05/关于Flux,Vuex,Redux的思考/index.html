@@ -37,9 +37,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       <section class="outer">
@@ -122,10 +130,6 @@
 <h2 id="使用数据管理工具的场景"><a href="#使用数据管理工具的场景" class="headerlink" title="使用数据管理工具的场景"></a>使用数据管理工具的场景</h2><p>数据管理主要是方便SPA开发时，管理多个组件或子页面的公用数据，如果仅仅是简单个的单页，您最好不要使用Redux或Vuex。</p>
  
       <!-- reward -->
-      
-      <div id="reward-btn">
-        Donate
-      </div>
       
     </div>
     
@@ -274,7 +278,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2015-2020
+        2018-2020
         <i class="ri-heart-fill heart_icon"></i> Pononpa
       </li>
     </ul>
@@ -576,9 +580,10 @@
 
 <!-- ClickBoom1 -->
 
-<!-- ClickBoom2 -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+<script src="/js/clickBoom1.js"></script>
 
-<script src="/js/clickBoom2.js"></script>
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 

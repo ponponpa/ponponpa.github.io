@@ -37,9 +37,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       <section class="outer">
@@ -115,10 +123,6 @@
 <p><strong>封装axios的get请求，作为全局变量使用。</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getRequest = <span class="function">(<span class="params">url, params</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> axios(&#123;</span><br><span class="line"></span><br><span class="line">      method: <span class="string">'get'</span>,</span><br><span class="line"></span><br><span class="line">      url: url,</span><br><span class="line"></span><br><span class="line">      params: params,</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
-      
-      <div id="reward-btn">
-        Donate
-      </div>
       
     </div>
     
@@ -267,7 +271,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2015-2020
+        2018-2020
         <i class="ri-heart-fill heart_icon"></i> Pononpa
       </li>
     </ul>
@@ -569,9 +573,10 @@
 
 <!-- ClickBoom1 -->
 
-<!-- ClickBoom2 -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+<script src="/js/clickBoom1.js"></script>
 
-<script src="/js/clickBoom2.js"></script>
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 

@@ -37,9 +37,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       <section class="outer">
@@ -124,10 +132,6 @@
 <p>父组件代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state = &#123;</span><br><span class="line">           val: <span class="string">""</span>,</span><br><span class="line">           str: <span class="string">""</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   tap() &#123;</span><br><span class="line">       <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">           val: <span class="keyword">this</span>.refs.ipt.value</span><br><span class="line">       &#125;)</span><br><span class="line">       <span class="comment">// console.log(this.refs.tit.innerHTML)</span></span><br><span class="line">       <span class="comment">// console.log(this.refs.ipt.value)</span></span><br><span class="line">   &#125;</span><br><span class="line">   render() &#123;</span><br><span class="line">       <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">       <span class="keyword">return</span> (</span><br><span class="line">           &lt;div&gt;</span><br><span class="line">               &lt;h2 ref=<span class="string">"tit"</span>&gt;父组件&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">               &lt;p&gt;接收子组价数据：&#123;this.state.str&#125;&lt;/</span>p&gt;</span><br><span class="line">               &lt;input type=<span class="string">"text"</span> ref=<span class="string">"ipt"</span> /&gt;</span><br><span class="line">               &lt;button onClick=&#123;<span class="keyword">this</span>.tap.bind(<span class="keyword">this</span>)&#125;&gt;获取dom&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">               &lt;hr /</span>&gt;</span><br><span class="line">               &lt;Child name=&#123;<span class="keyword">this</span>.state.val&#125; title=&#123;<span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span><br><span class="line">                   _this.setState(&#123; <span class="attr">str</span>: msg &#125;)</span><br><span class="line">               &#125;&#125; /&gt;</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
-      
-      <div id="reward-btn">
-        Donate
-      </div>
       
     </div>
     
@@ -276,7 +280,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2015-2020
+        2018-2020
         <i class="ri-heart-fill heart_icon"></i> Pononpa
       </li>
     </ul>
@@ -578,9 +582,10 @@
 
 <!-- ClickBoom1 -->
 
-<!-- ClickBoom2 -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+<script src="/js/clickBoom1.js"></script>
 
-<script src="/js/clickBoom2.js"></script>
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 

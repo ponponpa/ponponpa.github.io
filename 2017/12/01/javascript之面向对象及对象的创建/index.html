@@ -37,9 +37,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       <section class="outer">
@@ -125,10 +133,6 @@
 <p>总结：<br>（1）工厂模式：在函数里面创建对象，并添加属性和方法。但没有解决对象识别问题，最后被构造函数模式所取代。<br>（2）构造函数模式：可以像创建内置对象实例一样使用new操作符。但没函数不局限于任何对象，因此没有了封装性。<br>（3）原型模式：使用构造函数的prototype属性指定应该共享的属性和方法。但单独使用原型模式的话，就会使不需要共享的属性和方法被共享</p>
 <h3 id="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"><a href="#构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性" class="headerlink" title="构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性"></a>构造函数模式用于定义实例属性，而原型模式用于定义方法和共享属性</h3> 
       <!-- reward -->
-      
-      <div id="reward-btn">
-        Donate
-      </div>
       
     </div>
     
@@ -277,7 +281,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2015-2020
+        2018-2020
         <i class="ri-heart-fill heart_icon"></i> Pononpa
       </li>
     </ul>
@@ -579,9 +583,10 @@
 
 <!-- ClickBoom1 -->
 
-<!-- ClickBoom2 -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+<script src="/js/clickBoom1.js"></script>
 
-<script src="/js/clickBoom2.js"></script>
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 
