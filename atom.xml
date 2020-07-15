@@ -429,9 +429,9 @@
       <category term="js" scheme="http://yoursite.com/categories/js/"/>
     
     
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
       <category term="ajax交互" scheme="http://yoursite.com/tags/ajax%E4%BA%A4%E4%BA%92/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
@@ -457,9 +457,9 @@
       <category term="js" scheme="http://yoursite.com/categories/js/"/>
     
     
-      <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
-    
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
     
   </entry>
   
