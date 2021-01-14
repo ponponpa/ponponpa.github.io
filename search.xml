@@ -299,9 +299,9 @@
       
         <tags>
             
-            <tag> vue </tag>
-            
             <tag> 传值与传参 </tag>
+            
+            <tag> vue </tag>
             
         </tags>
       
@@ -326,11 +326,11 @@
       
         <tags>
             
+            <tag> vue </tag>
+            
             <tag> 双向绑定 </tag>
             
             <tag> axios底层原理 </tag>
-            
-            <tag> vue </tag>
             
         </tags>
       
