@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>你好，佳玮</title>
+  <title>做我的猫</title>
   <icon>https://www.gravatar.com/avatar/c40ed44e8f6829483bb35bcc05ce0099</icon>
   <subtitle>我从海上来，浪声满袖。</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -464,9 +464,9 @@
       <category term="js" scheme="http://yoursite.com/categories/js/"/>
     
     
-      <category term="ajax交互" scheme="http://yoursite.com/tags/ajax%E4%BA%A4%E4%BA%92/"/>
-    
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="ajax交互" scheme="http://yoursite.com/tags/ajax%E4%BA%A4%E4%BA%92/"/>
     
   </entry>
   
@@ -492,9 +492,9 @@
       <category term="js" scheme="http://yoursite.com/categories/js/"/>
     
     
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
       <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
