@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="生活,旅行,思考,代码,博客" />
+   
+  <meta name="description" content="一座孤岛" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     你好，光华
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="你好，光华" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover1.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">你好，光华</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+<div id="main">
+  <section class="outer">
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-vue关于路由"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2018/09/03/vue关于路由/"
+    >vue路由知识点</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2018/09/03/vue关于路由/" class="article-date">
+  <time datetime="2018-09-02T16:00:00.000Z" itemprop="datePublished">2018-09-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue-2-0/">vue-2.0</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="路由用什么模式？hash跟history区别，怎么转换？"><a href="#路由用什么模式？hash跟history区别，怎么转换？" class="headerlink" title="路由用什么模式？hash跟history区别，怎么转换？"></a>路由用什么模式？hash跟history区别，怎么转换？</h3><blockquote>
+<p>对于 Vue 这类渐进式前端开发框架，为了构建 SPA（单页面应用），需要引入前端路由系统，这也就是 Vue-Router 存在的意义。前端路由的核心，就在于 —— 改变视图的同时不会向后端发出请求。</p>
+</blockquote>
+<p>为了达到这一目的，浏览器当前提供了以下两种支持：<br><strong>hash模式和history模式</strong></p>
+<h4 id="hash模式："><a href="#hash模式：" class="headerlink" title="hash模式："></a>hash模式：</h4><p>在浏览器中符号“#”，#以及#后面的字符称之为hash，用window.location.hash读取。特点：hash虽然在URL中，但不被包括在HTTP请求中；用来指导浏览器动作，对服务端安全无用，hash不会重加载页面。</p>
+<h4 id="history模式"><a href="#history模式" class="headerlink" title="history模式:"></a>history模式:</h4><h2 id="history采用HTML5的新特性；且提供了两个新方法：-pushState-，replaceState-可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。"><a href="#history采用HTML5的新特性；且提供了两个新方法：-pushState-，replaceState-可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。" class="headerlink" title="history采用HTML5的新特性；且提供了两个新方法： pushState()，replaceState()可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。"></a>history采用HTML5的新特性；且提供了两个新方法： pushState()，replaceState()可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。</h2><h3 id="路由拦截在项目中做什么功能的时候用到了？怎么用的？"><a href="#路由拦截在项目中做什么功能的时候用到了？怎么用的？" class="headerlink" title="路由拦截在项目中做什么功能的时候用到了？怎么用的？"></a>路由拦截在项目中做什么功能的时候用到了？怎么用的？</h3><p>登录拦截逻辑<br><strong>第一步：路由拦截</strong><br>首先在定义路由的时候就需要多添加一个自定义字段requireAuth，用于判断该路由的访问是否需要登录。如果用户已经登录，则顺利进入路由，<br>否则就进入登录页面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        name: <span class="string">'/'</span>,</span><br><span class="line">        component: Index</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/repository'</span>,</span><br><span class="line">        name: <span class="string">'repository'</span>,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            requireAuth: <span class="literal">true</span>,  <span class="comment">// 添加该字段，表示进入这个路由是需要登录的</span></span><br><span class="line">        &#125;,</span><br><span class="line">        component: Repository</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/login'</span>,</span><br><span class="line">        name: <span class="string">'login'</span>,</span><br><span class="line">        component: Login</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>定义完路由后，我们主要是利用vue-router提供的钩子函数beforeEach()对路由进行判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (to.meta.requireAuth) &#123;  <span class="comment">// 判断该路由是否需要登录权限</span></span><br><span class="line">        <span class="keyword">if</span> (store.state.token) &#123;  <span class="comment">// 通过vuex state获取当前的token是否存在</span></span><br><span class="line">            next();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            next(&#123;</span><br><span class="line">                path: <span class="string">'/login'</span>,</span><br><span class="line">                query: &#123;<span class="attr">redirect</span>: to.fullPath&#125;  <span class="comment">// 将跳转的路由path作为参数，登录成功后跳转到该路由</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        next();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>每个钩子方法接收三个参数：<br>to: Route: 即将要进入的目标 路由对象<br>from: Route: 当前导航正要离开的路由<br>next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。<br><strong>确保要调用 next 方法，否则钩子就不会被 resolved。</strong><br>其中，to.meta中是我们自定义的数据，其中就包括我们刚刚定义的requireAuth字段。通过这个字段来判断该路由是否需要登录权限。需要的话，同时当前应用不存在token，则跳转到登录页面，进行登录。登录成功后跳转到目标路由。</p>
+<p>登录拦截到这里就结束了吗？并没有。这种方式只是简单的前端路由控制，并不能真正阻止用户访问需要登录权限的路由。还有一种情况便是：当前token失效了，但是token依然保存在本地。这时候你去访问需要登录权限的路由时，实际上应该让用户重新登录。<br>这时候就需要结合 http 拦截器 + 后端接口返回的http 状态码来判断。</p>
+<p><strong>第二步：拦截器</strong><br>要想统一处理所有http请求和响应，就得用上 axios 的拦截器。通过配置http response inteceptor，当后端接口返回401 Unauthorized（未授权），让用户重新登录。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http request 拦截器</span></span><br><span class="line">axios.interceptors.request.use(</span><br><span class="line">    config =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (store.state.token) &#123;  <span class="comment">// 判断是否存在token，如果存在的话，则每个http header都加上token</span></span><br><span class="line">            config.headers.Authorization = <span class="string">`token <span class="subst">$&#123;store.state.token&#125;</span>`</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> config;</span><br><span class="line">    &#125;,</span><br><span class="line">    err =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(err);</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// http response 拦截器</span></span><br><span class="line">axios.interceptors.response.use(</span><br><span class="line">    response =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;,</span><br><span class="line">    error =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (error.response) &#123;</span><br><span class="line">            <span class="keyword">switch</span> (error.response.status) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">401</span>:</span><br><span class="line">                    <span class="comment">// 返回 401 清除token信息并跳转到登录页面</span></span><br><span class="line">                    store.commit(types.LOGOUT);</span><br><span class="line">                    router.replace(&#123;</span><br><span class="line">                        path: <span class="string">'login'</span>,</span><br><span class="line">                        query: &#123;<span class="attr">redirect</span>: router.currentRoute.fullPath&#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error.response.data)   <span class="comment">// 返回接口返回的错误信息</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="命名路由的好处是什么？"><a href="#命名路由的好处是什么？" class="headerlink" title="命名路由的好处是什么？"></a>命名路由的好处是什么？</h3><p>官方文档的解释：<a href="https://router.vuejs.org/zh/guide/essentials/named-routes.html" target="_blank" rel="noopener">https://router.vuejs.org/zh/guide/essentials/named-routes.html</a><br>就是在routers配置路由名称的时候给路由定义不同的名字，这样的好处就是可以在使用router-link的to属性跳转路由的时候传一个对象从而实现与router.push一样的效果：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"&#123; name: 'user', params: &#123; userId: 123 &#125;&#125;"</span>&gt;</span>User<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'user'</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="number">123</span> &#125;&#125;)</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/路由/">路由</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-vue项目技术小记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2018/09/01/vue项目技术小记/"
+    >vue项目技术小记</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2018/09/01/vue项目技术小记/" class="article-date">
+  <time datetime="2018-08-31T16:00:00.000Z" itemprop="datePublished">2018-09-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue-2-0/">vue-2.0</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="最近做的项目快要结尾了，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～"><a href="#最近做的项目快要结尾了，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～" class="headerlink" title="最近做的项目快要结尾了，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～"></a>最近做的<del>项目快要结尾了</del>，本项目用前后端分离的，然后前端是用vue开发的，为什么选vue呢？一来公司要求效率要高些的，那就应该用到三大流行的框架之一，然后项目的内容不太复杂的，觉得用vue更合适的。二来正好应该要“炒熟”vue了哈。其中陷入了不少坑，一个一个爬过来的，总结下入坑的原因，另外会给出官方文档的对应内容，以便加深理解的。如有不足之处，请提出来哈～</h2><h3 id="异步加载组件"><a href="#异步加载组件" class="headerlink" title="异步加载组件"></a>异步加载组件</h3><p>我们都知道vue一般都是单页面的，也就意味着一开始就要加载全部的组件，这太不友好的，加载时间会慢些。这时候我们就用到异步组件～</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router= <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path:<span class="string">'/login'</span>,</span><br><span class="line">      name:<span class="string">'Login'</span>,</span><br><span class="line">      component:<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'../views/Login'</span>),<span class="comment">//路由懒加载</span></span><br><span class="line">      meta: &#123;</span><br><span class="line">        title: <span class="string">'登录'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="vue指令：非常好用，谁用谁知道"><a href="#vue指令：非常好用，谁用谁知道" class="headerlink" title="vue指令：非常好用，谁用谁知道"></a>vue指令：非常好用，谁用谁知道</h3><p>v-for 用于遍历<br>v-if &amp; v-show 用于隐藏和显示元素(区别在于后者是修改 display:block|none,前者是不创建把元素从dom中删除或者创建.<br>v-bind: 属性绑定,把数据绑定在HTML元素的属性上.<br>v-html &amp; v-text 把数据绑定在HTML元素的属性上,作用同 innerHTML &amp; innerText<br>v-on: 绑定HTML元素事件<br>v-if &amp; v-else-if &amp; v-else 条件渲染</p>
+<h2 id="v-model-绑定表单元素-实现双向绑定"><a href="#v-model-绑定表单元素-实现双向绑定" class="headerlink" title="v-model 绑定表单元素,实现双向绑定"></a>v-model 绑定表单元素,实现双向绑定</h2><h3 id="vue自定义指令："><a href="#vue自定义指令：" class="headerlink" title="vue自定义指令："></a>vue自定义指令：</h3><p>应用场景：<br>element-ui中有个模态框用的是它自定义的指令v-loading，想要同样的效果可以用Vue核心组件中的自定义指令模块。<br>看代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div v-test:user.isman.ischinese = <span class="string">"123"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"1234"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// @ is an alias to /src</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        directives: &#123;</span><br><span class="line">            test: &#123;</span><br><span class="line">                bind(el, binding, vnode, oldVnode) &#123;</span><br><span class="line">                    el.innerHTML = <span class="string">'&lt;h1&gt;指令内容&lt;/h1&gt;'</span> + binding.expression</span><br><span class="line">                    <span class="built_in">console</span>.log(el)</span><br><span class="line">                    <span class="built_in">console</span>.log(binding)</span><br><span class="line">                    <span class="built_in">console</span>.log(vnode)</span><br><span class="line">                    <span class="built_in">console</span>.log(oldVnode)</span><br><span class="line">                &#125;,</span><br><span class="line">                inserted() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'inserted'</span>)</span><br><span class="line">                &#125;,</span><br><span class="line">                update() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'update'</span>)</span><br><span class="line">                &#125;,</span><br><span class="line">                componentUpdated() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'componentUpdated'</span>)</span><br><span class="line">                &#125;,</span><br><span class="line">                unbind() &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">'unbind'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>directives是一个对象，里面包含了各个指令，每个指令也是个对象，可以在里面自定义配置（比如上面代码中的test{…}，test在模板里面的表现就是v-test）。</p>
+<h4 id="每个指令的解析"><a href="#每个指令的解析" class="headerlink" title="每个指令的解析"></a>每个指令的解析</h4><p>生命周期（钩子，Hook）<br>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。</p>
+<p>inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。</p>
+<p>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新。</p>
+<p>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。</p>
+<h2 id="unbind：只调用一次，指令与元素解绑时调用。"><a href="#unbind：只调用一次，指令与元素解绑时调用。" class="headerlink" title="unbind：只调用一次，指令与元素解绑时调用。"></a>unbind：只调用一次，指令与元素解绑时调用。</h2><h3 id="vue过滤器"><a href="#vue过滤器" class="headerlink" title="vue过滤器"></a>vue过滤器</h3><p>在vue中提供了Vue.filter(‘flterName’,fn)来定义一个过滤器，过滤器可以在HTML代码中使用，如对动态拿到的数据进行过滤，<br>一个简单例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"demo"</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"price"</span>&gt;</span><br><span class="line">        &#123;&#123;price | currency(<span class="string">'$'</span>)&#125;&#125;&lt;!--通过‘|’管道符来过滤前面的price--&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="https:/</span><span class="regexp">/cdn.bootcss.com/</span>vue/<span class="number">2.6</span><span class="number">.10</span>/vue.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    Vue.filter('currency',function(val,unit)&#123;//定义过滤器，并定义功能。</span></span><br><span class="line"><span class="string">        val =  val || 0;</span></span><br><span class="line"><span class="string">        unit = unit || '元';</span></span><br><span class="line"><span class="string">        return val + unit;</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">    new Vue(&#123;</span></span><br><span class="line"><span class="string">        el:'.demo',</span></span><br><span class="line"><span class="string">        data:&#123;</span></span><br><span class="line"><span class="string">            price:'',</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3><p>Vuex 类似 Redux 的状态管理器，vuex是一个专门为vue.js设计的集中式状态管理架构，用来管理Vue的所有组件状态。我认为就是前端为了方便数据的操作而建立的一个“前端数据库”。</p>
+<h2 id="Vuex基本使用的总结"><a href="#Vuex基本使用的总结" class="headerlink" title="Vuex基本使用的总结"></a><a href="https://www.jianshu.com/p/aae7fee46c36" target="_blank" rel="noopener">Vuex基本使用的总结</a></h2><h3 id="vue生命周期函数"><a href="#vue生命周期函数" class="headerlink" title="vue生命周期函数"></a>vue生命周期函数</h3><p>|钩子函数        |描述                                                            |<br>|beforeCreate    |组件实例刚被创建，组件属性计算之前，如data属性等                    |<br>|created        |组件实例创建完成，属性已绑定，但DOM还未生成，$el属性还不存在            |<br>|beforeMount    |模板编译 / 挂载之前                                                |<br>|mounted        |模板编译 / 挂载之后                                                |<br>|beforeUpdate    |组件更新之前                                                        |<br>|update            |组件更新之后                                                        |<br>|activated        |组件被激活时调用                                                    |<br>|deactivated    |组件被移除时调用                                                    |<br>|beforeDestory    |组件销毁前调用                                                    |<br>|destoryed        |组件销毁后调用                                                    |</p>
+<p><strong>日常举栗子</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.jsdelivr.net/vue/2.1.3/vue.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/</span>p&gt;</span><br><span class="line">    &lt;button v-on:click=<span class="string">"change()"</span>&gt;change&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button v-on:click="destr()"&gt;destroy&lt;/</span>button&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    var app = new Vue(&#123;</span></span><br><span class="line"><span class="string">        el: '#app',</span></span><br><span class="line"><span class="string">        data: &#123;</span></span><br><span class="line"><span class="string">            message: 66</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeCreate: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeCreate 创建前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        created: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('created 创建完毕');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data + JSON.stringify(this.$data));</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeMount: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeMount 挂载前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        mounted: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('mounted 挂载结束');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeUpdate: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeUpdate 更新前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        updated: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('updated 更新完成');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        beforeDestroy: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('beforeDestroy 销毁前');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        destroyed: function () &#123;</span></span><br><span class="line"><span class="string">            console.group('destroyed 销毁完成');</span></span><br><span class="line"><span class="string">            console.log("</span>el: <span class="string">" + this.$el);</span></span><br><span class="line"><span class="string">            console.log("</span>data: <span class="string">" + this.$data);</span></span><br><span class="line"><span class="string">            console.log("</span>message: <span class="string">" + this.message)</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        methods: &#123;</span></span><br><span class="line"><span class="string">            change() &#123;</span></span><br><span class="line"><span class="string">                app.message++;</span></span><br><span class="line"><span class="string">            &#125;,</span></span><br><span class="line"><span class="string">            destr() &#123;</span></span><br><span class="line"><span class="string">                app.$destroy();</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;)</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以在控制台上感受一下。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue技术栈/">vue技术栈</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-vue中的各种传值传参问题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2018/08/03/vue中的各种传值传参问题/"
+    >vue传值传参小结</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2018/08/03/vue中的各种传值传参问题/" class="article-date">
+  <time datetime="2018-08-02T16:00:00.000Z" itemprop="datePublished">2018-08-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue-2-0/">vue-2.0</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？"><a href="#vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？" class="headerlink" title="vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？"></a>vue中做什么功能用到了组件件传值？传值方式有哪些？怎么实现的？</h4><p>VUE中组件之间传值，总结来讲有三种情况，分别是：父组件对子组件、子组件对父组件以及兄弟组件之间传值以及调用。</p>
+<blockquote>
+<p>父组件传值给子组件:通过类似于属性绑定的方式，将需要传入子组件中的数据，绑定在子组件上，子组件通过props接收传入进来的数据。<br>父组件中可以给子组件传入一个静态的值：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">title</span>=<span class="string">"My journey with Vue"</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但一般我们都是需要传动态的值，所以需要v-bind绑定：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">v-bind:title</span>=<span class="string">"post.title"</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line">//也可以写成</span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">:title</span>=<span class="string">"post.title+'by'+post.author.name"</span>&gt;</span><span class="tag">&lt;<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>子组件要显式的用props选项声明它预期的数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 某个子组件中：</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">'hello world'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件传值给父组件<br>通过事件派发的方式传值给父组件，或者告知父组件需要调用方法。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件在组件上定义了一个自定义事件childFn，事件名为parentFn用于接受子组件传过来的message值：</span></span><br><span class="line">&lt;!-- 父组件 --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"test"</span>&gt;</span><br><span class="line">      &lt;test-com @childFn=<span class="string">"parentFn"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">test-com</span>&gt;</span></span></span><br><span class="line">      &lt;br/&gt; </span><br><span class="line">      子组件传来的值 : &#123;&#123;message&#125;&#125;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">''</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">       parentFn(payload) &#123;</span><br><span class="line">        <span class="keyword">this</span>.message = payload;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子组件是一个buttton按钮，并为其添加了一个click事件，当点击的时候使用$emit()触发事件，把message传给父组件。</span></span><br><span class="line">&lt;!-- 子组件 --&gt;</span><br><span class="line">&lt;template&gt; </span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"testCom"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"message"</span> /&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"click"</span>&gt;Send&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ...</span></span><br><span class="line"><span class="regexp">    data() &#123;</span></span><br><span class="line"><span class="regexp">        return &#123;</span></span><br><span class="line"><span class="regexp">          /</span><span class="regexp">/ 默认</span></span><br><span class="line"><span class="regexp">          message: '我是来自子组件的消息'</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    methods: &#123;</span></span><br><span class="line"><span class="regexp">      click() &#123;</span></span><br><span class="line"><span class="regexp">            this.$emit('childFn', this.message);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;    </span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="vue路由-路由传参数有哪些方法？项目中传递什么数据用哪种传参？"><a href="#vue路由-路由传参数有哪些方法？项目中传递什么数据用哪种传参？" class="headerlink" title="vue路由  路由传参数有哪些方法？项目中传递什么数据用哪种传参？"></a>vue路由  路由传参数有哪些方法？项目中传递什么数据用哪种传参？</h4><h3 id="一-使用router-link进行路由导航，传递参数"><a href="#一-使用router-link进行路由导航，传递参数" class="headerlink" title="一.使用router-link进行路由导航，传递参数"></a>一.使用router-link进行路由导航，传递参数</h3><blockquote>
+<p>父组件中：使用<router-link to="/需要跳转的路由路径/需要传递的参数"></router-link>标签进行导航</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/child/123"</span>&gt;</span><span class="tag">&lt;<span class="name">el-button</span>&gt;</span>click<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- child是子页面路由路径，123是需要传递的参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中：使用this.$route.params.num来接收路由参数</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">		&#123;&#123;num&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="actionscript">	name:<span class="string">'child'</span>,</span></span><br><span class="line">	data:&#123;</span><br><span class="line"><span class="actionscript">		<span class="keyword">return</span>&#123;</span></span><br><span class="line">			num:0</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	mounted()&#123;</span><br><span class="line"><span class="actionscript">		<span class="keyword">this</span>.num=<span class="keyword">this</span>.$route.params.num  <span class="comment">//123</span></span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 此时，页面上渲染出路由传递过来的参数num，呈现123 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>地址栏中：localhost:8080/#/child/123(在地址栏中显示传递的参数num,即123, ，刷新页面，参数不丢失)</p>
+</blockquote>
+<h3 id="二、直接调用-router-push-实现携带参数的跳转"><a href="#二、直接调用-router-push-实现携带参数的跳转" class="headerlink" title="二、直接调用$router.push 实现携带参数的跳转"></a>二、直接调用$router.push 实现携带参数的跳转</h3><blockquote>
+<p>父组件中：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"itemId in 3"</span> <span class="attr">:key</span>=<span class="string">"itemId"</span> @<span class="attr">click</span>=<span class="string">"toChild(itemId)"</span>&gt;</span>&#123;&#123;itemId&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="actionscript">	name:<span class="string">"home"</span>,</span></span><br><span class="line">	data()&#123;</span><br><span class="line"><span class="actionscript">		<span class="keyword">return</span>&#123;&#125;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		toChild(id)&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">this</span>.$router.push(&#123;</span></span><br><span class="line"><span class="javascript">				path:<span class="string">`/child/<span class="subst">$&#123;id&#125;</span>`</span></span></span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 模板渲染中调用函数，传递参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">	&#123;&#123;this.$route.params.id&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 仍然使用 this.$route.params.id  获取参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路由配置文件中：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	path:&apos;/child/:id&apos;,</span><br><span class="line">	name:&apos;child&apos;,</span><br><span class="line">	component:Child</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>id用来为参数占位,在地址栏中显示传递的参数id, 刷新页面，参数不丢失</p>
+<h3 id="三、通过路由属性中的name来确定匹配的路由，通过params来传递参数"><a href="#三、通过路由属性中的name来确定匹配的路由，通过params来传递参数" class="headerlink" title="三、通过路由属性中的name来确定匹配的路由，通过params来传递参数"></a>三、通过路由属性中的name来确定匹配的路由，通过params来传递参数</h3><blockquote>
+<p>父组件中:</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-col</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"toChild"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="actionscript">	name:<span class="string">'home'</span>,</span></span><br><span class="line">	data()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		toChild()&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">this</span>.$router.push(&#123;</span></span><br><span class="line"><span class="actionscript">				name:<span class="string">'childView'</span>,</span></span><br><span class="line">				params:&#123;</span><br><span class="line">					id:1</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用name来匹配路由 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">	&#123;&#123;this.$route.params.id&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 依然使用 this.$route.params.id  接收参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路由配置文件中：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	path:<span class="string">'/child'</span>,</span><br><span class="line">	name:<span class="string">'childView'</span>,</span><br><span class="line">	component:Child</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用name匹配</span></span><br></pre></td></tr></table></figure>
+
+<p>地址栏中：localhost:8080/#/child(地址栏中不显示参数，刷新页面，参数丢失)</p>
+<h3 id="使用path来匹配路由，然后通过query来传递参数，这种情况下-query传递的参数会显示在url后面-id-？"><a href="#使用path来匹配路由，然后通过query来传递参数，这种情况下-query传递的参数会显示在url后面-id-？" class="headerlink" title="使用path来匹配路由，然后通过query来传递参数，这种情况下 query传递的参数会显示在url后面?id=？"></a>使用path来匹配路由，然后通过query来传递参数，这种情况下 query传递的参数会显示在url后面?id=？</h3><blockquote>
+<p>父组件中：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-col</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"toChild"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="actionscript">	name:<span class="string">'home'</span>,</span></span><br><span class="line">	data()&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		toChild()&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">this</span>.$router.push(&#123;</span></span><br><span class="line"><span class="actionscript">				path:<span class="string">'/child'</span>,</span></span><br><span class="line">				query:&#123;</span><br><span class="line">					id:1</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用query来传递参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子组件中</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">	&#123;&#123;this.$route.query.id&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使用 this.$route.query.id来接收参数 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路由配置文件中：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	path:<span class="string">'/child'</span>,</span><br><span class="line">	name:<span class="string">'child'</span>,</span><br><span class="line">	component:Child</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>地址栏中：localhost:8080/#/child?id=1(参数显示在地址栏中，刷新页面参数不丢失)</p>
+<p>****这里要特别注意 ：在子组件中 获取参数的时候是$route.params 而不是$router ，这很重要<del>~</del></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>1、 this.$router.push进行编程式路由跳转</p>
+<p>2、 router-link 进行页面按钮式路由跳转</p>
+<p>3、 this.$route.params获取路由传递参数</p>
+<p>4、this.$route.query获取路由传递参数</p>
+<p>5、 params 和 query 都是传递参数的，params不会在url上面出现，并且params参数是路由的一部分，是一定要存在的 query则是我们通常看到的url后面的跟在？后面的显示参数</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/传值与传参/">传值与传参</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-vue底层原理"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2018/08/01/vue底层原理/"
+    >vue中的底层原理</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2018/08/01/vue底层原理/" class="article-date">
+  <time datetime="2018-07-31T16:00:00.000Z" itemprop="datePublished">2018-08-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue-2-0/">vue-2.0</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="vue实现双向绑定原理"><a href="#vue实现双向绑定原理" class="headerlink" title="vue实现双向绑定原理"></a>vue实现双向绑定原理</h1><hr>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>vue数据双向绑定通过‘数据劫持’ + 订阅发布模式实现</p>
+<h3 id="数据劫持"><a href="#数据劫持" class="headerlink" title="数据劫持"></a>数据劫持</h3><p>指的是在访问或者修改对象的某个属性时，通过一段代码拦截这个行为，进行额外的操作或者修改返回结果</p>
+<p>典型的有<br>1.Object.defineProperty()<br>2.es6中Proxy对象</p>
+<h3 id="订阅发布模式"><a href="#订阅发布模式" class="headerlink" title="订阅发布模式"></a>订阅发布模式</h3><p>定义：对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知<br>订阅发布模式中事件统一由处理中心处理，订阅者发布者互不干扰。<br>优点：实现更多的控制，做权限处理，节流控制之类，例如：发布了很多消息，但是不是所有订阅者都要接收</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现一个处理中心</span></span><br><span class="line"><span class="keyword">let</span> event = &#123;</span><br><span class="line">  clientList: &#123;&#125;, <span class="comment">// 订阅事件列表</span></span><br><span class="line">  <span class="comment">// 订阅</span></span><br><span class="line">  on(key, fn)&#123;</span><br><span class="line">    <span class="comment">// 如果这个事件没有被订阅，那么创建一个列表用来存放事件</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.clientList[key]) &#123;</span><br><span class="line">      <span class="keyword">this</span>.clientList[key] = []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将事件放入已有的事件列表中</span></span><br><span class="line">    <span class="keyword">this</span>.clientList[key].push(fn);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 发布</span></span><br><span class="line">  trigger(type, args)&#123;</span><br><span class="line">    <span class="keyword">let</span> fns = <span class="keyword">this</span>.clientList[type] <span class="comment">// 拿到这个事件的所有监听</span></span><br><span class="line">    <span class="keyword">if</span>(!fns || fns.length === <span class="number">0</span>)&#123;  <span class="comment">// 如果没有这条消息的订阅者</span></span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果存在这个事件的订阅，那么遍历事件列表，触发对应监听</span></span><br><span class="line">    fns.forEach(<span class="function"><span class="params">fn</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 可以在此处添加过滤等处理</span></span><br><span class="line">      fn(args)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>很多前端新人谈到vue的双向绑定回想到v-model，其实我们应该谈谈双向绑定的逻辑，一句话概括起来就是：</p>
+<blockquote>
+<p>在数据渲染时使用prop渲染数据，将prop绑定到子组件自身的数据上，修改数据时更新自身数据来替代prop，watch子组件自身数据的改变，触发事件通知父组件更改绑定到prop的数据。</p>
+</blockquote>
+<p>再往下谈<strong>Vue数据绑定这样做的好处是什么</strong></p>
+<blockquote>
+<p>敲黑板划重点：父组件数据改变时，不会修改存储prop的子组件数据，只是以子组件数据为媒介，完成对prop的双向修改。</p>
+</blockquote>
+<h2 id="关于axios的实现原理可以看我在js里面总结的基于Promise对Ajax原理-进行简单封装"><a href="#关于axios的实现原理可以看我在js里面总结的基于Promise对Ajax原理-进行简单封装" class="headerlink" title="关于axios的实现原理可以看我在js里面总结的基于Promise对Ajax原理 进行简单封装"></a>关于axios的实现原理可以看我在js里面总结的<strong>基于Promise对Ajax原理 进行简单封装</strong></h2><h2 id="关于vue项目中用axios出现跨域问题以及和ajax的区别："><a href="#关于vue项目中用axios出现跨域问题以及和ajax的区别：" class="headerlink" title="关于vue项目中用axios出现跨域问题以及和ajax的区别："></a>关于vue项目中用axios出现跨域问题以及和ajax的区别：</h2><p>对于跨域问题，前端一般是不负责解决的，都是交给后台来解决。<br>可以采用以下方式进行解决：<br>1：服务器端设置跨域<br>2：可以自己设置一个代理服务器<br>另外，在express中发起请求就可以避免跨域问题的出现。</p>
+<p>axios.js Vue官方推荐的ajax库<br>vue-resource插件已经官方推荐中去掉</p>
+<blockquote>
+<p>fetch.js fetch是基于Promise的,未来的趋势。<br>axios.js Vue 2.0 官方推荐。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios底层原理/">axios底层原理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双向绑定/">双向绑定</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-javascript之常用数组"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/08/javascript之常用数组/"
+    >javascript之常用数组</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/12/08/javascript之常用数组/" class="article-date">
+  <time datetime="2017-12-07T16:00:00.000Z" itemprop="datePublished">2017-12-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="数组方法总结："><a href="#数组方法总结：" class="headerlink" title="数组方法总结："></a>数组方法总结：</h2><hr>
+<p>总结一下 JavaScript 中数组 Array 常用的一些方法：</p>
+<ol>
+<li><p>创建数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = []</span><br><span class="line">var arr = new Array()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>join()（原数组不变）</p>
+</li>
+</ol>
+<p><strong>数组 -&gt; 字符串</strong>，默认用逗号为分隔符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = arr.join()        <span class="comment">// 数组变字符串， 以逗号分开</span></span><br><span class="line"><span class="keyword">var</span> str = arr.join(<span class="string">''</span>)        <span class="comment">// 数组变字符串， 不添加任何东西</span></span><br><span class="line"><span class="keyword">var</span> a, b;</span><br><span class="line">a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">b = a.join(<span class="string">","</span>);</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br></pre></td></tr></table></figure>
+
+<p><strong>字符串 -&gt; 数组</strong>，默认用逗号为分隔符,需要用到String对象中的split()方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="string">"1,2,3,4"</span>;</span><br><span class="line"><span class="keyword">var</span> c=a.split(<span class="string">","</span>);</span><br><span class="line"><span class="built_in">console</span>.log(c)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>push() 和 pop()（原数组改变）<br>push()：接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度。<br>pop() ： 数组末尾移除最后一项，减少数组的 length 值，然后返回移除的项。</p>
+</li>
+<li><p>shift() 和 unshift()（原数组改变）<br>shift()： 删除原数组第一项，并返回删除元素的值；如果数组为空则返回 undefined ；<br>Unshift()：将参数添加到原数组开头，并返回数组的长度 。</p>
+</li>
+<li><p>sort() (原数组改变)<br>按升序排列数组项——即最小的值位于最前面，最大的值排在最后面。在排序时，sort()方法会调用每个数组项的 toString()转型方法，然后比较得到的字符串，以确定如何排序。即使数组中的每一项都是数值， sort()方法比较的也是字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [&quot;a&quot;, &quot;d&quot;, &quot;c&quot;, &quot;b&quot;]</span><br><span class="line">arr1.sort())      // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span><br><span class="line">arr2 = [13, 24, 51, 3]</span><br><span class="line">arr2.sort())      // [13, 24, 3, 51] , 按第一位数字排序</span><br><span class="line">arr.sort((a, b) =&gt; &#123; return a - b &#125;)       // [3, 13, 24, 51] , 升序</span><br><span class="line">arr.sort((a, b) =&gt; &#123; return b - a &#125;)       // [51, 24, 13, 3] ， 降序</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>slice() （原数组没变）<br>返回从原数组中指定开始下标到结束下标之间的项组成的新数组。slice()方法可以接受一或两个参数，即要返回项的起始和结束位置。在只有一个参数的情况下， slice()方法返回从该参数指定位置开始到当前数组末尾的所有项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3, 4, 5]</span><br><span class="line">var _arr = arr.slice(1, 3)       // [2 , 3], 返回 （3 - 1） = 2 个元素的数组</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>splice() (原数组改变)<br>删除： 删除任意数量的项，只需指定 2 个参数：要删除的第一项的位置和要删除的项数。</p>
+</li>
+</ol>
+<p><strong>splice(0, 2)    //删除数组中的前两项。返回值为删除的元素（数组形式）</strong><br>插入： 向指定位置插入任意数量的项，只需提供 3 个参数：起始位置、 0（要删除的项数）和要插入的项。<br><strong>splice(2, 0, 4, 6)   //从当前数组的位置 2 开始插入4和6。返回值为空（数组形式）</strong><br>替换： 向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数：起始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。<br><strong>splice (2, 1, 4, 6)    // 删除当前数组位置 2 的项，然后再从位置 2 开始插入4和6。返回值为删除的元素（数组形式）</strong></p>
+<ol start="8">
+<li><p>indexOf() 和 lastIndexOf()<br>indexOf()：接收一或两个参数：要查找的项和（可选的）表示查找起点位置的索引。默认从数组的开头（位置 0）开始向后查找。<br>lastIndexOf：接收一或两个参数：要查找的项和（可选的）表示查找起点位置的索引。默认从数组的末尾开始向前查找。</p>
+</li>
+<li><p>map() (原数组没变)<br>“映射”，对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3, 4, 5]</span><br><span class="line">var arr2 = arr.map((item) =&gt; &#123; </span><br><span class="line">  return item*item</span><br><span class="line">&#125;)</span><br><span class="line">console.log(arr2)    // [1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>filter() (原数组没变)<br>“过滤”功能，数组中的每一项运行给定函数，返回满足过滤条件组成的数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3, 4, 5]</span><br><span class="line">var _arr = arr.filter((item) =&gt; &#123; return item &gt;= 3 &#125;)         // [3, 4, 5]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reverse()（原数组改变）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3]</span><br><span class="line">arr.reverse()       // [3, 2, 1]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组扁平化<br>(1) map</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = []</span><br><span class="line">    arr.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(item)) &#123;</span><br><span class="line">            res = res.concat(flatten(item))</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.push(item)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>(2) [].concat<br>es6的扩展运算符能将二维数组变为一维</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].concat(...[1, 2, 3, [4, 5]])         // [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+
+<p>根据这个结果我们可以做一个遍历，若arr中含有数组则使用一次扩展运算符，直至没有为止。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(arr.some(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">Array</span>.isArray(item))) &#123;</span><br><span class="line">        arr = [].concat(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-javascript之关于拷贝"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/07/javascript之关于拷贝/"
+    >javascript之关于拷贝</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/12/07/javascript之关于拷贝/" class="article-date">
+  <time datetime="2017-12-06T16:00:00.000Z" itemprop="datePublished">2017-12-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="深拷贝与浅拷贝以及实现方式"><a href="#深拷贝与浅拷贝以及实现方式" class="headerlink" title="深拷贝与浅拷贝以及实现方式"></a>深拷贝与浅拷贝以及实现方式</h1><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><blockquote>
+<p><strong>浅拷贝将原对象或原数组的引用直接赋给新对象，新数组，新对象／数组只是原对象的一个引用</strong>（拷贝后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响）</p>
+</blockquote>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><blockquote>
+<p>深拷贝是将原对象的各个属性的“值”逐个复制出去，而且将原对象各个属性所包含的对象也依次采用深拷贝的方法递归复制到新对象上（注意拷贝的“值”而不是“引用”）</p>
+</blockquote>
+<h3 id="什么时候使用深拷贝"><a href="#什么时候使用深拷贝" class="headerlink" title="什么时候使用深拷贝?"></a>什么时候使用深拷贝?</h3><blockquote>
+<p>我们在希望改变新的数组（对象）的时候，不改变原数组（对象）</p>
+</blockquote>
+<h3 id="使用深拷贝的注意事项"><a href="#使用深拷贝的注意事项" class="headerlink" title="使用深拷贝的注意事项"></a>使用深拷贝的注意事项</h3><blockquote>
+<p>如果对象比较大，层级也比较多，深拷贝会带来性能上的问题。所以在遇到需要使用深拷贝，考虑有没有其他的方案，实际应用中主要还是以浅拷贝为主</p>
+</blockquote>
+<hr>
+<h3 id="浅拷贝的实现方式"><a href="#浅拷贝的实现方式" class="headerlink" title="浅拷贝的实现方式"></a>浅拷贝的实现方式</h3><ul>
+<li><p><strong>自定义函数</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象</span></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line">obj2.a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//&#123;a:2&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)<span class="comment">//&#123;a:2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组</span></span><br><span class="line"><span class="keyword">var</span> obj1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> obj2 = obj1;</span><br><span class="line">obj2.push(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//[1,2,3,4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Object.assign()</strong><br>Object.assign我们经常会用到合并对象，当然利用Object.assign性质我们也可以实现对象的拷贝。<br>这里要注意的是Object.assign第一个参数必须是个空对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</span><br><span class="line">obj2.a = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//&#123;a:1,b:2&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)<span class="comment">//&#123;a:4,b:2&#125;</span></span><br><span class="line"><span class="comment">//Object.assign()进行的拷贝是浅拷贝,只有第一层是深拷贝</span></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:&#123;<span class="attr">c</span>:<span class="number">2</span>&#125;&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1)</span><br><span class="line">obj2.b.c = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1)<span class="comment">//&#123;a:1,b:&#123;c:4&#125;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2)<span class="comment">//&#123;a:1,b:&#123;c:4&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>解构赋值</strong><br>解构赋值和Object.assign()拷贝方式一样，只有第一层是深拷贝</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;...obj1&#125;</span><br><span class="line">obj2.a = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)<span class="comment">//&#123;a:1,b:2&#125;,&#123;a:4,b:2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小李'</span>, <span class="string">'小王'</span>]</span><br><span class="line">&#125;]</span><br><span class="line"><span class="keyword">var</span> obj2 = [...obj1]</span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)<span class="comment">//[&#123;name: '张三',childs: ['小杨']&#125;]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="深拷贝的实现方式"><a href="#深拷贝的实现方式" class="headerlink" title="深拷贝的实现方式"></a>深拷贝的实现方式</h3><hr>
+<ul>
+<li><strong>利用json.stringify</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小李'</span>, <span class="string">'小王'</span>]</span><br><span class="line">&#125;]</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)</span><br><span class="line"><span class="comment">//obj1：[&#123;name: '张三',childs: ['小李', '小王']&#125;]</span></span><br><span class="line"><span class="comment">//obj1：[&#123;name: '张三',childs: ['小杨']&#125;]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>但是这种方法存在一种弊端，结果值为undefined,或者function的时候并不会拷贝过来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小李'</span>, <span class="string">'小王'</span>],</span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    age: <span class="literal">undefined</span></span><br><span class="line">&#125;]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line"> </span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ul>
+<li><strong>利用递归来实现一个方法进行拷贝</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = [&#123;</span><br><span class="line">    name: <span class="string">'张三'</span>,</span><br><span class="line">    childs: [<span class="string">'小王'</span>, <span class="string">'小李'</span>],</span><br><span class="line">    fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    age: <span class="literal">undefined</span></span><br><span class="line">&#125;]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj2 = extend(obj1)</span><br><span class="line"> </span><br><span class="line">obj2[<span class="number">0</span>].childs = [<span class="string">'小杨'</span>]</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(obj1, obj2)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> data === <span class="string">'object'</span> &amp;&amp; data) &#123;</span><br><span class="line">	    <span class="keyword">let</span> val = <span class="keyword">typeof</span> data.length === <span class="string">'number'</span> ? [] : &#123;&#125;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> data) &#123;</span><br><span class="line">	        val[i] = extend(data[i])</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">return</span> val</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	    <span class="keyword">return</span> data</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这样我们就能把所有值都拷贝过来了。    </p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深拷贝-浅拷贝/">深拷贝&浅拷贝</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-javascript之ajax"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/06/javascript之ajax/"
+    >javascript之ajax</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/12/06/javascript之ajax/" class="article-date">
+  <time datetime="2017-12-05T16:00:00.000Z" itemprop="datePublished">2017-12-06</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="ajax的底层交互原理以及ajax的简单封装"><a href="#ajax的底层交互原理以及ajax的简单封装" class="headerlink" title="ajax的底层交互原理以及ajax的简单封装"></a>ajax的底层交互原理以及ajax的简单封装</h2><hr>
+<p>AJAX即“Asyn Javascript And XML”，是指一种创建交互式网页应用的网页开发技术。<br>Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。<br>Ajax的目的是提高用户体验，较少网络数据的传输量。<br><img src="/img/3174701-cdb67e435d967ec3.jpg" alt="AJAX"></p>
+<h3 id="Ajax的使用"><a href="#Ajax的使用" class="headerlink" title="Ajax的使用"></a>Ajax的使用</h3><h4 id="1-创建Ajax核心对象XMLHttpRequest-记得考虑兼容性"><a href="#1-创建Ajax核心对象XMLHttpRequest-记得考虑兼容性" class="headerlink" title="1.创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)"></a>1.创建Ajax核心对象XMLHttpRequest(记得考虑兼容性)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">var</span> xhr=<span class="literal">null</span>;  </span><br><span class="line"><span class="number">2.</span> <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)  </span><br><span class="line"><span class="number">3.</span>   &#123;<span class="comment">// 兼容 IE7+, Firefox, Chrome, Opera, Safari  </span></span><br><span class="line"><span class="number">4.</span>   xhr=<span class="keyword">new</span> XMLHttpRequest();  </span><br><span class="line"><span class="number">5.</span>   &#125; <span class="keyword">else</span>&#123;<span class="comment">// 兼容 IE6, IE5 </span></span><br><span class="line"><span class="number">6.</span>     xhr=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);  </span><br><span class="line"><span class="number">7.</span>   &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-向服务器发送请求"><a href="#2-向服务器发送请求" class="headerlink" title="2.向服务器发送请求"></a>2.向服务器发送请求</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.open(method,url,<span class="keyword">async</span>);  </span><br><span class="line"><span class="number">2.</span> send(string);<span class="comment">//post请求时才使用字符串参数，否则不用带参数。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>method：请求的类型；GET 或 POST</li>
+<li>url：文件在服务器上的位置</li>
+<li>async：true（异步）或 false（同步）</li>
+</ul>
+<p><strong>注意：post请求一定要设置请求头的格式内容</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"POST"</span>,<span class="string">"test.html"</span>,<span class="literal">true</span>);  </span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);  </span><br><span class="line">xhr.send(<span class="string">"fname=Henry&amp;lname=Ford"</span>);  <span class="comment">//post请求参数放在send里面，即请求体</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-服务器响应处理（区分同步跟异步两种情况）"><a href="#3-服务器响应处理（区分同步跟异步两种情况）" class="headerlink" title="3.服务器响应处理（区分同步跟异步两种情况）"></a>3.服务器响应处理（区分同步跟异步两种情况）</h4><p><strong>①同步处理</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.open(<span class="string">"GET"</span>,<span class="string">"info.txt"</span>,<span class="literal">false</span>);  </span><br><span class="line"><span class="number">2.</span> xhr.send();  </span><br><span class="line"><span class="number">3.</span> <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xhr.responseText; <span class="comment">//获取数据直接显示在页面上</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>②异步处理</strong><br>相对来说比较复杂，要在请求状态改变事件中处理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xhr.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)  </span>&#123; </span><br><span class="line"><span class="number">2.</span>    <span class="keyword">if</span> (xhr.readyState==<span class="number">4</span> &amp;&amp;xhr.status==<span class="number">200</span>)  &#123; </span><br><span class="line"><span class="number">3.</span>       <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xhr.responseText;  </span><br><span class="line"><span class="number">4.</span>      &#125;</span><br><span class="line"><span class="number">5.</span>    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>③GET和POST请求数据区别</strong></p>
+<ul>
+<li>使用Get请求时,参数在URL中显示,而使用Post方式,则放在send里面</li>
+<li>使用Get请求发送数据量小,Post请求发送数据量大</li>
+<li>使用Get请求安全性低，会被缓存，而Post请求反之<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/list?page=5'</span>);</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>GET请求参数需要拼在url上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'/list'</span>);</span><br><span class="line">xhr.send(<span class="string">'page=5&amp;pageSize=20'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="POST请求数据是放在send里面的"><a href="#POST请求数据是放在send里面的" class="headerlink" title="POST请求数据是放在send里面的"></a>POST请求数据是放在send里面的</h2><p>PS:<br><strong>什么是readyState？</strong><br>readyState是XMLHttpRequest对象的一个属性，用来标识当前XMLHttpRequest对象处于什么状态。<br>readyState总共有5个状态值，分别为0~4，每个值代表了不同的含义</p>
+<ul>
+<li>0：未初始化 – 尚未调用.open()方法；</li>
+<li>1：启动 – 已经调用.open()方法，但尚未调用.send()方法；</li>
+<li>2：发送 – 已经调用.send()方法，但尚未接收到响应；</li>
+<li>3：接收 – 已经接收到部分响应数据；</li>
+<li>4：完成 – 已经接收到全部响应数据，而且已经可以在客户端使用了；</li>
+</ul>
+<p><strong>什么是status？</strong><br>HTTP状态码(status)由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：</p>
+<h2 id="status"><a href="#status" class="headerlink" title="status"></a><a href="https://baike.baidu.com/item/HTTP状态码/5053660?fr=aladdin" target="_blank" rel="noopener">status</a></h2><h2 id="ajax和axios、fetch的区别"><a href="#ajax和axios、fetch的区别" class="headerlink" title="ajax和axios、fetch的区别"></a>ajax和axios、fetch的区别</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">			type:<span class="string">"get"</span>,</span><br><span class="line">			url:<span class="string">""</span>,</span><br><span class="line">			<span class="keyword">async</span>:<span class="literal">true</span>,</span><br><span class="line">			data:&#123;&#125;,</span><br><span class="line">			dataType:<span class="string">""</span>,</span><br><span class="line">			success:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			&#125;</span><br><span class="line">	    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>AJAX:<br>是基于XHR原生开发的，目前已有的fetch可替代。本身是针对mvc的编程模式，不太适合目前mvvm的编程模式。jQuery本身比较大，如果单纯的使用ajax可以自己封装一个，不然会影响性能体验。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">    method: <span class="string">'post'</span>,</span><br><span class="line">    url: <span class="string">''</span>,</span><br><span class="line">    data: &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AXIOS:<br>从浏览器中创XMLHttpRequest请求。<br>node.js中创建http请求。<br>自动转换为json数据类型<br>支持promise API ，提供了一些并发请求的接口。<br>是vue全家桶技术之一，在vue中需要使用npm install axios –save-dev来安装依赖。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">  <span class="keyword">let</span> data = response.json();</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e);</span><br></pre></td></tr></table></figure>
+
+<p>FETCH:<br>脱离了xhr。<br>是es规范里新的实现方式。<br>更加底层，提供了丰富的API。<br>.fetch没有办法原生监测请求的进度，而XHR可以。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>ajax是最早出现发送后端请求的技术，属于原生js范畴,核心是使用XMLHttpRequest对象,使用较多并有先后顺序的话，容易产生回调地狱。</p>
+<p>fetch号称可以代替ajax的技术，是基于es6中的Promise对象设计的，参数和jQuery中的ajax类似，它并不是对ajax进一步封装，它属于原生js范畴。没有使用XMLHttpRequest对象。</p>
+<p>axios不是原生js,使用时需要对其进行安装，客户端和服务器端都可以使用，可以在请求和相应阶段进行拦截，基于promise对象。</p>
+<p><a href="https://www.jianshu.com/p/4cfbb0ed6cd1" target="_blank" rel="noopener">简单封装AJAX</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax交互/">ajax交互</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-javascript之promise"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/05/javascript之promise/"
+    >javascript之promise</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/12/05/javascript之promise/" class="article-date">
+  <time datetime="2017-12-04T16:00:00.000Z" itemprop="datePublished">2017-12-05</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="promise-你必须知道这些东西"><a href="#promise-你必须知道这些东西" class="headerlink" title="promise,你必须知道这些东西"></a>promise,你必须知道这些东西</h2><p>首先，要想知道promise是怎么用的，我们要知道为什么会有promise的出现，</p>
+<p>在实际的使用当中，有非常多的应用场景我们不能立即知道应该如何继续往下执行。最重要也是最主要的一个场景就是ajax请求。通俗来说，由于网速的不同，可能你得到返回值的时间也是不同的，这个时候我们就需要等待，结果出来了之后才知道怎么样继续下去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单的ajax原生实现</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10'</span>;</span><br><span class="line"><span class="keyword">var</span> result;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> XHR = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">XHR.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>);</span><br><span class="line">XHR.send();</span><br><span class="line"></span><br><span class="line">XHR.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (XHR.readyState == <span class="number">4</span> &amp;&amp; XHR.status == <span class="number">200</span>) &#123;</span><br><span class="line">        result = XHR.response;</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在ajax的原生实现中，利用了onreadystatechange事件，当该事件触发并且符合一定条件时，才能拿到我们想要的数据，之后我们才能开始处理数据。<br>这样做看上去并没有什么麻烦，但是如果这个时候，我们还需要做另外一个ajax请求，这个新的ajax请求的其中一个参数，得从上一个ajax请求中获取，这个时候我们就不得不如下这样做：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10'</span>;</span><br><span class="line"><span class="keyword">var</span> result;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> XHR = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">XHR.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>);</span><br><span class="line">XHR.send();</span><br><span class="line"></span><br><span class="line">XHR.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (XHR.readyState == <span class="number">4</span> &amp;&amp; XHR.status == <span class="number">200</span>) &#123;</span><br><span class="line">        result = XHR.response;</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 伪代码</span></span><br><span class="line">        <span class="keyword">var</span> url2 = <span class="string">'http:xxx.yyy.com/zzz?ddd='</span> + result.someParams;</span><br><span class="line">        <span class="keyword">var</span> XHR2 = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">        XHR2.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>);</span><br><span class="line">        XHR2.send();</span><br><span class="line">        XHR2.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="当出现第三个ajax-甚至更多-仍然依赖上一个请求的时候，我们的代码就变成了一场灾难。这场灾难，往往也被称为回调地狱。"><a href="#当出现第三个ajax-甚至更多-仍然依赖上一个请求的时候，我们的代码就变成了一场灾难。这场灾难，往往也被称为回调地狱。" class="headerlink" title="当出现第三个ajax(甚至更多)仍然依赖上一个请求的时候，我们的代码就变成了一场灾难。这场灾难，往往也被称为回调地狱。"></a>当出现第三个ajax(甚至更多)仍然依赖上一个请求的时候，我们的代码就变成了一场灾难。这场灾难，往往也被称为<strong>回调地狱。</strong></h2><p>因此我们需要一个叫做Promise的东西，来解决这个问题。<br><strong>为了我们的代码更加具有可读性和可维护性，我们需要将数据请求与数据处理明确的区分开来。</strong></p>
+<h4 id="那么，promise到底是怎么用的呢"><a href="#那么，promise到底是怎么用的呢" class="headerlink" title="那么，promise到底是怎么用的呢?"></a>那么，promise到底是怎么用的呢?</h4><p>新建一个Promise对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//some code</span></span><br><span class="line">    <span class="keyword">if</span>(success)&#123; <span class="comment">//异步操作成功</span></span><br><span class="line">        resolve(value);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; <span class="comment">//异步操作失败</span></span><br><span class="line">        reject(error);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>Promise构造函数接收一个函数作为参数，它的两个参数resolve和reject，是两个函数，由JavaScript引擎提供，不用自己部署。</p>
+<p>resolve函数的作用是：将Promise的状态从“pending”变为“resolve”，在异步操作成功时调用，并将异步操作的结果作为参数传递出去；</p>
+<p>reject函数的作用是：将Promise状态从“pending”变为“reject”，在异步操作失败时调用，并将异步操作报出的错误作为参数传递出去。</p>
+<p><strong>axios就是基于Promise的用于浏览器和node的http客户端，下面是在所作项目中axios的用法，是搜索页面的接口。其中的then就是resolve的内容，catch就是reject的内容。</strong>当然，self.getRequest是用axios封装后的全局变量。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="string">'search/'</span> + self.searchType;</span><br><span class="line">               <span class="keyword">let</span> model = &#123;&#125;;</span><br><span class="line">               <span class="keyword">let</span> page = self.currentPage - <span class="number">1</span>;</span><br><span class="line">               model = &#123;</span><br><span class="line">                   searchValue: self.searchValue,</span><br><span class="line">                   page: page,</span><br><span class="line">                   size: <span class="number">10</span>,</span><br><span class="line">                   operatingStatus: self.operatingStatus,</span><br><span class="line">                   establishTimeType: self.establishTimeType,</span><br><span class="line">               &#125;;</span><br><span class="line">               self.getRequest(url, model).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">                   self.successCallBack(res);</span><br><span class="line">               &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">                   <span class="built_in">console</span>.log(err);</span><br><span class="line">                   self.nodata = <span class="literal">true</span>;</span><br><span class="line">                   self.loading = <span class="literal">false</span>;</span><br><span class="line">               &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>异步操作抛出错误状态成reject，或then方法指定的回调函数中发生错误，就会被catch方法捕获。Promise的错误具有冒泡性质，可以一直向后传递到被最后一个catch捕获。</p>
+<p><strong>封装axios的get请求，作为全局变量使用。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getRequest = <span class="function">(<span class="params">url, params</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> axios(&#123;</span><br><span class="line"></span><br><span class="line">      method: <span class="string">'get'</span>,</span><br><span class="line"></span><br><span class="line">      url: url,</span><br><span class="line"></span><br><span class="line">      params: params,</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-javascript之es6新增"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/04/javascript之es6新增/"
+    >javascript之es6新增</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/12/04/javascript之es6新增/" class="article-date">
+  <time datetime="2017-12-03T16:00:00.000Z" itemprop="datePublished">2017-12-04</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="ES6常用的新增技术"><a href="#ES6常用的新增技术" class="headerlink" title="ES6常用的新增技术"></a>ES6常用的新增技术</h1><hr>
+<h2 id="this的指向性"><a href="#this的指向性" class="headerlink" title="this的指向性"></a>this的指向性</h2><p>首先我们需要得出一个非常重要一定要牢记于心的结论，<strong>this的指向，是在函数被调用的时候确定的。</strong>也就是执行上下文被创建时确定的。因此，一个函数中的this指向，可以是非常灵活的。比如下面的例子中，同一个函数由于调用方式的不同，this指向了不一样的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(); <span class="comment">// 10</span></span><br><span class="line">fn.call(obj); <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+
+<p>除此之外，<strong>在函数执行过程中，this一旦被确定，就不可更改了。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span> = obj; <span class="comment">// 这句话试图修改this，运行后会报错</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>使用call，apply显示指定this</strong><br>JavaScript内部提供了一种机制，让我们可以自行手动设置this的指向。它们就是call与apply。所有的函数都具有着两个方法。它们除了参数略有不同，其功能完全一样。它们的第一个参数都为this将要指向的对象。</p>
+<p>如下例子所示。fn并非属于对象obj的方法，但是通过call，我们将fn内部的this绑定为obj，因此就可以使用this.a访问obj的a属性了。这就是call/apply的用法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn.call(obj);</span><br></pre></td></tr></table></figure>
+
+<p>而call与applay后面的参数，都是向将要执行的函数传递参数。其中call以一个一个的形式传递，apply以数组的形式传递。这是他们唯一的不同。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a + num1 + num2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn.call(obj, <span class="number">100</span>, <span class="number">10</span>); <span class="comment">// 130</span></span><br><span class="line">fn.apply(obj, [<span class="number">20</span>, <span class="number">10</span>]); <span class="comment">// 50</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现继承<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义父级的构造函数</span></span><br><span class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义子类的构造函数</span></span><br><span class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// use call</span></span><br><span class="line">    Person.call(<span class="keyword">this</span>, name, age);</span><br><span class="line">    <span class="keyword">this</span>.high = high;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype.message = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'name:'</span>+<span class="keyword">this</span>.name+<span class="string">', age:'</span>+<span class="keyword">this</span>.age+<span class="string">', high:'</span>+<span class="keyword">this</span>.high+<span class="string">', gender:'</span>+<span class="keyword">this</span>.gender[<span class="number">0</span>]+<span class="string">';'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Student(<span class="string">'xiaom'</span>, <span class="number">12</span>, <span class="string">'150cm'</span>).message();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>在Student的构造函数中，借助call方法，将父级的构造函数执行了一次，相当于将Person中的代码，在Sudent中复制了一份，其中的this指向为从Student中new出来的实例对象。call方法保证了this的指向正确，因此就相当于实现了继承。Student的构造函数等同于下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name, age, high</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age  = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = [<span class="string">'man'</span>, <span class="string">'woman'</span>];</span><br><span class="line">    <span class="comment">// Person.call(this, name, age); 这一句话，相当于上面三句话，因此实现了继承</span></span><br><span class="line">    <span class="keyword">this</span>.high = high;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外就是借助闭包与apply方法，封装一个bind方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">fn, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fn.apply(obj, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">20</span>,</span><br><span class="line">    getA: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        setTimeout(bind(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</span><br><span class="line">        &#125;, <span class="keyword">this</span>), <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.getA();</span><br></pre></td></tr></table></figure>
+
+<h2 id="let-const"><a href="#let-const" class="headerlink" title="let/const"></a>let/const</h2><hr>
+<ul>
+<li><p>ES5 只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景，let实际上为 JavaScript 新增了块级作用域。var命令会发生”变量提升“现象，即变量可以在声明之前使用，值为undefined。这种现象多多少少是有些奇怪的，按照一般的逻辑，变量应该在声明语句之后才可以使用。</p>
+</li>
+<li><p>为了纠正这种现象，let命令改变了语法行为，它所声明的变量一定要在声明后使用，否则报错。</p>
+</li>
+<li><p>const声明一个只读的常量。一旦声明，常量的值就不能改变。</p>
+</li>
+<li><p>const声明的变量不得改变值，这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值</p>
+</li>
+</ul>
+<h2 id="箭头函数-gt"><a href="#箭头函数-gt" class="headerlink" title="箭头函数 =&gt;"></a>箭头函数 =&gt;</h2><hr>
+<p>ES6 允许使用“箭头”（=&gt;）定义函数。<br>箭头函数有几个使用注意点。<br>（1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。<br>（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。<br>（3）不可以使用arguments对象，该对象在函数体内不存在。</p>
+<h2 id="变量解构（解构赋值）"><a href="#变量解构（解构赋值）" class="headerlink" title="变量解构（解构赋值）"></a>变量解构（解构赋值）</h2><hr>
+<p>以前，为变量赋值，只能直接指定值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> c = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>ES6 允许写成下面这样。<br>解构不仅可以用于数组，还可以用于对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> &#123; foo, bar &#125; = &#123; <span class="attr">foo</span>: <span class="string">"aaa"</span>, <span class="attr">bar</span>: <span class="string">"bbb"</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h2><hr>
+<p><em>模板字符串（template string）是增强版的字符串</em><br>模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，可以在字符串中嵌入变量， 模板字符串中嵌入变量，需要将变量名写在${}之中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> sum = a + b;</span><br><span class="line"><span class="keyword">var</span> res = a + <span class="string">'+'</span> + b + <span class="string">'的和是&lt;b&gt;'</span> + c+<span class="string">'&lt;/b&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br><span class="line">box.innerHTML = res;</span><br><span class="line"><span class="keyword">var</span> obj=  &#123;<span class="attr">name</span>:<span class="string">'zhangsan'</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'&lt;b&gt;姓名&lt;/b&gt;：'</span>+obj.name+<span class="string">'&lt;b&gt;年龄&lt;/b&gt;:'</span>+obj.age;</span><br><span class="line">div.innerHTML = str;</span><br></pre></td></tr></table></figure>
+
+<p>ES6写法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> sum = a + b;</span><br><span class="line"><span class="keyword">var</span> res = <span class="string">`a+b的和是&lt;b&gt;<span class="subst">$&#123;c&#125;</span>&lt;/b&gt;`</span>;</span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br><span class="line">box.innerHTML = res;</span><br><span class="line"><span class="keyword">var</span> obj=  &#123;<span class="attr">name</span>:<span class="string">'zhangsan'</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> str =<span class="string">`&lt;b&gt;姓名&lt;/b&gt;：<span class="subst">$&#123;obj.name&#125;</span>&lt;b&gt;年龄&lt;/b&gt;:<span class="subst">$&#123;obj.age&#125;</span>`</span></span><br><span class="line">div.innerHTML = str;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组新增方法"><a href="#数组新增方法" class="headerlink" title="数组新增方法"></a>数组新增方法</h2><hr>
+<p>Array.from方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（ES6 新增的数据结构 Set 和 Map）<br>下面是一个类似数组的对象，Array.from将它转为真正的数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayLike = &#123;</span><br><span class="line">    <span class="string">'0'</span>: <span class="string">'a'</span>,</span><br><span class="line">    <span class="string">'1'</span>: <span class="string">'b'</span>,</span><br><span class="line">    <span class="string">'2'</span>: <span class="string">'c'</span>,</span><br><span class="line">    length: <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.from(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><hr>
+<p>对象的扩展运算符（…）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> z = &#123; <span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> n = &#123; ...z &#125;;</span><br><span class="line">n <span class="comment">// &#123; a: 3, b: 4 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于数组是特殊的对象，所以对象的扩展运算符也可以用于数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = &#123; ...[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>] &#125;;</span><br><span class="line">foo</span><br><span class="line"><span class="comment">// &#123;0: "a", 1: "b", 2: "c"&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="class的写法及继承"><a href="#class的写法及继承" class="headerlink" title="class的写法及继承"></a>class的写法及继承</h2><hr>
+<p>JavaScript 语言中，生成实例对象的传统方法是通过构造函数。下面是一个例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line">  <span class="keyword">this</span>.y = y;&#125;</span><br><span class="line">Point.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;&#125;;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。<br>基本上，ES6 的class可以看作只是一个语法糖，它的绝大部分功能，ES5 都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。上面的代码用 ES6 的class改写，就是下面这样。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(x, y) &#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类方法<br>加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> classMethod() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.classMethod() <span class="comment">// 'hello'</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo();</span><br><span class="line">foo.classMethod()</span><br><span class="line"><span class="comment">// TypeError: foo.classMethod is not a function</span></span><br></pre></td></tr></table></figure>
+
+<p>类的继承</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(x, y, color) &#123;</span><br><span class="line">    <span class="keyword">super</span>(x, y); <span class="comment">// 调用父类的constructor(x, y)</span></span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.color + <span class="string">' '</span> + <span class="keyword">super</span>.toString(); <span class="comment">// 调用父类的toString()</span></span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。如果不调用super方法，子类就得不到this对象。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
+  id="post-javascript之关于闭包"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/03/javascript之关于闭包/"
+    >javascript之关于闭包</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/12/03/javascript之关于闭包/" class="article-date">
+  <time datetime="2017-12-02T16:00:00.000Z" itemprop="datePublished">2017-12-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。</p>
+<p>需要明确的几点：</p>
+<ul>
+<li>闭包一定是函数对象 <a href="https://github.com/wintercn/blog/issues/3" target="_blank" rel="noopener">wintercn大大的闭包考证</a>  </li>
+<li>闭包和词法作用域，作用域链，垃圾回收机制息息相关</li>
+<li>当函数一定是在其定义的作用域外进行的访问时，才产生闭包</li>
+<li>闭包是由该函数和其上层执行上下文共同构成</li>
+</ul>
+<p>内存泄漏：<br><code>我们应该保证执行代码只保存有用的数据，一旦数据不再有用，我们就应该让垃圾回收机制对其进行回收，释放内存。</code><br>闭包阻止了垃圾回收机制对变量进行回收，因此变量会永远存在内存中，即使当变量不再被使用时，这样会造成内存泄漏，会严重影响页面的性能。因此当变量对象不再适用时，我们要将其释放。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log( a );</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bar;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> baz = foo();</span><br><span class="line"> baz(); <span class="comment">//baz指向的对象会永远存在堆内存中</span></span><br><span class="line"> baz = <span class="literal">null</span>; <span class="comment">//如果baz不再使用，将其指向的对象释放</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><p>1.模块<br>一个模块应该具有私有属性、私有方法和公有属性、公有方法。<br>而闭包能很好的将模块的公有属性、方法暴露出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> name = <span class="string">"echo"</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		getName</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log( myModule.name ); <span class="comment">// echo</span></span><br><span class="line"><span class="built_in">console</span>.log( myModule.getName() ); <span class="comment">// echo</span></span><br></pre></td></tr></table></figure>
+
+<p>“return”关键字将对象引用导出赋值给myModule，从而应用到闭包。</p>
+<p>2.延时器(setTimeout)、计数器(setInterval)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log( i );</span><br><span class="line">	&#125;, <span class="number">1000</span> * i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>每秒钟输出一个5，一共输出5次。</code><br><code>如何做到每秒钟输出一个数，以此为0，1，2，3，4呢？</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	(<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log( j );</span><br><span class="line">		&#125;, <span class="number">1000</span> * j)</span><br><span class="line">	&#125;)(i)	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面第一个例子中每次循环中的setTimeout回调函数记住的i的值是for循环作用域中的值，此时都是5，而第二个例子记住的i的数为setTimeout的父级作用域自执行函数中的j的值，依次为0，1，2，3，4。</p>
+<p>3.监听器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySeletor(<span class="string">"#div"</span>);</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log( oDiv.id );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2018-2021
+        <i class="ri-heart-fill heart_icon"></i> Pononpa
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="你好，光华"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/旅行/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://peiliang-vip.lofter.com/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+<!-- ClickLove -->
+
+<script src="/js/clickLove.js"></script>
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+<link rel="stylesheet" href="/css/clipboard.css">
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+<script src="/js/dz.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22707008&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
