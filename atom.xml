@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-10-13T07:06:42.169Z</updated>
+  <updated>2021-10-14T01:09:44.993Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则</title>
+    <link href="http://yoursite.com/2021/10/04/%E5%B8%B8%E8%AF%86%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2021/10/04/%E5%B8%B8%E8%AF%86%E6%80%BB%E7%BB%93/</id>
+    <published>2021-10-03T16:00:00.000Z</published>
+    <updated>2021-10-14T01:09:44.993Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h4 id="1-js"><a href="#1-js" class="headerlink" title="1. js"></a>1. js</h4><p>面向对象、面向过程。<br>对象的创建－字面量，原型，构造函数等各自特点<br>（你开发过什么什么插件）</p><p>继承 － 原型，原型连，es6继承 ，call，apply<br>闭包－是什么，什么情况会出现，项目中用它处理什么<br>es6相对于es5新增技术，你常用哪些？<br>promise怎么用的？用它做过什么功能？<br>ajax交互的底层原理，如何封装ajax；ajax，axios，fetch区别对比<br>深拷贝，浅拷贝<br>常用数组方法，数组－字符串转换</p><h4 id="2-vue"><a href="#2-vue" class="headerlink" title="2. vue"></a>2. vue</h4><p>vue数据双向绑定底层原理。<br>项目中你用到了那些vue技术（vue指令、自定义指令，过滤器、组件、动画、axios、路由、vuex，生命周期函数）－具体实现了什么功能<br>axios的底层原理是什么？ vue项目中用axios出现跨域问题怎么处理的？跟ajax的区别是什么？<br>vue中做什么功能用到了组件件传旨？传旨方式有哪些？怎么实现的？<br>vue路由  路由传参数有哪些方法？项目中传递什么数据用哪种传参？<br>嵌套路由怎么动态接受参数？用什么方法？（watch）<br>编程式路由怎么做？怎么传餐？<br>路由用什么模式？hash跟history区别，怎么转换？<br>路由拦截在项目中做什么功能的时候用到了？怎么用的？<br>命名路由的好处是什么？<br>vuex怎么用的项目中（state，actions，mutations，getters，module）分别在项目中负责做什么？<br>vue性能优化，路由懒加载实现</p><h4 id="3-react"><a href="#3-react" class="headerlink" title="3. react"></a>3. react</h4><p>react数据绑定底层原理？<br>项目中你用到了那些react技术（组件、组件传旨，动画、路由、生命周期、redux／flux／react-redux）－具体实现了什么功能<br>组件划分，受控，非受控，有状态无状态等<br>react生命周期函数在项目中做什么功能？<br>diff算法的好处<br>组件传旨怎么做？<br>react路由嵌套路由传参怎么做？怎么动态接受？<br>路由用什么模式？hash跟history区别，怎么转换？<br>状态管理器怎么用的？<br>redux（view，action，store，reducer）分别干什么的？<br>reducer拆分怎么做？<br>用过redux哪些异步插件？（thunk，saga，promise）</p><h4 id="4-webpack"><a href="#4-webpack" class="headerlink" title="4. webpack"></a>4. webpack</h4><p>webpack用过哪些插件，加载器？项目中用来做什么的？<br>会不会自己配置webpack？具体包含哪些信息？</p><h4 id="5-other"><a href="#5-other" class="headerlink" title="5. other"></a>5. other</h4><p>项目中具体怎么用sass的？对比css好处在哪里。<br>mock怎么用的？怎么模拟post请求？<br>项目中的组件怎么测试的？（mocha）<br>项目开发中遇到过哪些问题？怎么处理的？<br>小程序开发中遇到的问题？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;h4 id=&quot;1-js&quot;&gt;&lt;a href=&quot;#1-js&quot; class=&quot;headerlink&quot; title=&quot;1. js&quot;&gt;&lt;/a&gt;1. js&lt;/h4&gt;&lt;p&gt;面向对象、面向过程。&lt;br&gt;对象的创建－字面量，原型，构造函数等各自特点&lt;br&gt;（你开发过什么什么插件）&lt;/p
+      
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="总结" scheme="http://yoursite.com/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>正则</title>
@@ -374,9 +403,9 @@
       <category term="vue-2.0" scheme="http://yoursite.com/categories/vue-2-0/"/>
     
     
-      <category term="传值与传参" scheme="http://yoursite.com/tags/%E4%BC%A0%E5%80%BC%E4%B8%8E%E4%BC%A0%E5%8F%82/"/>
-    
       <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="传值与传参" scheme="http://yoursite.com/tags/%E4%BC%A0%E5%80%BC%E4%B8%8E%E4%BC%A0%E5%8F%82/"/>
     
   </entry>
   
@@ -552,34 +581,6 @@
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
       <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript之关于闭包</title>
-    <link href="http://yoursite.com/2017/12/03/javascript%E4%B9%8B%E5%85%B3%E4%BA%8E%E9%97%AD%E5%8C%85/"/>
-    <id>http://yoursite.com/2017/12/03/javascript%E4%B9%8B%E5%85%B3%E4%BA%8E%E9%97%AD%E5%8C%85/</id>
-    <published>2017-12-02T16:00:00.000Z</published>
-    <updated>2020-07-15T01:14:01.694Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。</p><p>需要明确的几点：</p><ul><li>闭包一定是函数对象 <a href="https://github.com/wintercn/blog/issues/3" target="_blank" rel="noopener">wintercn大大的闭包考证</a>  </li><li>闭包和词法作用域，作用域链，垃圾回收机制息息相关</li><li>当函数一定是在其定义的作用域外进行的访问时，才产生闭包</li><li>闭包是由该函数和其上层执行上下文共同构成</li></ul><p>内存泄漏：<br><code>我们应该保证执行代码只保存有用的数据，一旦数据不再有用，我们就应该让垃圾回收机制对其进行回收，释放内存。</code><br>闭包阻止了垃圾回收机制对变量进行回收，因此变量会永远存在内存中，即使当变量不再被使用时，这样会造成内存泄漏，会严重影响页面的性能。因此当变量对象不再适用时，我们要将其释放。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log( a );</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bar;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> baz = foo();</span><br><span class="line"> baz(); <span class="comment">//baz指向的对象会永远存在堆内存中</span></span><br><span class="line"> baz = <span class="literal">null</span>; <span class="comment">//如果baz不再使用，将其指向的对象释放</span></span><br></pre></td></tr></table></figure><h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><p>1.模块<br>一个模块应该具有私有属性、私有方法和公有属性、公有方法。<br>而闭包能很好的将模块的公有属性、方法暴露出来。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> name = <span class="string">"echo"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">name,</span><br><span class="line">getName</span><br><span class="line">&#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log( myModule.name ); <span class="comment">// echo</span></span><br><span class="line"><span class="built_in">console</span>.log( myModule.getName() ); <span class="comment">// echo</span></span><br></pre></td></tr></table></figure><p>“return”关键字将对象引用导出赋值给myModule，从而应用到闭包。</p><p>2.延时器(setTimeout)、计数器(setInterval)</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log( i );</span><br><span class="line">&#125;, <span class="number">1000</span> * i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>每秒钟输出一个5，一共输出5次。</code><br><code>如何做到每秒钟输出一个数，以此为0，1，2，3，4呢？</code></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">(<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log( j );</span><br><span class="line">&#125;, <span class="number">1000</span> * j)</span><br><span class="line">&#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上面第一个例子中每次循环中的setTimeout回调函数记住的i的值是for循环作用域中的值，此时都是5，而第二个例子记住的i的数为setTimeout的父级作用域自执行函数中的j的值，依次为0，1，2，3，4。</p><p>3.监听器</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySeletor(<span class="string">"#div"</span>);</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log( oDiv.id );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;闭包&quot;&gt;&lt;a href=&quot;#闭包&quot; class=&quot;headerlink&quot; title=&quot;闭包&quot;&gt;&lt;/a&gt;闭包&lt;/h1&gt;&lt;p&gt;当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="js" scheme="http://yoursite.com/categories/js/"/>
-    
-    
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
-      <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
     
   </entry>
   

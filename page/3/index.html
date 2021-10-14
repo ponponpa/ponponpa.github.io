@@ -75,6 +75,80 @@
     
     
     <article
+  id="post-javascript之关于闭包"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/12/03/javascript之关于闭包/"
+    >javascript之关于闭包</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/12/03/javascript之关于闭包/" class="article-date">
+  <time datetime="2017-12-02T16:00:00.000Z" itemprop="datePublished">2017-12-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。</p>
+<p>需要明确的几点：</p>
+<ul>
+<li>闭包一定是函数对象 <a href="https://github.com/wintercn/blog/issues/3" target="_blank" rel="noopener">wintercn大大的闭包考证</a>  </li>
+<li>闭包和词法作用域，作用域链，垃圾回收机制息息相关</li>
+<li>当函数一定是在其定义的作用域外进行的访问时，才产生闭包</li>
+<li>闭包是由该函数和其上层执行上下文共同构成</li>
+</ul>
+<p>内存泄漏：<br><code>我们应该保证执行代码只保存有用的数据，一旦数据不再有用，我们就应该让垃圾回收机制对其进行回收，释放内存。</code><br>闭包阻止了垃圾回收机制对变量进行回收，因此变量会永远存在内存中，即使当变量不再被使用时，这样会造成内存泄漏，会严重影响页面的性能。因此当变量对象不再适用时，我们要将其释放。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log( a );</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bar;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> baz = foo();</span><br><span class="line"> baz(); <span class="comment">//baz指向的对象会永远存在堆内存中</span></span><br><span class="line"> baz = <span class="literal">null</span>; <span class="comment">//如果baz不再使用，将其指向的对象释放</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><p>1.模块<br>一个模块应该具有私有属性、私有方法和公有属性、公有方法。<br>而闭包能很好的将模块的公有属性、方法暴露出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> name = <span class="string">"echo"</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		getName</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log( myModule.name ); <span class="comment">// echo</span></span><br><span class="line"><span class="built_in">console</span>.log( myModule.getName() ); <span class="comment">// echo</span></span><br></pre></td></tr></table></figure>
+
+<p>“return”关键字将对象引用导出赋值给myModule，从而应用到闭包。</p>
+<p>2.延时器(setTimeout)、计数器(setInterval)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log( i );</span><br><span class="line">	&#125;, <span class="number">1000</span> * i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>每秒钟输出一个5，一共输出5次。</code><br><code>如何做到每秒钟输出一个数，以此为0，1，2，3，4呢？</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	(<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log( j );</span><br><span class="line">		&#125;, <span class="number">1000</span> * j)</span><br><span class="line">	&#125;)(i)	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面第一个例子中每次循环中的setTimeout回调函数记住的i的值是for循环作用域中的值，此时都是5，而第二个例子记住的i的数为setTimeout的父级作用域自执行函数中的j的值，依次为0，1，2，3，4。</p>
+<p>3.监听器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySeletor(<span class="string">"#div"</span>);</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log( oDiv.id );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
   id="post-javascript之关于继承"
   class="article article-type-post"
   itemscope

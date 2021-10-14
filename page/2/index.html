@@ -75,6 +75,113 @@
     
     
     <article
+  id="post-React基础一"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/08/01/React基础一/"
+    >React基础（一）</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/08/01/React基础一/" class="article-date">
+  <time datetime="2019-07-31T16:00:00.000Z" itemprop="datePublished">2019-08-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/react/">react</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="React基础知识"><a href="#React基础知识" class="headerlink" title="React基础知识"></a>React基础知识</h1><hr>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><hr>
+<p>本章节将从React的特点、如何使用React、JSX语法，然后会对组件(Component）以及组件的属性(props)、状态(state)、生命周期等方面进行讲解。</p>
+<h3 id="通过本章节能学到什么？"><a href="#通过本章节能学到什么？" class="headerlink" title="通过本章节能学到什么？"></a>通过本章节能学到什么？</h3><hr>
+<ul>
+<li>对React有个全面的认识；</li>
+<li>熟悉JSX基本语法；</li>
+<li>了解组件结构；</li>
+<li>熟悉组件的生命周期；</li>
+<li>学会使用props；</li>
+<li>学会使用state；</li>
+<li>熟悉自定义组件；<h3 id="React是什么？"><a href="#React是什么？" class="headerlink" title="React是什么？"></a>React是什么？</h3></li>
+</ul>
+<hr>
+<p>React 是 Facebook 推出的开源 JavaScript Library，它是一个用于组建用户界面的JavaScript库，让你以更简单的方式来创建交互式用户界面，它的出现让许多革新性的 Web 观念开始流行起来，例如：Virtual DOM、Component，声明式渲染等。<br><br>声明式与命令式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 命令式编程：命令“机器”如何去做事情(how)，这样不管你想要的是什么(what)，它都会按照你的命令实现。</span><br><span class="line"><span class="number">2.</span> 声明式编程：告诉“机器”你想要的是什么(what)，让机器想出如何去做(how)。</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://codepen.io/crazycodeboy/pen/VVJLYm" target="_blank" rel="noopener">演示</a></p>
+<ol>
+<li>当数据改变时，React将高效的更新和渲染需要更新的组件。声明式视图使你的代码更可预测，更容易调试。</li>
+<li>构建封装管理自己的状态的组件，然后将它们组装成复杂的用户界面。由于组件逻辑是用JavaScript编写的，而不是模板，所以你可以轻松地通过您的应用程序传递丰富的数据，并保持DOM状态。<h3 id="自动搭建脚手架"><a href="#自动搭建脚手架" class="headerlink" title="自动搭建脚手架"></a>自动搭建脚手架</h3></li>
+</ol>
+<hr>
+<p>构建一个新的 React 单页应用，可以通过<a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">Create React App</a>来完成。它可以帮助你配置开发环境，以便你可以使用最新的 JavaScript 特性，还能提供一个友好的开发体验，并为生产环境优化你的应用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br><span class="line">create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;react&quot;: &quot;^16.6.3&quot;,//是 React 的核心库</span><br><span class="line">    &quot;react-dom&quot;: &quot;^16.6.3&quot;,//提供与 DOM 相关的功能</span><br><span class="line">    &quot;react-scripts&quot;: &quot;2.1.1&quot;//create-react-app 的一个核心包，一些脚本和工具的默认配置都集成在里面</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="ReactDOM-render"><a href="#ReactDOM-render" class="headerlink" title="ReactDOM.render"></a>ReactDOM.render</h3><hr>
+<p><code>ReactDOM.render(element, container[, callback])</code><br>渲染一个 React 元素到由 container 提供的 DOM 中，并且返回组件的一个 引用(reference) （或者对于 无状态组件 返回 null ）。</p>
+<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><hr>
+<p>JSX 是一个看起来很像 XML 的 JavaScript 语法扩展。 每一个XML标签都会被JSX转换工具转换成纯JavaScript代码，使用JSX，组件的结构和组件之间的关系看上去更加清晰。 JSX并不是React必须使用的，但React官方建议我们使用 JSX , 因为它能定义简洁且我们熟知的包含属性的树状结构语法。<br><strong>Usage:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">React.render(           //使用JSX</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;div&gt;content&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;,</span><br><span class="line">    document.getElementById(&apos;example&apos;)</span><br><span class="line">);</span><br><span class="line">React.render(           //不使用JSX</span><br><span class="line">    React.createElement(&apos;div&apos;, null,</span><br><span class="line">        React.createElement(&apos;div&apos;, null,</span><br><span class="line">            React.createElement(&apos;div&apos;, null, &apos;content&apos;)</span><br><span class="line">        )</span><br><span class="line">    ),</span><br><span class="line">    document.getElementById(&apos;example&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="组件的属性-props"><a href="#组件的属性-props" class="headerlink" title="组件的属性(props)"></a>组件的属性(props)</h3><p>我们可以通过this.props.xx的形式获取组件对象的属性，对象的属性可以任意定义，但要避免与JavaScript关键字冲突。</p>
+<h4 id="遍历组件的属性"><a href="#遍历组件的属性" class="headerlink" title="遍历组件的属性:"></a>遍历组件的属性:</h4><p>this.props.children会返回组件对象的所有属性。 React 提供一个工具方法 React.Children 来处理 this.props.children 。我们可以用React.Children.map或React.Children.forEach来遍历子节点。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NotesList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;ol&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    React.Children.map(<span class="keyword">this</span>.props.children,(child)=&gt; &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;child&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;                     </span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;<span class="regexp">/ol&gt;         </span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;NotesList&gt;</span></span><br><span class="line"><span class="regexp">    &lt;span&gt;hello&lt;/</span>span&gt;     </span><br><span class="line">    &lt;span&gt;world&lt;<span class="regexp">/span&gt; </span></span><br><span class="line"><span class="regexp">    &lt;/</span>NotesList&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="ref-属性-获取真实的DOM节点"><a href="#ref-属性-获取真实的DOM节点" class="headerlink" title="ref 属性(获取真实的DOM节点)"></a>ref 属性(获取真实的DOM节点)</h4><p>组件并不是真实的 DOM 节点，而是存在于内存之中的一种数据结构，叫做虚拟 DOM （virtual DOM）。只有当它插入文档以后，才会变成真实的 DOM 。根据 React 的设计，所有的 DOM 变动，都先在虚拟 DOM 上发生，然后再将实际发生变动的部分，反映在真实 DOM上，这种算法叫做 DOM diff ，它可以极大提高网页的性能表现。</p>
+<p>但是，有时需要从组件获取真实 DOM 的节点，这时就要用到 ref 属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Todolist</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            list:[]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2&gt;TodoList&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">                &lt;input type='text' ref='ipt'/</span>&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="keyword">this</span>.add.bind(<span class="keyword">this</span>)&#125;&gt;添加&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                &#123;</span></span><br><span class="line"><span class="regexp">                    this.state.list.map((item,i)=&gt;&#123;</span></span><br><span class="line"><span class="regexp">                        return(</span></span><br><span class="line"><span class="regexp">                            &lt;div key=&#123;i&#125;&gt;&#123;item&#125;---&lt;button onClick=&#123;this.delete.bind(this,i)&#125;&gt;删除&lt;/</span>button&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">                        )</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    add()&#123;</span></span><br><span class="line"><span class="regexp">        let arr = this.state.list</span></span><br><span class="line"><span class="regexp">        arr.push(this.refs.ipt.value)</span></span><br><span class="line"><span class="regexp">        console.log(arr)</span></span><br><span class="line"><span class="regexp">        this.setState(&#123;list:arr&#125;)</span></span><br><span class="line"><span class="regexp">        this.refs.ipt.value=''</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    delete(i) &#123;</span></span><br><span class="line"><span class="regexp">      console.log(i)</span></span><br><span class="line"><span class="regexp">      let arr1 = this.state.list</span></span><br><span class="line"><span class="regexp">      arr1.splice(i,1)</span></span><br><span class="line"><span class="regexp">      this.setState(&#123; list: arr1 &#125;)</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="state"><a href="#state" class="headerlink" title="state"></a>state</h2><p>上文讲到了props，组件会根据props的变化来进行渲染，但组件无法改变自身的props，那么组件为了实现交互，可以使用组件的 state 。state 是组件私有的，可以通过state={}方式初始化，通过调用 this.setState() 来改变它。当 state 更新之后，组件就会重新渲染自己。</p>
+<h2 id="render-方法依赖于-this-props-和-this-state-，框架会确保渲染出来的-UI-界面总是与输入（-this-props-和-this-state-）保持一致。"><a href="#render-方法依赖于-this-props-和-this-state-，框架会确保渲染出来的-UI-界面总是与输入（-this-props-和-this-state-）保持一致。" class="headerlink" title="render() 方法依赖于 this.props 和 this.state ，框架会确保渲染出来的 UI 界面总是与输入（ this.props 和 this.state ）保持一致。"></a>render() 方法依赖于 this.props 和 this.state ，框架会确保渲染出来的 UI 界面总是与输入（ this.props 和 this.state ）保持一致。</h2><h3 id="初始化state"><a href="#初始化state" class="headerlink" title="初始化state"></a>初始化state</h3><p>可以通过一下两种方式来初始化state，在组件的生命周期中仅执行一次，用于设置组件的初始化 state 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state=&#123;</span><br><span class="line">        name:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">state=&#123;</span><br><span class="line">    name:<span class="string">''</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新-state"><a href="#更新-state" class="headerlink" title="更新 state"></a>更新 state</h3><p>通过this.setState()方法来更新state，调用该方法后，React会重新渲染相关的UI。<br>this.setState({favorite:!this.state.favorite});</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FavoriteButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">   state=&#123;</span><br><span class="line">       favorite:<span class="literal">false</span></span><br><span class="line">   &#125;;</span><br><span class="line">    handleClick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;<span class="attr">favorite</span>:!<span class="keyword">this</span>.state.favorite&#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">const</span> text=<span class="keyword">this</span>.state.favorite? <span class="string">'favorite'</span>:<span class="string">'un favorite'</span>;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;h1 onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt;</span><br><span class="line">                You &#123;text&#125; <span class="keyword">this</span>. Click to toggle.</span><br><span class="line">            &lt;<span class="regexp">/h1&gt;         );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码是一个 FavoriteButton 组件，它的通过 state={}初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取。当用户点击组件，导致状态变化，this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">心得：由于 this.props 和 this.state 都用于描述组件的特性，可能会产生混淆。</span><br><span class="line">一个简单的区分方法是，this.props 表示那些本组件无法改变的特性，而 this.state 是会随着用户互动而产生变化的特性。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h2><p><img src="https://upload-images.jianshu.io/upload_images/5287253-82f6af8e0cc9012b.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="react生命周期"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+</article>
+
+    
+    <article
   id="post-vue关于路由"
   class="article article-type-post"
   itemscope
@@ -920,80 +1027,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-</article>
-
-    
-    <article
-  id="post-javascript之关于闭包"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2017/12/03/javascript之关于闭包/"
-    >javascript之关于闭包</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2017/12/03/javascript之关于闭包/" class="article-date">
-  <time datetime="2017-12-02T16:00:00.000Z" itemprop="datePublished">2017-12-03</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>当一个函数能够记住并访问到其所在的词法作用域及作用域链，特别强调是在其定义的作用域外进行的访问，此时该函数和其上层执行上下文共同构成闭包。</p>
-<p>需要明确的几点：</p>
-<ul>
-<li>闭包一定是函数对象 <a href="https://github.com/wintercn/blog/issues/3" target="_blank" rel="noopener">wintercn大大的闭包考证</a>  </li>
-<li>闭包和词法作用域，作用域链，垃圾回收机制息息相关</li>
-<li>当函数一定是在其定义的作用域外进行的访问时，才产生闭包</li>
-<li>闭包是由该函数和其上层执行上下文共同构成</li>
-</ul>
-<p>内存泄漏：<br><code>我们应该保证执行代码只保存有用的数据，一旦数据不再有用，我们就应该让垃圾回收机制对其进行回收，释放内存。</code><br>闭包阻止了垃圾回收机制对变量进行回收，因此变量会永远存在内存中，即使当变量不再被使用时，这样会造成内存泄漏，会严重影响页面的性能。因此当变量对象不再适用时，我们要将其释放。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log( a );</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> bar;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> baz = foo();</span><br><span class="line"> baz(); <span class="comment">//baz指向的对象会永远存在堆内存中</span></span><br><span class="line"> baz = <span class="literal">null</span>; <span class="comment">//如果baz不再使用，将其指向的对象释放</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><p>1.模块<br>一个模块应该具有私有属性、私有方法和公有属性、公有方法。<br>而闭包能很好的将模块的公有属性、方法暴露出来。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myModule = (<span class="function"><span class="keyword">function</span> (<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> name = <span class="string">"echo"</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		getName</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br><span class="line"><span class="built_in">console</span>.log( myModule.name ); <span class="comment">// echo</span></span><br><span class="line"><span class="built_in">console</span>.log( myModule.getName() ); <span class="comment">// echo</span></span><br></pre></td></tr></table></figure>
-
-<p>“return”关键字将对象引用导出赋值给myModule，从而应用到闭包。</p>
-<p>2.延时器(setTimeout)、计数器(setInterval)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log( i );</span><br><span class="line">	&#125;, <span class="number">1000</span> * i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>每秒钟输出一个5，一共输出5次。</code><br><code>如何做到每秒钟输出一个数，以此为0，1，2，3，4呢？</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">	(<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.log( j );</span><br><span class="line">		&#125;, <span class="number">1000</span> * j)</span><br><span class="line">	&#125;)(i)	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面第一个例子中每次循环中的setTimeout回调函数记住的i的值是for循环作用域中的值，此时都是5，而第二个例子记住的i的数为setTimeout的父级作用域自执行函数中的j的值，依次为0，1，2，3，4。</p>
-<p>3.监听器</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySeletor(<span class="string">"#div"</span>);</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log( oDiv.id );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
 
     </footer>
   </div>
