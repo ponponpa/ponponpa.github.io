@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-10-14T01:09:44.993Z</updated>
+  <updated>2021-10-14T01:32:33.815Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>正则</title>
+    <title>常识总结</title>
     <link href="http://yoursite.com/2021/10/04/%E5%B8%B8%E8%AF%86%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2021/10/04/%E5%B8%B8%E8%AF%86%E6%80%BB%E7%BB%93/</id>
     <published>2021-10-03T16:00:00.000Z</published>
-    <updated>2021-10-14T01:09:44.993Z</updated>
+    <updated>2021-10-14T01:32:33.815Z</updated>
     
     <content type="html"><![CDATA[<hr><h4 id="1-js"><a href="#1-js" class="headerlink" title="1. js"></a>1. js</h4><p>面向对象、面向过程。<br>对象的创建－字面量，原型，构造函数等各自特点<br>（你开发过什么什么插件）</p><p>继承 － 原型，原型连，es6继承 ，call，apply<br>闭包－是什么，什么情况会出现，项目中用它处理什么<br>es6相对于es5新增技术，你常用哪些？<br>promise怎么用的？用它做过什么功能？<br>ajax交互的底层原理，如何封装ajax；ajax，axios，fetch区别对比<br>深拷贝，浅拷贝<br>常用数组方法，数组－字符串转换</p><h4 id="2-vue"><a href="#2-vue" class="headerlink" title="2. vue"></a>2. vue</h4><p>vue数据双向绑定底层原理。<br>项目中你用到了那些vue技术（vue指令、自定义指令，过滤器、组件、动画、axios、路由、vuex，生命周期函数）－具体实现了什么功能<br>axios的底层原理是什么？ vue项目中用axios出现跨域问题怎么处理的？跟ajax的区别是什么？<br>vue中做什么功能用到了组件件传旨？传旨方式有哪些？怎么实现的？<br>vue路由  路由传参数有哪些方法？项目中传递什么数据用哪种传参？<br>嵌套路由怎么动态接受参数？用什么方法？（watch）<br>编程式路由怎么做？怎么传餐？<br>路由用什么模式？hash跟history区别，怎么转换？<br>路由拦截在项目中做什么功能的时候用到了？怎么用的？<br>命名路由的好处是什么？<br>vuex怎么用的项目中（state，actions，mutations，getters，module）分别在项目中负责做什么？<br>vue性能优化，路由懒加载实现</p><h4 id="3-react"><a href="#3-react" class="headerlink" title="3. react"></a>3. react</h4><p>react数据绑定底层原理？<br>项目中你用到了那些react技术（组件、组件传旨，动画、路由、生命周期、redux／flux／react-redux）－具体实现了什么功能<br>组件划分，受控，非受控，有状态无状态等<br>react生命周期函数在项目中做什么功能？<br>diff算法的好处<br>组件传旨怎么做？<br>react路由嵌套路由传参怎么做？怎么动态接受？<br>路由用什么模式？hash跟history区别，怎么转换？<br>状态管理器怎么用的？<br>redux（view，action，store，reducer）分别干什么的？<br>reducer拆分怎么做？<br>用过redux哪些异步插件？（thunk，saga，promise）</p><h4 id="4-webpack"><a href="#4-webpack" class="headerlink" title="4. webpack"></a>4. webpack</h4><p>webpack用过哪些插件，加载器？项目中用来做什么的？<br>会不会自己配置webpack？具体包含哪些信息？</p><h4 id="5-other"><a href="#5-other" class="headerlink" title="5. other"></a>5. other</h4><p>项目中具体怎么用sass的？对比css好处在哪里。<br>mock怎么用的？怎么模拟post请求？<br>项目中的组件怎么测试的？（mocha）<br>项目开发中遇到过哪些问题？怎么处理的？<br>小程序开发中遇到的问题？</p>]]></content>
     
@@ -50,9 +50,9 @@
     <link href="http://yoursite.com/2021/02/01/%E6%AD%A3%E5%88%99/"/>
     <id>http://yoursite.com/2021/02/01/%E6%AD%A3%E5%88%99/</id>
     <published>2021-01-31T16:00:00.000Z</published>
-    <updated>2021-10-13T07:06:42.169Z</updated>
+    <updated>2021-10-14T07:21:41.326Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="正则表达式到底是什么"><a href="#正则表达式到底是什么" class="headerlink" title="正则表达式到底是什么"></a>正则表达式到底是什么</h3><p>正则表达式(Regular Expression)其实就是一门工具，目的是为了字符串模式匹配，从而实现搜索和替换功能。它起源于上个20世纪50年代科学家在数学领域做的一些研究工作，后来才被引入到计算机领域中。从它的命名我们可以知道，它是一种用来描述规则的表达式。而它的底层原理也十分简单，就是使用状态机的思想进行模式匹配。大家可以利用regexper.com这个工具很好地可视化自己写的正则表达式</p><p>### </p>]]></content>
+    <content type="html"><![CDATA[<h3 id="正则表达式到底是什么"><a href="#正则表达式到底是什么" class="headerlink" title="正则表达式到底是什么"></a>正则表达式到底是什么</h3><p>正则表达式(Regular Expression)其实就是一门工具，目的是为了字符串模式匹配，从而实现搜索和替换功能。它起源于上个20世纪50年代科学家在数学领域做的一些研究工作，后来才被引入到计算机领域中。从它的命名我们可以知道，它是一种用来描述规则的表达式。而它的底层原理也十分简单，就是使用状态机的思想进行模式匹配。大家可以利用regexper.com这个工具很好地可视化自己写的正则表达式</p><p>正则表达式经常被用于字段或任意字符串的校验，如下面这段校验基本日期格式的JavaScript代码</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^(\\d&#123;1,4&#125;)(-|\\/</span>)(\\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;)\\<span class="number">2</span>(\\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;)$/; </span><br><span class="line"><span class="keyword">var</span> r = fieldValue.match(reg);             </span><br><span class="line"><span class="keyword">if</span>(r==<span class="literal">null</span>)alert(<span class="string">'Date format error!'</span>);</span><br></pre></td></tr></table></figure><p>下面整理一下，在前端开发中经常使用到的正则表达式。</p><h4 id="1-校验密码强度"><a href="#1-校验密码强度" class="headerlink" title="1. 校验密码强度"></a>1. 校验密码强度</h4><p>密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).&#123;<span class="number">8</span>,<span class="number">10</span>&#125;$</span><br></pre></td></tr></table></figure><h4 id="2-校验中文"><a href="#2-校验中文" class="headerlink" title="2. 校验中文"></a>2. 校验中文</h4><p>字符串仅能是中文。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[\\u4e00-\\u9fa5]&#123;<span class="number">0</span>,&#125;$</span><br></pre></td></tr></table></figure><h4 id="3-由数字、26个英文字母或下划线组成的字符串"><a href="#3-由数字、26个英文字母或下划线组成的字符串" class="headerlink" title="3. 由数字、26个英文字母或下划线组成的字符串"></a>3. 由数字、26个英文字母或下划线组成的字符串</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\\w+$</span><br></pre></td></tr></table></figure><h4 id="4-校验E-Mail-地址"><a href="#4-校验E-Mail-地址" class="headerlink" title="4. 校验E-Mail 地址"></a>4. 校验E-Mail 地址</h4><p>同密码一样，下面是E-mail地址合规性的正则检查语句。</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[\\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+(?:\\.[\\w!#$%&amp;'*+/=?^_`&#123;|&#125;~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?</span><br></pre></td></tr></table></figure><h4 id="5-校验身份证号码"><a href="#5-校验身份证号码" class="headerlink" title="5. 校验身份证号码"></a>5. 校验身份证号码</h4><p>下面是身份证号码的正则校验。15 或 18位。<br>15位：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[<span class="number">1</span><span class="number">-9</span>]\\d&#123;<span class="number">7</span>&#125;((<span class="number">0</span>\\d)|(<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>]))(([<span class="number">0</span>|<span class="number">1</span>|<span class="number">2</span>]\\d)|<span class="number">3</span>[<span class="number">0</span><span class="number">-1</span>])\\d&#123;<span class="number">3</span>&#125;$</span><br></pre></td></tr></table></figure><p>18位：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[<span class="number">1</span><span class="number">-9</span>]\\d&#123;<span class="number">5</span>&#125;[<span class="number">1</span><span class="number">-9</span>]\\d&#123;<span class="number">3</span>&#125;((<span class="number">0</span>\\d)|(<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>]))(([<span class="number">0</span>|<span class="number">1</span>|<span class="number">2</span>]\\d)|<span class="number">3</span>[<span class="number">0</span><span class="number">-1</span>])\\d&#123;<span class="number">3</span>&#125;([<span class="number">0</span><span class="number">-9</span>]|X)$</span><br></pre></td></tr></table></figure><h4 id="6-校验日期"><a href="#6-校验日期" class="headerlink" title="6. 校验日期"></a>6. 校验日期</h4><p>“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(?:(?!<span class="number">0000</span>)[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>&#125;-(?:(?:<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>])-(?:<span class="number">0</span>[<span class="number">1</span><span class="number">-9</span>]|<span class="number">1</span>[<span class="number">0</span><span class="number">-9</span>]|<span class="number">2</span>[<span class="number">0</span><span class="number">-8</span>])|(?:<span class="number">0</span>[<span class="number">13</span><span class="number">-9</span>]|<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>])-(?:<span class="number">29</span>|<span class="number">30</span>)|(?:<span class="number">0</span>[<span class="number">13578</span>]|<span class="number">1</span>[<span class="number">02</span>])<span class="number">-31</span>)|(?:[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;(?:<span class="number">0</span>[<span class="number">48</span>]|[<span class="number">2468</span>][<span class="number">048</span>]|[<span class="number">13579</span>][<span class="number">26</span>])|(?:<span class="number">0</span>[<span class="number">48</span>]|[<span class="number">2468</span>][<span class="number">048</span>]|[<span class="number">13579</span>][<span class="number">26</span>])<span class="number">00</span>)<span class="number">-02</span><span class="number">-29</span>)$</span><br></pre></td></tr></table></figure><h4 id="7-校验金额"><a href="#7-校验金额" class="headerlink" title="7. 校验金额"></a>7. 校验金额</h4><p>金额校验，精确到2位小数。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[<span class="number">0</span><span class="number">-9</span>]+(.[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;)?$</span><br></pre></td></tr></table></figure><h4 id="8-校验手机号"><a href="#8-校验手机号" class="headerlink" title="8. 校验手机号"></a>8. 校验手机号</h4><p>下面是国内 13、15、18开头的手机号正则表达式。（可根据目前国内收集号扩展前两位开头号码）</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(<span class="number">13</span>[<span class="number">0</span><span class="number">-9</span>]|<span class="number">14</span>[<span class="number">5</span>|<span class="number">7</span>]|<span class="number">15</span>[<span class="number">0</span>|<span class="number">1</span>|<span class="number">2</span>|<span class="number">3</span>|<span class="number">5</span>|<span class="number">6</span>|<span class="number">7</span>|<span class="number">8</span>|<span class="number">9</span>]|<span class="number">18</span>[<span class="number">0</span>|<span class="number">1</span>|<span class="number">2</span>|<span class="number">3</span>|<span class="number">5</span>|<span class="number">6</span>|<span class="number">7</span>|<span class="number">8</span>|<span class="number">9</span>])\\d&#123;<span class="number">8</span>&#125;$</span><br></pre></td></tr></table></figure><h4 id="9-判断IE的版本"><a href="#9-判断IE的版本" class="headerlink" title="9. 判断IE的版本"></a>9. 判断IE的版本</h4><p>IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^.*MSIE [<span class="number">5</span><span class="number">-8</span>](?:\\.[<span class="number">0</span><span class="number">-9</span>]+)?(?!.*Trident\\/[<span class="number">5</span><span class="number">-9</span>]\\<span class="number">.0</span>).*$</span><br></pre></td></tr></table></figure><h4 id="10-提取URL链接"><a href="#10-提取URL链接" class="headerlink" title="10. 提取URL链接"></a>10. 提取URL链接</h4><p>下面的这个表达式可以筛选出一段文本中的URL。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(f|ht)&#123;<span class="number">1</span>&#125;(tp|tps):\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- ./?%&amp;=]*)?</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -347,9 +347,9 @@
       <category term="vue-2.0" scheme="http://yoursite.com/categories/vue-2-0/"/>
     
     
-      <category term="路由" scheme="http://yoursite.com/tags/%E8%B7%AF%E7%94%B1/"/>
-    
       <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="路由" scheme="http://yoursite.com/tags/%E8%B7%AF%E7%94%B1/"/>
     
   </entry>
   
@@ -403,9 +403,9 @@
       <category term="vue-2.0" scheme="http://yoursite.com/categories/vue-2-0/"/>
     
     
-      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
-    
       <category term="传值与传参" scheme="http://yoursite.com/tags/%E4%BC%A0%E5%80%BC%E4%B8%8E%E4%BC%A0%E5%8F%82/"/>
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
     
   </entry>
   
@@ -493,9 +493,9 @@
       <category term="js" scheme="http://yoursite.com/categories/js/"/>
     
     
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
       <category term="深拷贝&amp;浅拷贝" scheme="http://yoursite.com/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D-%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
@@ -521,9 +521,9 @@
       <category term="js" scheme="http://yoursite.com/categories/js/"/>
     
     
-      <category term="ajax交互" scheme="http://yoursite.com/tags/ajax%E4%BA%A4%E4%BA%92/"/>
-    
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="ajax交互" scheme="http://yoursite.com/tags/ajax%E4%BA%A4%E4%BA%92/"/>
     
   </entry>
   
